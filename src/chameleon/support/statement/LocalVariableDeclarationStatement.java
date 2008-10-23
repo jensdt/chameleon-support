@@ -38,8 +38,8 @@ import chameleon.core.element.Element;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.statement.VariableDeclaringStatement;
-import chameleon.core.variable.LocalVariable;
 import chameleon.core.variable.VariableContainer;
+import chameleon.support.variable.LocalVariable;
 
 /**
  * @author Marko van Dooren
