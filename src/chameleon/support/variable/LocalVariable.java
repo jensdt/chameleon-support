@@ -62,7 +62,7 @@ public class LocalVariable extends InitializableVariable<LocalVariable,LocalVari
   }
 
   public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-    List ancestors = getAllParents();
+    List ancestors = getAncestors();
     new TypePredicate(StatementListContainer.class).filter(ancestors);
     return new StatementListDomain((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)getParent());
   }
