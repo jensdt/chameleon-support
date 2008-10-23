@@ -1,0 +1,20 @@
+package chameleon.support.statement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import chameleon.core.element.Element;
+import chameleon.core.statement.Statement;
+
+public class DefaultGotoStatement extends GotoStatement<DefaultGotoStatement> {
+
+	@Override
+	public DefaultGotoStatement clone() {
+		return new DefaultGotoStatement();
+	}
+
+	@Override
+	public List<Element> getChildren() {
+		return new ArrayList<Element>();
+	}
+}

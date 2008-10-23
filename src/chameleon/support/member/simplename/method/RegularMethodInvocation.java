@@ -1,0 +1,38 @@
+package chameleon.support.member.simplename.method;
+
+
+import chameleon.core.MetamodelException;
+import chameleon.core.declaration.DeclarationSelector;
+import chameleon.core.expression.InvocationTarget;
+import chameleon.support.member.simplename.SimpleNameMethodInvocation;
+
+
+/**
+ * @author Marko van Dooren
+ */
+public class RegularMethodInvocation extends SimpleNameMethodInvocation<RegularMethodInvocation,RegularMethod> {
+
+  public RegularMethodInvocation(String name, InvocationTarget target) {
+    super(target, name);
+  }
+
+  /********
+   * MISC *
+   ********/
+  
+  protected RegularMethodInvocation cloneInvocation(InvocationTarget target) {
+    return new RegularMethodInvocation(getName(), target);
+  }
+
+  @Override
+  public DeclarationSelector<RegularMethod> selector() {
+    return new SimpleNameMethodSelector() {
+        @Override
+        public Class<RegularMethod> selectedClass() {
+          return RegularMethod.class;
+        }
+
+      };
+  }
+
+}
