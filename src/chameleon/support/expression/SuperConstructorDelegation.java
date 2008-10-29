@@ -29,7 +29,7 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   
   // @FIXME: does not work with multiple inheritance. Call is ambiguous.
   public RegularMethod getMethod() throws MetamodelException {
-	    return ((Type)getNearestType()).getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
+	    return ((Type<Type>)getNearestType()).getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
   }
   
   public boolean superOf(InvocationTarget target) {
