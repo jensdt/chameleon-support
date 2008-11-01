@@ -2,15 +2,15 @@ package chameleon.support.member.simplename.operator.postfix;
 
 import chameleon.core.method.Method;
 import chameleon.core.type.TypeReference;
-import chameleon.support.member.simplename.SimpleNameSignature;
+import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;
 
 /**
  * @author Marko van Dooren
  */
-public class PostfixOperator extends Operator<PostfixOperator,SimpleNameSignature> {
+public class PostfixOperator extends Operator<PostfixOperator,SimpleNameMethodSignature> {
 
-  public PostfixOperator(SimpleNameSignature sig, TypeReference returnType) {
+  public PostfixOperator(SimpleNameMethodSignature sig, TypeReference returnType) {
     super(sig, returnType);
   }
   

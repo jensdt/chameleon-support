@@ -28,15 +28,15 @@ package chameleon.support.member.simplename.method;
 import chameleon.core.method.Method;
 import chameleon.core.method.RegularMethod;
 import chameleon.core.type.TypeReference;
-import chameleon.support.member.simplename.SimpleNameSignature;
+import chameleon.support.member.simplename.SimpleNameMethodSignature;
 
 
 /**
  * @author Marko van Dooren
  */
-public class NormalMethod extends RegularMethod<NormalMethod,SimpleNameSignature>  {
+public class NormalMethod extends RegularMethod<NormalMethod,SimpleNameMethodSignature>  {
 
-  public NormalMethod(SimpleNameSignature sig, TypeReference returnType) {
+  public NormalMethod(SimpleNameMethodSignature sig, TypeReference returnType) {
     super(sig, returnType);
   }
 
@@ -46,7 +46,7 @@ public class NormalMethod extends RegularMethod<NormalMethod,SimpleNameSignature
   }  
 
   protected NormalMethod cloneThis() {
-    return new NormalMethod((SimpleNameSignature) signature().clone(), (TypeReference)getReturnTypeReference().clone());
+    return new NormalMethod((SimpleNameMethodSignature) signature().clone(), (TypeReference)getReturnTypeReference().clone());
   }
   
 	

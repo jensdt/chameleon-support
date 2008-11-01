@@ -55,7 +55,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         List<Type> formals = ((MethodSignature)decl.signature()).getParameterTypes();
         if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
         	 new MoreSpecificTypesOrder().contains(actuals,formals) && 
-           ((SimpleNameSignature)decl.signature()).getName().equals(getName())) {
+           ((SimpleNameMethodSignature)decl.signature()).getName().equals(getName())) {
           result = decl;
         }
       }

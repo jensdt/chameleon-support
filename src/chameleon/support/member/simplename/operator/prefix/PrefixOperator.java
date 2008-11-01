@@ -2,12 +2,12 @@ package chameleon.support.member.simplename.operator.prefix;
 
 import chameleon.core.method.Method;
 import chameleon.core.type.TypeReference;
-import chameleon.support.member.simplename.SimpleNameSignature;
+import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;
 
-public class PrefixOperator extends Operator<PrefixOperator,SimpleNameSignature> {
+public class PrefixOperator extends Operator<PrefixOperator,SimpleNameMethodSignature> {
   
-  public PrefixOperator(SimpleNameSignature sig, TypeReference returnType) {
+  public PrefixOperator(SimpleNameMethodSignature sig, TypeReference returnType) {
     super(sig, returnType);
   }
 

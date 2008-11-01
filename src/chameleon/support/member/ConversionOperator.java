@@ -2,17 +2,17 @@ package chameleon.support.member;
 
 import chameleon.core.method.Method;
 import chameleon.core.type.TypeReference;
-import chameleon.support.member.simplename.SimpleNameSignature;
+import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;
 
 /**
  * @author Marko van Dooren
  * @author Tim Laeremans
  */
-public class ConversionOperator extends Operator<ConversionOperator, SimpleNameSignature> {
+public class ConversionOperator extends Operator<ConversionOperator, SimpleNameMethodSignature> {
 
 	  public ConversionOperator(TypeReference returnType) {
-		    super(new SimpleNameSignature(""), returnType);
+		    super(new SimpleNameMethodSignature(""), returnType);
 	  }
 
 	  public boolean sameKind(Method other) {
