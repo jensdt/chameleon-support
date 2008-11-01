@@ -39,7 +39,7 @@ public class InfixOperator extends Operator<InfixOperator,SimpleNameSignature> {
   }
 
   protected InfixOperator cloneThis() {
-    return new InfixOperator(signature().clone(), 
+    return new InfixOperator((SimpleNameSignature) signature().clone(), 
                              (TypeReference)getReturnTypeReference().clone());
   }
 

@@ -30,6 +30,7 @@ import org.rejuse.predicate.TypePredicate;
 
 import chameleon.core.MetamodelException;
 import chameleon.core.accessibility.AccessibilityDomain;
+import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementListContainer;
@@ -37,7 +38,6 @@ import chameleon.core.statement.StatementListDomain;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.core.variable.InitializableVariable;
-import chameleon.core.variable.VariableSignature;
 import chameleon.support.statement.LocalVariableDeclarationStatement;
 
 /**
@@ -45,7 +45,7 @@ import chameleon.support.statement.LocalVariableDeclarationStatement;
  */
 public class LocalVariable extends InitializableVariable<LocalVariable,LocalVariableDeclarationStatement> {
 
-  public LocalVariable(VariableSignature sig, TypeReference type, Expression init) {
+  public LocalVariable(SimpleNameSignature sig, TypeReference type, Expression init) {
     super(sig, type, init);
   }
 

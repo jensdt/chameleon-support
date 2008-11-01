@@ -26,6 +26,7 @@ package chameleon.support.member.simplename.method;
 
 
 import chameleon.core.method.Method;
+import chameleon.core.method.RegularMethod;
 import chameleon.core.type.TypeReference;
 import chameleon.support.member.simplename.SimpleNameSignature;
 
@@ -33,19 +34,19 @@ import chameleon.support.member.simplename.SimpleNameSignature;
 /**
  * @author Marko van Dooren
  */
-public class RegularMethod extends Method<RegularMethod,SimpleNameSignature>  {
+public class NormalMethod extends RegularMethod<NormalMethod,SimpleNameSignature>  {
 
-  public RegularMethod(SimpleNameSignature sig, TypeReference returnType) {
+  public NormalMethod(SimpleNameSignature sig, TypeReference returnType) {
     super(sig, returnType);
   }
 
 
   public boolean sameKind(Method other) {
-  	return(other instanceof RegularMethod);
+  	return(other instanceof NormalMethod);
   }  
 
-  protected RegularMethod cloneThis() {
-    return new RegularMethod(signature().clone(), (TypeReference)getReturnTypeReference().clone());
+  protected NormalMethod cloneThis() {
+    return new NormalMethod((SimpleNameSignature) signature().clone(), (TypeReference)getReturnTypeReference().clone());
   }
   
 	

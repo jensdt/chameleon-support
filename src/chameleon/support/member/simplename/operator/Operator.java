@@ -25,14 +25,14 @@
 package chameleon.support.member.simplename.operator;
 
 
-import chameleon.core.method.Method;
 import chameleon.core.method.MethodSignature;
+import chameleon.core.method.RegularMethod;
 import chameleon.core.type.TypeReference;
 
 /**
  * @author Marko van Dooren
  */
-public abstract class Operator<E extends Operator, S extends MethodSignature> extends Method<E,S> {
+public abstract class Operator<E extends Operator<E,S>, S extends MethodSignature> extends RegularMethod<E,S> {
 
   public Operator(S sig, TypeReference returnType) {
     super(sig, returnType);

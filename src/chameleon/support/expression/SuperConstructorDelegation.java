@@ -12,7 +12,7 @@ import chameleon.core.method.Method;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;
-import chameleon.support.member.simplename.method.RegularMethod;
+import chameleon.support.member.simplename.method.NormalMethod;
 
 /**
  * @author Marko van Dooren
@@ -28,8 +28,8 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   }
   
   // @FIXME: does not work with multiple inheritance. Call is ambiguous.
-  public RegularMethod getMethod() throws MetamodelException {
-	    return ((Type<Type>)getNearestType()).getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
+  public NormalMethod getMethod() throws MetamodelException {
+	    return ((Type<? extends Type>)getNearestType()).getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
   }
   
   public boolean superOf(InvocationTarget target) {

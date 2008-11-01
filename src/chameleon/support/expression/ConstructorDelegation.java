@@ -12,27 +12,27 @@ import chameleon.core.expression.InvocationTarget;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;
-import chameleon.support.member.simplename.method.RegularMethod;
+import chameleon.support.member.simplename.method.NormalMethod;
 
 /**
  * @author Marko van Dooren
  */
 
 public abstract class ConstructorDelegation<E extends ConstructorDelegation>
-    extends Invocation<E, RegularMethod> {
+    extends Invocation<E, NormalMethod> {
 
   public ConstructorDelegation(InvocationTarget target) {
     super(target);
   }
 
   protected class NamelessConstructorSelector extends
-      DeclarationSelector<RegularMethod> {
+      DeclarationSelector<NormalMethod> {
     @Override
-    public RegularMethod filter(Declaration declaration)
+    public NormalMethod filter(Declaration declaration)
         throws MetamodelException {
-      RegularMethod result = null;
+      NormalMethod result = null;
       if (selectedClass().isInstance(declaration)) {
-        RegularMethod decl = (RegularMethod) declaration;
+        NormalMethod decl = (NormalMethod) declaration;
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = decl.signature().getParameterTypes();
         if (new MoreSpecificTypesOrder().contains(actuals, formals)
@@ -46,10 +46,10 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     // @FIXME: generalize along with implementation in
     // SimpleNameMethodInvocation
     @Override
-    public WeakPartialOrder<RegularMethod> order() {
-      return new WeakPartialOrder<RegularMethod>() {
+    public WeakPartialOrder<NormalMethod> order() {
+      return new WeakPartialOrder<NormalMethod>() {
         @Override
-        public boolean contains(RegularMethod first, RegularMethod second)
+        public boolean contains(NormalMethod first, NormalMethod second)
             throws MetamodelException {
           return new MoreSpecificTypesOrder().contains(first.signature()
               .getParameterTypes(), second.signature().getParameterTypes());
@@ -58,13 +58,13 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     }
 
     @Override
-    public Class<RegularMethod> selectedClass() {
-      return RegularMethod.class;
+    public Class<NormalMethod> selectedClass() {
+      return NormalMethod.class;
     }
   }
   
   @Override
-  public DeclarationSelector<RegularMethod> selector() {
+  public DeclarationSelector<NormalMethod> selector() {
     return new NamelessConstructorSelector();
   }
 

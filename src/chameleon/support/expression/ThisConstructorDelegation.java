@@ -3,7 +3,7 @@ package chameleon.support.expression;
 import chameleon.core.MetamodelException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.type.Type;
-import chameleon.support.member.simplename.method.RegularMethod;
+import chameleon.support.member.simplename.method.NormalMethod;
 
 /**
  * @author Marko van Dooren
@@ -22,7 +22,7 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
     return language().voidType();
   }
 
-  public RegularMethod getMethod() throws MetamodelException {
+  public NormalMethod getMethod() throws MetamodelException {
 	   return ((Type)getNearestType()).lexicalContext().lookUp(selector());
   }
 

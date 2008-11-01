@@ -10,7 +10,7 @@ import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 /**
  * @author Marko van Dooren
  */
-public class RegularMethodInvocation extends SimpleNameMethodInvocation<RegularMethodInvocation,RegularMethod> {
+public class RegularMethodInvocation extends SimpleNameMethodInvocation<RegularMethodInvocation,NormalMethod> {
 
   public RegularMethodInvocation(String name, InvocationTarget target) {
     super(target, name);
@@ -25,11 +25,11 @@ public class RegularMethodInvocation extends SimpleNameMethodInvocation<RegularM
   }
 
   @Override
-  public DeclarationSelector<RegularMethod> selector() {
+  public DeclarationSelector<NormalMethod> selector() {
     return new SimpleNameMethodSelector() {
         @Override
-        public Class<RegularMethod> selectedClass() {
-          return RegularMethod.class;
+        public Class<NormalMethod> selectedClass() {
+          return NormalMethod.class;
         }
 
       };
