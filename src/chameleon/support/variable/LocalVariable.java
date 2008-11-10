@@ -37,13 +37,13 @@ import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListDomain;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
-import chameleon.core.variable.InitializableVariable;
+import chameleon.core.variable.RegularVariable;
 import chameleon.support.statement.LocalVariableDeclarationStatement;
 
 /**
  * @author Marko van Dooren
  */
-public class LocalVariable extends InitializableVariable<LocalVariable,LocalVariableDeclarationStatement> {
+public class LocalVariable extends RegularVariable<LocalVariable,LocalVariableDeclarationStatement> {
 
   public LocalVariable(SimpleNameSignature sig, TypeReference type, Expression init) {
     super(sig, type, init);
