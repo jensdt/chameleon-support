@@ -55,11 +55,11 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,ForS
 	private OrderedReferenceSet<StatementExprList,StatementExpression> _statementExpressions = new OrderedReferenceSet<StatementExprList,StatementExpression>(this);
 
   public void addStatement(StatementExpression statement) {
-    _statementExpressions.add(statement.getParentLink());
+    _statementExpressions.add(statement.parentLink());
   }
 
   public void removeStatement(StatementExpression statement) {
-    _statementExpressions.remove(statement.getParentLink());
+    _statementExpressions.remove(statement.parentLink());
   }
 
   public List<StatementExpression> getStatements() {
@@ -67,7 +67,7 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,ForS
   }
 
   public Type getNearestType() {
-    return getParent().getNearestType();
+    return parent().getNearestType();
   }
 
   /**
@@ -150,7 +150,7 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,ForS
    @
    @ post \result.equals(getStatements());
    @*/
-  public List<StatementExpression> getChildren() {
+  public List<StatementExpression> children() {
     return getStatements();
   }
 

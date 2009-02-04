@@ -58,11 +58,11 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
   }
 
   public void addCatchClause(CatchClause catchClause) {
-    _catchClausesLink.add(catchClause.getParentLink());
+    _catchClausesLink.add(catchClause.parentLink());
   }
 
   public void removeCatchClause(CatchClause catchClause) {
-    _catchClausesLink.remove(catchClause.getParentLink());
+    _catchClausesLink.remove(catchClause.parentLink());
   }
 
   public List<CatchClause> getCatchClauses() {
@@ -79,7 +79,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
   }
 
   public void setFinallyClause(FinallyClause clause) {
-    _finally.connectTo(clause.getParentLink());
+    _finally.connectTo(clause.parentLink());
   }
 
   public TryStatement clone() {
@@ -95,7 +95,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
     return result;
   }
   
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getStatement());
     result.addAll(getCatchClauses());
     Util.addNonNull(getFinallyClause(), result);

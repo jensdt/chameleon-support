@@ -100,7 +100,7 @@ public class ConditionalExpression extends TernaryExpression {
     return new ConditionalExpression(getCondition().clone(), getFirst().clone(), getSecond().clone());
   }
 
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getCondition());
     Util.addNonNull(getFirst(), result);
     Util.addNonNull(getSecond(), result);

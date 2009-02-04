@@ -27,13 +27,13 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> implements Ex
 
 	public void addIndex(Expression expr){
 		if(expr != null) {
-		  _expressions.add(expr.getParentLink());
+		  _expressions.add(expr.parentLink());
 		}
 	}
 
 	public void removeIndex(Expression expr){
 		if(expr != null) {
-		  _expressions.remove(expr.getParentLink());
+		  _expressions.remove(expr.parentLink());
 		}
 	}
 	
@@ -41,12 +41,12 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> implements Ex
         return _expressions.getOtherEnds();
 	}
 	
-	public List<Expression> getChildren() {
+	public List<Expression> children() {
 		return getIndices();
 	}
 
 	@Override public FilledArrayIndex clone() {
-		    List<Expression> els = getDescendants(Expression.class);
+		    List<Expression> els = descendants(Expression.class);
         FilledArrayIndex result = new FilledArrayIndex();
         for (Expression e : els) {
             Expression expr = e.clone();
@@ -57,7 +57,7 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> implements Ex
 	}
 
 	@Override public String toString(){
-		int i = getDescendants(Expression.class).size();
+		int i = descendants(Expression.class).size();
 		StringBuffer result = new StringBuffer("[");
 
 		while(i > 1){

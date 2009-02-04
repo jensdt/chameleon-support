@@ -62,7 +62,7 @@ public class ThrowStatement extends ExpressionContainingStatement<ThrowStatement
    @ post \result.contains(getExpression());
    @ post \result.size() == 1;
    @*/
-  public List getChildren() {
+  public List children() {
     return Util.createNonNullList(getExpression());
   }
 

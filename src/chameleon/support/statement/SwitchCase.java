@@ -34,11 +34,11 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
   }
 
   public void addStatement(Statement statement) {
-    _statements.add(statement.getParentLink());
+    _statements.add(statement.parentLink());
   }
 
   public void removeStatement(Statement statement) {
-    _statements.add(statement.getParentLink());
+    _statements.add(statement.parentLink());
   }
 
   public List<Statement> getStatements() {
@@ -55,11 +55,11 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
   }
 
   public void addLabel(SwitchLabel label) {
-    _labels.add(label.getParentLink());
+    _labels.add(label.parentLink());
   }
 
   public void removeLabel(SwitchLabel label) {
-    _labels.add(label.getParentLink());
+    _labels.add(label.parentLink());
   }
 
   public List<SwitchLabel> getLabels() {
@@ -67,7 +67,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
   }
 
   public Type getNearestType() {
-    return getParent().getNearestType();
+    return parent().getNearestType();
   }
 
 
@@ -147,7 +147,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
    @ post \result.containsAll(getStatements());
    @ post \result.containsAll(getLabels());
    @*/
-  public List getChildren() {
+  public List children() {
     List result = getStatements();
     result.addAll(getLabels());
     return result;

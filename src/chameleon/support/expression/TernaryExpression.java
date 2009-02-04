@@ -30,7 +30,7 @@ public abstract class TernaryExpression extends BinaryExpression {
 
   public void setThird(Expression expression) {
   	if(expression != null) {
-      _third.connectTo(expression.getParentLink());
+      _third.connectTo(expression.parentLink());
   	} else {
   		_third.connectTo(null);
   	}

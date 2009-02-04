@@ -44,7 +44,7 @@ public class StatementExpression extends ExpressionContainingStatement<Statement
     return new StatementExpression(getExpression().clone());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     return Util.createNonNullList(getExpression());
   }
 }

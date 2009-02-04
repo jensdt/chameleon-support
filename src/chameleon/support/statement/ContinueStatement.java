@@ -43,7 +43,7 @@ public class ContinueStatement extends JumpStatement<ContinueStatement> {
     return new ContinueStatement(getLabel());
   }
 
-  public List getChildren() {
+  public List children() {
     return new ArrayList();
   }
 }

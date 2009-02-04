@@ -19,7 +19,7 @@ public class CaseGotoStatement extends ExpressionContainingStatement<CaseGotoSta
 	}
 
 	@Override
-	public List<Element> getChildren() {
+	public List<Element> children() {
 		return Util.createNonNullList(getExpression());
 	}
 

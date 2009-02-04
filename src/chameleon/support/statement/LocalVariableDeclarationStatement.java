@@ -62,11 +62,11 @@ public class LocalVariableDeclarationStatement extends Statement<LocalVariableDe
 	  }
 	    
 	  public void addVariable(LocalVariable v) {
-	    _variables.add(v.getParentLink());
+	    _variables.add(v.parentLink());
 	  }
 	    
 	  public void removeVariable(LocalVariable v) {
-	    _variables.remove(v.getParentLink());
+	    _variables.remove(v.parentLink());
 	  }
 	    
 	  public OrderedReferenceSet<LocalVariableDeclarationStatement,LocalVariable> getVariableLink() {
@@ -83,7 +83,7 @@ public class LocalVariableDeclarationStatement extends Statement<LocalVariableDe
     return result;
   }
 
-  public List<? extends Element> getChildren() {
+  public List<? extends Element> children() {
     return getVariables();
   }
 

@@ -43,7 +43,7 @@ public class DoStatement extends IterationStatement<DoStatement> {
     return new DoStatement(getExpression().clone(), getStatement().clone());
   }
 
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getCondition());
     Util.addNonNull(getStatement(), result);
     return result;

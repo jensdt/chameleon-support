@@ -54,7 +54,7 @@ public abstract class StatementExprStatement<E extends StatementExprStatement> e
   
   public void setExpression(Expression expression) {
     if(expression != null) {
-      _expression.connectTo(expression.getParentLink());
+      _expression.connectTo(expression.parentLink());
     }
     else {
       _expression.connectTo(null);

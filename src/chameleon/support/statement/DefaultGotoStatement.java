@@ -14,7 +14,7 @@ public class DefaultGotoStatement extends GotoStatement<DefaultGotoStatement> {
 	}
 
 	@Override
-	public List<Element> getChildren() {
+	public List<Element> children() {
 		return new ArrayList<Element>();
 	}
 }

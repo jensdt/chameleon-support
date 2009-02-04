@@ -55,11 +55,11 @@ public class SwitchStatement extends ExpressionContainingStatement<SwitchStateme
   }
 
   public void addCase(SwitchCase switchCase) {
-    _switchCases.add(switchCase.getParentLink());
+    _switchCases.add(switchCase.parentLink());
   }
 
   public void removeCase(SwitchCase switchCase) {
-    _switchCases.remove(switchCase.getParentLink());
+    _switchCases.remove(switchCase.parentLink());
   }
 
   public List<SwitchCase> getSwitchCases() {
@@ -76,7 +76,7 @@ public class SwitchStatement extends ExpressionContainingStatement<SwitchStateme
     return result;
   }
 
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getExpression());
     result.addAll(getSwitchCases());
     return result;

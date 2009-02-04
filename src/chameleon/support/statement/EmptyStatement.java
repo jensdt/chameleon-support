@@ -43,7 +43,7 @@ public class EmptyStatement extends Statement<EmptyStatement> {
 		return new EmptyStatement();
 	}
 	
-	public List<Element> getChildren() {
+	public List<Element> children() {
 		return new ArrayList();
 	}
 }

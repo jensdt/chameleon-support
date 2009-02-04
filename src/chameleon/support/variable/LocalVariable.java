@@ -50,7 +50,7 @@ public class LocalVariable extends RegularVariable<LocalVariable,LocalVariableDe
   }
 
   public Type getNearestType() {
-    return getParent().getNearestType();
+    return parent().getNearestType();
   }
 
   protected LocalVariable cloneThis() {
@@ -62,9 +62,9 @@ public class LocalVariable extends RegularVariable<LocalVariable,LocalVariableDe
   }
 
   public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-    List ancestors = getAncestors();
+    List ancestors = ancestors();
     new TypePredicate(StatementListContainer.class).filter(ancestors);
-    return new StatementListDomain((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)getParent());
+    return new StatementListDomain((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());
   }
 	
 }

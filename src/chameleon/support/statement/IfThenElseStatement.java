@@ -54,7 +54,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 
 
   public void setIfStatement(Statement statement) {
-    _ifStatement.connectTo(statement.getParentLink());
+    _ifStatement.connectTo(statement.parentLink());
   }
 
   public Statement getIfStatement() {
@@ -68,7 +68,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 
   public void setElseStatement(Statement statement) {
     if (statement != null) {
-      _elseStatement.connectTo(statement.getParentLink());
+      _elseStatement.connectTo(statement.parentLink());
     }
     else {
       _elseStatement.connectTo(null);
@@ -92,7 +92,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
     return new IfThenElseStatement(getExpression().clone(), ifStatement, elseStatement);
   }
 
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getExpression());
     Util.addNonNull(getIfStatement(), result);
     Util.addNonNull(getElseStatement(), result);

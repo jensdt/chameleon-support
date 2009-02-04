@@ -66,7 +66,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
 
   public void setVariable(Assignable var) {
   	if(var != null) {
-      _variable.connectTo(var.getParentLink());
+      _variable.connectTo(var.parentLink());
   	}
   	else {
   		_variable.connectTo(null);
@@ -83,7 +83,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
   }
 
   public void setValue(Expression expression) {
-    _value.connectTo(expression.getParentLink());
+    _value.connectTo(expression.parentLink());
   }
 
   public Type getType() throws MetamodelException {
@@ -100,7 +100,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
     return new AssignmentExpression(getVariable().clone(), ((Expression<? extends Expression>)getValue()).clone());
   }
 
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getVariable());
     Util.addNonNull(getValue(), result);
     return result;

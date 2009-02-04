@@ -42,7 +42,7 @@ public class BreakStatement extends JumpStatement<BreakStatement> {
     return new BreakStatement(getLabel());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     return new ArrayList();
   }
 

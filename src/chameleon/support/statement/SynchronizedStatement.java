@@ -44,7 +44,7 @@ public class SynchronizedStatement extends StatementExprStatement<SynchronizedSt
     return new SynchronizedStatement(getStatement().clone(), getExpression().clone());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     List<Element> result = Util.createNonNullList(getExpression());
     Util.addNonNull(getStatement(), result);
     return result;

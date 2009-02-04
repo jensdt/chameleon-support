@@ -27,7 +27,7 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
   }
   
   public void setTypeReference(TypeReference type) {
-    _typeReference.connectTo(type.getParentLink());
+    _typeReference.connectTo(type.parentLink());
   }
   
   public Type getType() throws MetamodelException {

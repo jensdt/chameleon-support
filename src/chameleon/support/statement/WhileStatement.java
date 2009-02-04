@@ -44,7 +44,7 @@ public class WhileStatement extends IterationStatement<WhileStatement> {
     return new WhileStatement(getExpression().clone(), getStatement().clone());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     List<Element> result = Util.createNonNullList(getCondition());
     Util.addNonNull(getStatement(), result);
     return result;

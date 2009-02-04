@@ -22,7 +22,7 @@ public abstract class ArrayIndex<E extends ArrayIndex> extends TypeDescendantImp
     }
 
     public Type getNearestType() {
-        return getParent().getNearestType();
+        return parent().getNearestType();
     }
 
     public abstract E clone();

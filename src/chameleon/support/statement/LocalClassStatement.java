@@ -65,7 +65,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 	private Reference<LocalClassStatement,Type> _type = new Reference<LocalClassStatement,Type>(this);
 
 	public void setType(Type type) {
-    _type.connectTo(type.getParentLink());
+    _type.connectTo(type.parentLink());
   }
 
   public Type getType() {
@@ -85,13 +85,13 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 	 @
 	 @ post getType() != null ==> \result.contains(getType());
 	 @*/
-	public List getChildren() {
+	public List children() {
 		return Util.createNonNullList(getType());
 	}
 
 	public AccessibilityDomain getTypeAccessibilityDomain() throws MetamodelException {
-		if (getParent() instanceof StatementListContainer) {
-			return new StatementListDomain((StatementListContainer) getParent(), this);
+		if (parent() instanceof StatementListContainer) {
+			return new StatementListDomain((StatementListContainer) parent(), this);
 		} else {
 			return new HierarchyDomain(getType());
 		}

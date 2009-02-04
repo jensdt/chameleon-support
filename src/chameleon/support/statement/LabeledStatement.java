@@ -54,7 +54,7 @@ public class LabeledStatement extends StatementContainingStatement<LabeledStatem
     return new LabeledStatement(getLabel(), getStatement().clone());
   }
 
-  public List getChildren() {
+  public List children() {
     return Util.createNonNullList(getStatement());
   }
 }

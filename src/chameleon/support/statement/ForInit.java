@@ -44,7 +44,7 @@ public interface ForInit<E extends ForInit, P extends Element> extends Exception
 	 * @uml.associationEnd 
 	 * @uml.property name="parentLink" multiplicity="(0 1)"
 	 */
-	public Reference getParentLink();
+	public Reference parentLink();
 
   /**
    * @param statement

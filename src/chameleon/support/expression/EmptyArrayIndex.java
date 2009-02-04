@@ -40,7 +40,7 @@ public class EmptyArrayIndex extends ArrayIndex<EmptyArrayIndex>{
 		return _dimensions;
 	}
 	
-	public List getChildren() {
+	public List children() {
 		return new ArrayList();
 	}
 	

@@ -46,7 +46,7 @@ public abstract class StatementContainingStatement<E extends StatementContaining
 
   
   public void setStatement(Statement statement) {
-    _statement.connectTo(statement.getParentLink());
+    _statement.connectTo(statement.parentLink());
   }
   
   public void removeStatement() {

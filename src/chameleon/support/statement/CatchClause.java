@@ -64,7 +64,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
   }
   
   public void setException(FormalParameter exc) {
-    _exceptionLink.connectTo(exc.getParentLink());
+    _exceptionLink.connectTo(exc.parentLink());
   }
   
   public FormalParameter getExceptionParameter() {
@@ -98,7 +98,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
    */
   public boolean isValid() throws MetamodelException {
     try {
-      CheckedExceptionList cel = getParent().getStatement().getCEL();
+      CheckedExceptionList cel = parent().getStatement().getCEL();
       Collection checkedExceptionTypes = cel.getExceptions();
       return new PrimitivePredicate() {
         public boolean eval(Object o) throws MetamodelException {
@@ -121,7 +121,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
    @ post getStatement() != null ==> \result.contains(getStatement());
    @ post getExceptionParameter() != null ==> \result.contains(getExceptionParameter());
    @*/
-  public List getChildren() {
+  public List children() {
     List result = Util.createNonNullList(getExceptionParameter());
     Util.addNonNull(getStatement(), result);
     return result;

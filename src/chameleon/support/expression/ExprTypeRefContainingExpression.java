@@ -24,7 +24,7 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
 
   public void setExpression(Expression expression) {
   	if(expression != null) {
-      _expression.connectTo(expression.getParentLink());
+      _expression.connectTo(expression.parentLink());
   	} 
   	else {
   		_expression.connectTo(null);
@@ -41,10 +41,10 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
   }
 
   public void setTypeReference(TypeReference type) {
-    _typeReference.connectTo(type.getParentLink());
+    _typeReference.connectTo(type.parentLink());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
   	List<Element> result = Util.createNonNullList(getExpression());
   	Util.addNonNull(getTypeReference(), result);
     return result;

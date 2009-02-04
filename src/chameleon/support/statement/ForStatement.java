@@ -62,7 +62,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements St
 
   public void setForInit(ForInit forInit) {
     if (forInit != null) {
-      _forInit.connectTo(forInit.getParentLink());
+      _forInit.connectTo(forInit.parentLink());
     }
     else {
       _forInit.connectTo(null);
@@ -85,7 +85,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements St
 
   public void setUpdate(StatementExprList update) {
     if (update != null) {
-      _update.connectTo(update.getParentLink());
+      _update.connectTo(update.parentLink());
     }
     else {
       _update.connectTo(null);
@@ -116,7 +116,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements St
     return new ForStatement(init, cond, update, statement);
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     List result = Util.createNonNullList(getForInit());
     Util.addNonNull(getUpdate(), result);
     Util.addNonNull(getCondition(), result);

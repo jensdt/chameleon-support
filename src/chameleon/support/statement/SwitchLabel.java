@@ -37,7 +37,7 @@ public abstract class SwitchLabel<E extends SwitchLabel> extends TypeDescendantI
 	}
 
   public Type getNearestType() {
-    return getParent().getNearestType();
+    return parent().getNearestType();
   }
 
 }

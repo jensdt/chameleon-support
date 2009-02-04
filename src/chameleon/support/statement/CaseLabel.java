@@ -53,7 +53,7 @@ public class CaseLabel extends SwitchLabel<CaseLabel> implements ExpressionConta
   }
   
   public void setExpression(Expression expression) {
-    _expression.connectTo(expression.getParentLink());
+    _expression.connectTo(expression.parentLink());
   }
 
   public void removeExpression(Expression expr) {
@@ -66,7 +66,7 @@ public class CaseLabel extends SwitchLabel<CaseLabel> implements ExpressionConta
     return new CaseLabel(getExpression().clone());
   }
 
-  public List<Element> getChildren() {
+  public List<Element> children() {
     return new ArrayList<Element>();
   }
 

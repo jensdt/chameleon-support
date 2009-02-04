@@ -28,7 +28,7 @@ public class ForeachStatement extends IterationStatement<ForeachStatement> {
 		return new ForeachStatement(v,e,s);
 	}
 
-	public List<Element> getChildren() {
+	public List<Element> children() {
 	    List<Element> result = Util.createNonNullList(getVariable());
 	    Util.addNonNull(getExpression(), result);
 	    Util.addNonNull(getStatement(), result);
@@ -49,7 +49,7 @@ public class ForeachStatement extends IterationStatement<ForeachStatement> {
 	 */
 	public void setVariable(Variable variable) {
 		if(variable != null) {
-		  _variable.connectTo(variable.getParentLink());
+		  _variable.connectTo(variable.parentLink());
 		} else {
 			_variable.connectTo(null);
 		}

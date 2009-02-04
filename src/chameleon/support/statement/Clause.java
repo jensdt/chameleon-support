@@ -48,7 +48,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
 	private Reference<Clause,Statement> _statement = new Reference<Clause,Statement>(this);
 
   public void setStatement(Statement statement) {
-    _statement.connectTo(statement.getParentLink());
+    _statement.connectTo(statement.parentLink());
   }
 
   public void removeStatement() {
@@ -60,7 +60,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
   }
 
   public CheckedExceptionList getCEL() throws MetamodelException {
-    CheckedExceptionList result = new CheckedExceptionList(getParent().language());
+    CheckedExceptionList result = new CheckedExceptionList(parent().language());
     if(getStatement() != null) {
       result.absorb(getStatement().getCEL());
     }
@@ -68,7 +68,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
   }
 
   public CheckedExceptionList getAbsCEL() throws MetamodelException {
-    CheckedExceptionList result = new CheckedExceptionList(getParent().language());
+    CheckedExceptionList result = new CheckedExceptionList(parent().language());
     if(getStatement() != null) {
       result.absorb(getStatement().getAbsCEL());
     }
@@ -76,7 +76,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
   }
 
 	public Type getNearestType() {
-		return getParent().getNearestType();
+		return parent().getNearestType();
 	}
 
 }

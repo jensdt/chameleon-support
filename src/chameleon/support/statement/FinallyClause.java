@@ -53,7 +53,7 @@ public class FinallyClause extends Clause<FinallyClause> implements StatementCon
    @ post getExpression() != null ==> \result.contains(getExpression());
    @ post \result.size() == 1;
    @*/
-  public List getChildren() {
+  public List children() {
     return Util.createNonNullList(getStatement());
   }
 }

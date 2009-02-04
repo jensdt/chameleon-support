@@ -43,7 +43,7 @@ public class DefaultLabel extends SwitchLabel<DefaultLabel> {
     return new DefaultLabel();
   }
   
-  public List<Element> getChildren() {
+  public List<Element> children() {
     return new ArrayList<Element>();
   }
 }
