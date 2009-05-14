@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.method.MethodSignature;
+import chameleon.core.method.MethodHeader;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.support.member.simplename.operator.infix.InfixOperator;

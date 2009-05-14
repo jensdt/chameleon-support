@@ -34,7 +34,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
       if (selectedClass().isInstance(declaration)) {
         NormalMethod decl = (NormalMethod) declaration;
         List<Type> actuals = getActualParameterTypes();
-        List<Type> formals = decl.signature().getParameterTypes();
+        List<Type> formals = decl.header().getParameterTypes();
         if (new MoreSpecificTypesOrder().contains(actuals, formals)
             && (decl.is(language().CONSTRUCTOR) == Ternary.TRUE)) {
           result = decl;
@@ -51,8 +51,8 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
         @Override
         public boolean contains(NormalMethod first, NormalMethod second)
             throws MetamodelException {
-          return new MoreSpecificTypesOrder().contains(first.signature()
-              .getParameterTypes(), second.signature().getParameterTypes());
+          return new MoreSpecificTypesOrder().contains(first.header()
+              .getParameterTypes(), second.header().getParameterTypes());
         }
       };
     }

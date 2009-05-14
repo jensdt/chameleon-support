@@ -10,7 +10,7 @@ import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NonConstructorInvocation;
 import chameleon.core.method.Method;
-import chameleon.core.method.MethodSignature;
+import chameleon.core.method.MethodHeader;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;
@@ -52,7 +52,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
       if(selectedClass().isInstance(declaration)) {
         D decl = (D)declaration;
         List<Type> actuals = getActualParameterTypes();
-        List<Type> formals = ((MethodSignature)decl.signature()).getParameterTypes();
+        List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
         if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
         	 new MoreSpecificTypesOrder().contains(actuals,formals) && 
            ((SimpleNameMethodSignature)decl.signature()).getName().equals(getName())) {
@@ -68,7 +68,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         @Override
         public boolean contains(D first, D second)
             throws MetamodelException {
-          return new MoreSpecificTypesOrder().contains(((MethodSignature) first.signature()).getParameterTypes(), ((MethodSignature) second.signature()).getParameterTypes());
+          return new MoreSpecificTypesOrder().contains(((MethodHeader) first.header()).getParameterTypes(), ((MethodHeader) second.header()).getParameterTypes());
         }
       };
     }
