@@ -4,13 +4,13 @@ import org.rejuse.property.PropertyMutex;
 import org.rejuse.property.PropertyUniverse;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
-import chameleon.core.accessibility.AccessibilityProperty;
-import chameleon.core.compilationunit.CompilationUnitDomain;
+import chameleon.core.compilationunit.CompilationUnitScope;
 import chameleon.core.element.Element;
+import chameleon.core.scope.ScopeProperty;
+import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 
-public class PrivateProperty extends AccessibilityProperty {
+public class PrivateProperty extends ScopeProperty {
 	
 	public final static String ID = "accessibility.private";
 	
@@ -21,9 +21,9 @@ public class PrivateProperty extends AccessibilityProperty {
 		super(name, universe, family);
 	}
 
-	public AccessibilityDomain accessibilityDomain(Element element) throws MetamodelException {
+	public Scope scope(Element element) throws MetamodelException {
 		try {
-			return new CompilationUnitDomain(((Type)element).getTopLevelType());
+			return new CompilationUnitScope(((Type)element).getTopLevelType());
 		} catch (ClassCastException exc) {
 			throw new MetamodelException();
 		}

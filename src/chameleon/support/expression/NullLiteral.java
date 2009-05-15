@@ -28,11 +28,11 @@ package chameleon.support.expression;
 
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.Literal;
+import chameleon.core.scope.Scope;
+import chameleon.core.scope.UniversalScope;
 import chameleon.core.type.Type;
-import chameleon.support.property.accessibility.All;
 
 /**
  * @author marko
@@ -55,8 +55,8 @@ public class NullLiteral extends Literal<NullLiteral> {
     return new NullLiteral();
   }
 
-  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-    return new All();
+  public Scope getAccessibilityDomain() throws MetamodelException {
+    return new UniversalScope();
   }
 
 }

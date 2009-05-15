@@ -1,8 +1,8 @@
 package chameleon.support.expression;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 

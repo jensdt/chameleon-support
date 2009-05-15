@@ -29,10 +29,10 @@ import java.util.List;
 import java.util.Set;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.util.Util;
 

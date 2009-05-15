@@ -29,12 +29,12 @@ import java.util.List;
 import org.rejuse.predicate.TypePredicate;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.expression.Expression;
+import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementListContainer;
-import chameleon.core.statement.StatementListDomain;
+import chameleon.core.statement.StatementListScope;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.core.variable.RegularVariable;
@@ -61,10 +61,10 @@ public class LocalVariable extends RegularVariable<LocalVariable,LocalVariableDe
     return new LocalVariable(signature().clone(), (TypeReference)getTypeReference().clone(), expr);
   }
 
-  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+  public Scope getAccessibilityDomain() throws MetamodelException {
     List ancestors = ancestors();
     new TypePredicate(StatementListContainer.class).filter(ancestors);
-    return new StatementListDomain((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());
+    return new StatementListScope((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());
   }
 	
 }

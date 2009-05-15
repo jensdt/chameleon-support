@@ -31,18 +31,18 @@ import java.util.Set;
 import org.rejuse.association.Reference;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.context.ContextFactory;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationSelector;
+import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.statement.StatementListContainer;
-import chameleon.core.statement.StatementListDomain;
+import chameleon.core.statement.StatementListScope;
 import chameleon.core.statement.TypeDeclaringStatement;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeContainer;
-import chameleon.support.property.accessibility.HierarchyDomain;
+import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
 
 /**
@@ -89,11 +89,11 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 		return Util.createNonNullList(getType());
 	}
 
-	public AccessibilityDomain getTypeAccessibilityDomain() throws MetamodelException {
+	public Scope getTypeAccessibilityDomain() throws MetamodelException {
 		if (parent() instanceof StatementListContainer) {
-			return new StatementListDomain((StatementListContainer) parent(), this);
+			return new StatementListScope((StatementListContainer) parent(), this);
 		} else {
-			return new HierarchyDomain(getType());
+			return new HierarchyScope(getType());
 		}
 	}
 

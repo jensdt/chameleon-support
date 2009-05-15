@@ -4,16 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.context.TargetContext;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.InvocationTargetContainer;
 import chameleon.core.expression.InvocationTargetWithTarget;
 import chameleon.core.expression.NamedTarget;
+import chameleon.core.scope.Scope;
+import chameleon.core.scope.UniversalScope;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.type.Type;
-import chameleon.support.property.accessibility.All;
 
 /**
  * @author Marko van Dooren
@@ -72,8 +72,8 @@ public boolean compatibleWith(InvocationTarget target) throws MetamodelException
     return new CheckedExceptionList(language());
   }
 
-  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-    return new All();
+  public Scope getAccessibilityDomain() throws MetamodelException {
+    return new UniversalScope();
   }
 
   private Type getType() throws MetamodelException {

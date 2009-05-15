@@ -25,10 +25,10 @@
 package chameleon.support.expression;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.accessibility.AccessibilityDomain;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.scope.Scope;
+import chameleon.core.scope.UniversalScope;
 import chameleon.core.type.TypeReference;
-import chameleon.support.property.accessibility.All;
 
 /**
  * @author Marko van Dooren
@@ -51,8 +51,8 @@ public class RegularLiteral extends LiteralWithTypeReference<RegularLiteral> {
     return new RegularLiteral((TypeReference)getTypeReference().clone(), getValue());
   }
 
-  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-    return new All();
+  public Scope getAccessibilityDomain() throws MetamodelException {
+    return new UniversalScope();
   }
   
 }
