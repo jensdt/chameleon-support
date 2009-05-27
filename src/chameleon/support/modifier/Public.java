@@ -29,6 +29,7 @@ package chameleon.support.modifier;
 import java.util.Set;
 
 import org.rejuse.property.Property;
+import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.modifier.ModifierContainer;
@@ -56,7 +57,7 @@ public class Public extends ModifierImpl<Public, ModifierContainer> {
 		return new Public();
 	}
 
-  public Set<Property<Element>> impliedProperties() {
+  public PropertySet<Element> impliedProperties() {
 	  return createSet(language().property(PublicProperty.ID));
   }
 }

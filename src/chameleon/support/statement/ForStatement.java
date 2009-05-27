@@ -38,7 +38,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class ForStatement extends IterationStatement<ForStatement> implements StatementListContainer<ForStatement,StatementContainer> {
+public class ForStatement extends IterationStatement<ForStatement>  {
 
   /**
    * @param expression
@@ -135,4 +135,14 @@ public class ForStatement extends IterationStatement<ForStatement> implements St
       return 0;
     }
   }
+  
+//	public List<Statement> statementsAfter(Statement statement) {
+//		List<Statement> statements = getStatements(); 
+//		int index = statements.indexOf(statement);
+//		// returns a view on a clone of _statements (getStatements() clones the list).
+//		// the view depends on the local variable, but since no other references exist
+//		// this is not a problem.
+//		return statements.subList(index, statements.size());
+//	}
+
 }

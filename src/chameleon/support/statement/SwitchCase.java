@@ -7,6 +7,7 @@ import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.element.Element;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
@@ -147,9 +148,19 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
    @ post \result.containsAll(getStatements());
    @ post \result.containsAll(getLabels());
    @*/
-  public List children() {
+  public List<Element> children() {
     List result = getStatements();
     result.addAll(getLabels());
     return result;
   }
+  
+	public List<Statement> statementsAfter(Statement statement) {
+		List<Statement> statements = getStatements(); 
+		int index = statements.indexOf(statement);
+		// returns a view on a clone of _statements (getStatements() clones the list).
+		// the view depends on the local variable, but since no other references exist
+		// this is not a problem.
+		return statements.subList(index, statements.size());
+	}
+
 }

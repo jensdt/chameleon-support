@@ -4,11 +4,11 @@ import org.rejuse.property.PropertyMutex;
 import org.rejuse.property.PropertyUniverse;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.compilationunit.CompilationUnitScope;
 import chameleon.core.element.Element;
-import chameleon.core.scope.ScopeProperty;
+import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
-import chameleon.core.type.Type;
+import chameleon.core.scope.ScopeProperty;
+import chameleon.core.type.TypeDescendant;
 
 public class PrivateProperty extends ScopeProperty {
 	
@@ -23,9 +23,9 @@ public class PrivateProperty extends ScopeProperty {
 
 	public Scope scope(Element element) throws MetamodelException {
 		try {
-			return new CompilationUnitScope(((Type)element).getTopLevelType());
+			return new LexicalScope(((TypeDescendant)element).getNearestType().getTopLevelType());
 		} catch (ClassCastException exc) {
-			throw new MetamodelException();
+			throw new MetamodelException("Private property does not support elements that are no TypeDescendant.");
 		}
 	}
 

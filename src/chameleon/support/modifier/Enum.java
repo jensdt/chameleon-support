@@ -3,6 +3,7 @@ package chameleon.support.modifier;
 import java.util.Set;
 
 import org.rejuse.property.Property;
+import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.modifier.ModifierContainer;
@@ -19,7 +20,7 @@ public class Enum extends ModifierImpl<Enum, ModifierContainer> {
 			return new Enum();
 		}
 
-    public Set<Property<Element>> impliedProperties() {
+    public PropertySet<Element> impliedProperties() {
       return createSet(language().EXTENSIBLE);
     }
 }

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.rejuse.property.Property;
+import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.modifier.ModifierContainer;
@@ -23,7 +24,7 @@ public class Interface extends ModifierImpl<Interface, ModifierContainer> {
 		/**
 		 * An interface is abstract, thus not defined.
 		 */
-    public Set<Property<Element>> impliedProperties() {
+    public PropertySet<Element> impliedProperties() {
       return createSet(language().DEFINED.inverse());
     }
 }

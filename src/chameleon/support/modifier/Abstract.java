@@ -27,6 +27,7 @@ package chameleon.support.modifier;
 import java.util.Set;
 
 import org.rejuse.property.Property;
+import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.modifier.ModifierContainer;
@@ -54,7 +55,7 @@ public class Abstract extends ModifierImpl<Abstract,ModifierContainer> {
    @ post \result.contains(language().DEFINED.inverse());
    @ post \result.size() == 2;
    @*/
-  public Set<Property<Element>> impliedProperties() {
+  public PropertySet<Element> impliedProperties() {
     return createSet(language().OVERRIDABLE,language().DEFINED.inverse());
   }
   

@@ -1,6 +1,7 @@
 package chameleon.support.property.accessibility;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.element.Element;
 import chameleon.core.scope.Scope;
 
 /**
@@ -11,10 +12,28 @@ public class EmptyScope extends Scope {
  /*@
    @ public behavior
    @
+   @ \result == false;
+   @*/
+	public boolean contains(Element element) {
+		return false;
+	}
+	
+ /*@
+   @ public behavior
+   @
    @ post \result == other instanceof EmptyScope;
    @*/
   public boolean geRecursive(Scope other) throws MetamodelException {
     return (other instanceof EmptyScope);
+  }
+  
+ /*@
+   @ public behavior
+   @
+   @ post \result == true; 
+   @*/
+  public boolean leRecursive(Scope other) {
+    return true;
   }
   
   public boolean equals(Object o) {
