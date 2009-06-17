@@ -6,6 +6,7 @@ import java.util.List;
 import org.rejuse.association.Reference;
 
 import chameleon.core.declaration.SimpleNameSignature;
+import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.type.Type;
@@ -14,18 +15,22 @@ import chameleon.core.variable.Variable;
 
 public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V>> {
 
-	public VariableDeclaration(Expression expr, String name) {
-		this(expr, new SimpleNameSignature(name));
+	public VariableDeclaration(String name) {
+		this(new SimpleNameSignature(name), null);
 	}
 	
-	public VariableDeclaration(Expression expr, SimpleNameSignature sig) {
+	public VariableDeclaration(String name, Expression expr) {
+		this(new SimpleNameSignature(name), expr);
+	}
+	
+	public VariableDeclaration(SimpleNameSignature sig, Expression expr) {
 		setExpression(expr);
 		setSignature(sig);
 	}
 	
 	@Override
 	public VariableDeclaration clone() {
-		return new VariableDeclaration(expression().clone(), signature().clone());
+		return new VariableDeclaration(signature().clone(), expression().clone());
 	}
 
 	public Type getNearestType() {
@@ -77,7 +82,13 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   }
   
   public V variable() {
-  	return parent().createVariable(signature().clone(),expression().clone());
+  	V result = parent().createVariable(signature().clone(),expression().clone());
+  	result.setUniParent(parent().parent());
+  	transform(result);
+  	return result;
   }
-
+  
+  protected void transform(V variable) {
+  }
+  
 }

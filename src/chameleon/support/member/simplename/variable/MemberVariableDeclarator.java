@@ -22,6 +22,14 @@ import chameleon.core.variable.RegularMemberVariable;
 
 public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Type> implements TypeElement<MemberVariableDeclarator, Type>, VariableDeclarator<MemberVariableDeclarator,MemberVariable> {
 
+	public MemberVariableDeclarator() {
+		
+	}
+	
+	public MemberVariableDeclarator(TypeReference tref) {
+		setTypeReference(tref);
+	}
+	
 	public Type getNearestType() {
 		return parent().getNearestType();
 	}
