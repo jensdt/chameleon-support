@@ -21,8 +21,9 @@ import chameleon.core.type.Type;
 import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeReference;
 import chameleon.core.variable.MemberVariable;
+import chameleon.support.statement.ForInit;
 
-public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,StatementContainer> {
+public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,StatementContainer>, ForInit<LocalVariableDeclarator, StatementContainer> {
 
 	
 	public LocalVariableDeclarator() {
