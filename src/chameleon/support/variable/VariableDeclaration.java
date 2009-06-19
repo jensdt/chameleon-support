@@ -1,4 +1,4 @@
-package chameleon.support.member.simplename.variable;
+package chameleon.support.variable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendantImpl;
 import chameleon.core.variable.Variable;
 
-public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V>> {
+public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
 
 	public VariableDeclaration(String name) {
 		this(new SimpleNameSignature(name), null);

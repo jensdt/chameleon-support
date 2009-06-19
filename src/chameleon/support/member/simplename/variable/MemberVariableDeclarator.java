@@ -19,8 +19,10 @@ import chameleon.core.type.TypeElementImpl;
 import chameleon.core.type.TypeReference;
 import chameleon.core.variable.MemberVariable;
 import chameleon.core.variable.RegularMemberVariable;
+import chameleon.support.variable.VariableDeclaration;
+import chameleon.support.variable.VariableDeclarator;
 
-public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Type> implements TypeElement<MemberVariableDeclarator, Type>, VariableDeclarator<MemberVariableDeclarator,MemberVariable> {
+public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Type> implements TypeElement<MemberVariableDeclarator, Type>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Type> {
 
 	public MemberVariableDeclarator() {
 		
@@ -36,6 +38,8 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 
 	public List<Element> children() {
 		List<Element> result = new ArrayList<Element>();
+		result.addAll(declarations());
+		result.add(typeReference());
 		return result;
 	}
 	
@@ -50,7 +54,9 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	}
 	
 	public void remove(VariableDeclaration declaration) {
-		
+		if(declaration != null) {
+			_declarations.remove(declaration.parentLink());
+		}
 	}
 	
 	private OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>> _declarations = new OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>>(this);
@@ -61,8 +67,10 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 
 	@Override
 	public MemberVariableDeclarator clone() {
-		MemberVariableDeclarator result = new MemberVariableDeclarator();
-		// TODO
+		MemberVariableDeclarator result = new MemberVariableDeclarator(typeReference().clone());
+		for(VariableDeclaration<MemberVariable> declaration: declarations()) {
+			result.add(declaration.clone());
+		}
 		return result;
 	}
 
