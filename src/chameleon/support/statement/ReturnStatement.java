@@ -47,7 +47,4 @@ public class ReturnStatement extends ExpressionContainingStatement<ReturnStateme
     return new ReturnStatement(getExpression().clone());
   }
 
-  public List<Element> children() {
-    return Util.createNonNullList(getExpression());
-  }
 }

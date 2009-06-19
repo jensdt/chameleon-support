@@ -44,7 +44,7 @@ import chameleon.core.type.TypeDescendantImpl;
 /**
  * @author Marko van Dooren
  */
-public class StatementExprList extends TypeDescendantImpl<StatementExprList,ForStatement> implements ForInit<StatementExprList,ForStatement>, StatementContainer<StatementExprList,ForStatement>, ExceptionSource<StatementExprList,ForStatement> {
+public class StatementExprList extends TypeDescendantImpl<StatementExprList,SimpleForControl> implements ForInit<StatementExprList,SimpleForControl>, StatementContainer<StatementExprList,SimpleForControl>, ExceptionSource<StatementExprList,SimpleForControl> {
 
 	public StatementExprList() {
 	}

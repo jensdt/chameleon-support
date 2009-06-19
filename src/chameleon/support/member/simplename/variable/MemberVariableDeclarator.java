@@ -13,6 +13,7 @@ import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.member.Member;
+import chameleon.core.modifier.Modifier;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeElementImpl;
@@ -62,7 +63,11 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	private OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>> _declarations = new OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>>(this);
 
 	public MemberVariable createVariable(SimpleNameSignature signature, Expression expression) {
-		return new RegularMemberVariable(signature, typeReference().clone(),expression);
+		MemberVariable result = new RegularMemberVariable(signature, typeReference().clone(),expression);
+		for(Modifier mod: modifiers()) {
+			result.addModifier(mod);
+		}
+		return result;
 	}
 
 	@Override

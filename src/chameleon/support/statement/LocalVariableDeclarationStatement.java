@@ -14,7 +14,6 @@ import chameleon.core.element.Element;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
-import chameleon.core.statement.VariableDeclaringStatement;
 import chameleon.core.variable.VariableContainer;
 import chameleon.support.variable.LocalVariable;
 
@@ -22,7 +21,7 @@ import chameleon.support.variable.LocalVariable;
  * @author Marko van Dooren
  */
 public class LocalVariableDeclarationStatement extends Statement<LocalVariableDeclarationStatement> 
-       implements VariableContainer<LocalVariableDeclarationStatement,StatementContainer>, ForInit<LocalVariableDeclarationStatement,StatementContainer>, VariableDeclaringStatement {
+       implements VariableContainer<LocalVariableDeclarationStatement,StatementContainer>, ForInit<LocalVariableDeclarationStatement,StatementContainer> {
 
   public LocalVariableDeclarationStatement() {
 	  

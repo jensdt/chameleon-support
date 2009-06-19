@@ -12,17 +12,17 @@ import chameleon.core.statement.Statement;
 
 public interface ForInit<E extends ForInit, P extends Element> extends ExceptionSource<E,P> {
 
-	public Reference parentLink();
+//	public Reference parentLink();
 
-  /**
-   * @param statement
-   * @return
-   */
-  public int getIndexOf(Statement statement);
-
-  /**
-   * @return
-   */
-  public int getNbStatements();
+//  /**
+//   * @param statement
+//   * @return
+//   */
+//  public int getIndexOf(Statement statement);
+//
+//  /**
+//   * @return
+//   */
+//  public int getNbStatements();
     
 }

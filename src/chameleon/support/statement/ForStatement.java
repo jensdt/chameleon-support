@@ -44,105 +44,34 @@ public class ForStatement extends IterationStatement<ForStatement>  {
    * @param expression
    * @param statement
    */
-  public ForStatement(ForInit forInit, Expression condition, StatementExprList forUpdate, Statement statement) {
-    super(condition, statement);
-    setForInit(forInit);
-    setUpdate(forUpdate);
-  }
-
-  /**
-	 * FOR INIT
-	 */
-	private Reference<ForStatement,ForInit> _forInit = new Reference<ForStatement,ForInit>(this);
-
-
-  public Reference<ForStatement,ForInit> getInitLink() {
-    return _forInit;
-  }
-
-  public void setForInit(ForInit forInit) {
-    if (forInit != null) {
-      _forInit.connectTo(forInit.parentLink());
-    }
-    else {
-      _forInit.connectTo(null);
-    }
-  }
-
-  public ForInit getForInit() {
-    return _forInit.getOtherEnd();
-  }
-
-	/**
-	 * UPDATE
-	 */
-
-  private Reference<ForStatement,StatementExprList> _update = new Reference<ForStatement,StatementExprList>(this);
-
-  public Reference<ForStatement,StatementExprList> getUpdateLink() {
-    return _update;
-  }
-
-  public void setUpdate(StatementExprList update) {
-    if (update != null) {
-      _update.connectTo(update.parentLink());
-    }
-    else {
-      _update.connectTo(null);
-    }
-  }
-
-  public StatementExprList getUpdate() {
-    return _update.getOtherEnd();
-  }
-
-  public ForStatement clone() {
-    Expression cond = null;
-    if(getExpression() != null) {
-      cond = getExpression().clone();
-    }
-    Statement statement = null;
-    if(getStatement() != null) {
-      statement = getStatement().clone();
-    }
-    ForInit init = null;
-    if(getForInit() != null) {
-      init = ((ForInit<? extends ForInit, ? extends Element>)getForInit()).clone();
-    }
-    StatementExprList update = null;
-    if(getUpdate() != null) {
-      update = getUpdate().cloneUpdate();
-    }
-    return new ForStatement(init, cond, update, statement);
-  }
-
-  public List<Element> children() {
-    List result = Util.createNonNullList(getForInit());
-    Util.addNonNull(getUpdate(), result);
-    Util.addNonNull(getCondition(), result);
-    return result;
-  }
-
-  public int getIndexOf(Statement statement) {
-    int index = getForInit().getIndexOf(statement);
-    if(index >= 0) {
-      return index + 1;
-    }
-    else if(getStatement().equals(statement)) {
-      return getForInit().getNbStatements() + 1;
-    }
-    else {
-      return 0;
-    }
+  public ForStatement(ForControl control, Statement statement) {
+    super(statement);
   }
   
-//	public List<Statement> statementsAfter(Statement statement) {
-//		List<Statement> statements = getStatements(); 
-//		int index = statements.indexOf(statement);
-//		// returns a view on a clone of _statements (getStatements() clones the list).
-//		// the view depends on the local variable, but since no other references exist
-//		// this is not a problem.
-//		return statements.subList(index, statements.size());
-//	}
+  public ForControl forControl() {
+  	return _control.getOtherEnd();
+  }
+  
+  public void setForControl(ForControl control) {
+  	if(control != null) {
+  		_control.connectTo(control.parentLink());
+  	} else {
+  		_control.connectTo(null);
+  	}
+  }
+  
+  private Reference<ForStatement,ForControl> _control = new Reference<ForStatement, ForControl>(this); 
+
+
+  public List<Element> children() {
+  	List<Element> result = Util.createNonNullList(forControl());
+  	result.add(getStatement());
+  	return result;
+  }
+
+	@Override
+	public ForStatement clone() {
+		return new ForStatement(forControl().clone(), getStatement().clone());
+	}
 
 }
