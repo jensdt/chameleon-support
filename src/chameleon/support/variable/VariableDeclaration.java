@@ -1,19 +1,26 @@
 package chameleon.support.variable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.rejuse.association.Reference;
 
+import chameleon.core.MetamodelException;
+import chameleon.core.context.Context;
+import chameleon.core.context.LexicalContext;
+import chameleon.core.context.TargetContext;
+import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.SimpleNameSignature;
-import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendantImpl;
 import chameleon.core.variable.Variable;
 
-public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
+public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
 
 	public VariableDeclaration(String name) {
 		this(new SimpleNameSignature(name), null);
@@ -90,5 +97,19 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   
   protected void transform(V variable) {
   }
+
+	public Set<? extends Declaration> declarations() throws MetamodelException {
+		Set<Variable> result = new HashSet<Variable>();
+		result.add(variable());
+		return result;
+	}
+	
+	/**
+	 * Return a standard lexical context that is attached to this variable declaration,
+	 * and to a target context which is also attached to this variable declaration.
+	 */
+	public Context lexicalContext(Element element) throws MetamodelException {
+		return new LexicalContext(new TargetContext<VariableDeclaration>(this),this);
+	}
   
 }

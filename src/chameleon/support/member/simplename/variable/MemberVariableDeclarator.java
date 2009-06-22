@@ -9,6 +9,7 @@ import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
@@ -39,12 +40,12 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 
 	public List<Element> children() {
 		List<Element> result = new ArrayList<Element>();
-		result.addAll(declarations());
+		result.addAll(variableDeclarations());
 		result.add(typeReference());
 		return result;
 	}
 	
-	public List<VariableDeclaration<MemberVariable>> declarations() {
+	public List<VariableDeclaration<MemberVariable>> variableDeclarations() {
 		return _declarations.getOtherEnds();
 	}
 	
@@ -73,7 +74,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	@Override
 	public MemberVariableDeclarator clone() {
 		MemberVariableDeclarator result = new MemberVariableDeclarator(typeReference().clone());
-		for(VariableDeclaration<MemberVariable> declaration: declarations()) {
+		for(VariableDeclaration<MemberVariable> declaration: variableDeclarations()) {
 			result.add(declaration.clone());
 		}
 		return result;
@@ -81,7 +82,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 
 	public Set<Member> getIntroducedMembers() {
 		Set<Member> result = new HashSet();
-		for(VariableDeclaration<MemberVariable> declaration: declarations()) {
+		for(VariableDeclaration<MemberVariable> declaration: variableDeclarations()) {
 			result.add(declaration.variable());
 		}
 		return result;
@@ -103,5 +104,9 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
   public void setTypeReference(TypeReference type) {
     _typeReference.connectTo(type.parentLink());
   }
+
+	public Set<? extends Declaration> declarations() throws MetamodelException {
+		return getIntroducedMembers();
+	}
 
 }

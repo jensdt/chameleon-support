@@ -1,15 +1,15 @@
 package chameleon.support.statement;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
-import org.rejuse.association.Reference;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.MetamodelException;
-import chameleon.core.context.LexicalContext;
-import chameleon.core.element.Element;
+import chameleon.core.declaration.Declaration;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
@@ -18,6 +18,9 @@ import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendantImpl;
 
 /**
+ * A list of statement expressions as used in the initialization clause of a 
+ * for statement. It contains a list of statement expressions.
+ * 
  * @author Marko van Dooren
  */
 public class StatementExprList extends TypeDescendantImpl<StatementExprList,SimpleForControl> implements ForInit<StatementExprList,SimpleForControl>, StatementContainer<StatementExprList,SimpleForControl>, ExceptionSource<StatementExprList,SimpleForControl> {
@@ -27,8 +30,6 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,Simp
 	
 	/**
 	 * STATEMENT EXPRESSIONS
-	 * 
-	 * @FIXME why aren't these just expressions?
 	 */
 	private OrderedReferenceSet<StatementExprList,StatementExpression> _statementExpressions = new OrderedReferenceSet<StatementExprList,StatementExpression>(this);
 
@@ -131,5 +132,9 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,Simp
   public List<StatementExpression> children() {
     return getStatements();
   }
+
+	public Set<? extends Declaration> declarations() throws MetamodelException {
+		return new HashSet<Declaration>();
+	}
 
 }

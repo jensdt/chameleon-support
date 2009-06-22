@@ -8,6 +8,7 @@ import java.util.Set;
 import org.rejuse.association.Reference;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.context.Context;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.element.Element;
@@ -18,7 +19,7 @@ import chameleon.core.type.Type;
 import chameleon.support.variable.LocalVariableDeclarator;
 import chameleon.util.Util;
 
-public class EnhancedForControl extends ForControl<EnhancedForControl> implements StatementContainer<EnhancedForControl,ForStatement>, DeclarationContainer<EnhancedForControl,ForStatement>{
+public class EnhancedForControl extends ForControl<EnhancedForControl> implements StatementContainer<EnhancedForControl,ForStatement> {
 
 	
 	

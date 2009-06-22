@@ -26,7 +26,6 @@ package chameleon.support.statement;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
@@ -34,6 +33,7 @@ import org.rejuse.java.collections.Visitor;
 import org.rejuse.predicate.PrimitivePredicate;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
 import chameleon.util.Util;
@@ -58,7 +58,17 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
   }
 
   public void addCatchClause(CatchClause catchClause) {
-    _catchClausesLink.add(catchClause.parentLink());
+  	if(catchClause != null) {
+      _catchClausesLink.add(catchClause.parentLink());
+  	} else {
+  		throw new ChameleonProgrammerException("Trying to add a null catch clause to a try statement");
+  	}
+  }
+  
+  public void addAllCatchClauses(List<CatchClause> catchClauses) {
+  	for(CatchClause clause : catchClauses) {
+  		addCatchClause(clause);
+  	}
   }
 
   public void removeCatchClause(CatchClause catchClause) {

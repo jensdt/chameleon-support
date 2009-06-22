@@ -1,10 +1,14 @@
 package chameleon.support.statement;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.rejuse.association.Reference;
 
+import chameleon.core.MetamodelException;
+import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
@@ -113,5 +117,9 @@ public class SimpleForControl extends ForControl<SimpleForControl> implements St
       _expression.connectTo(null);
     }
   }
+
+	public Set<? extends Declaration> declarations() throws MetamodelException {
+		return getForInit().declarations();
+	}
 
 }

@@ -9,18 +9,19 @@ import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.context.Context;
+import chameleon.core.context.LexicalContext;
+import chameleon.core.context.TargetContext;
+import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
-import chameleon.core.member.Member;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
-import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeReference;
-import chameleon.core.variable.MemberVariable;
 import chameleon.support.statement.ForInit;
 
 public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,StatementContainer>, ForInit<LocalVariableDeclarator, StatementContainer> {
@@ -32,7 +33,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	
 	public Set<LocalVariable> variables() {
 		Set<LocalVariable> result = new HashSet();
-		for(VariableDeclaration<LocalVariable> declaration: declarations()) {
+		for(VariableDeclaration<LocalVariable> declaration: variableDeclarations()) {
 			result.add(declaration.variable());
 		}
 		return result;
@@ -45,7 +46,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	@Override
 	public List children() {
 			List<Element> result = new ArrayList<Element>();
-			result.addAll(declarations());
+			result.addAll(variableDeclarations());
 			result.add(typeReference());
 			return result;
 	}
@@ -53,7 +54,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	@Override
 	public LocalVariableDeclarator clone() {
 		LocalVariableDeclarator result = new LocalVariableDeclarator(typeReference().clone());
-		for(VariableDeclaration<LocalVariable> declaration: declarations()) {
+		for(VariableDeclaration<LocalVariable> declaration: variableDeclarations()) {
 			result.add(declaration.clone());
 		}
 		return result;
@@ -84,7 +85,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
     _typeReference.connectTo(type.parentLink());
   }
 
-	public List<VariableDeclaration<LocalVariable>> declarations() {
+	public List<VariableDeclaration<LocalVariable>> variableDeclarations() {
 		return _declarations.getOtherEnds();
 	}
 	
@@ -156,5 +157,44 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
   public boolean hasModifier(Modifier modifier) {
     return _modifiers.getOtherEnds().contains(modifier);
   }
+
+  /**
+   * The declarations of a local variable declaration are the declared variables.
+   */
+ /*@
+   @ public behavior
+   @ 
+   @ post \result == variables();
+   @*/
+	public Set<? extends Declaration> declarations() throws MetamodelException {
+		return variables();
+	}
+	
+	/**
+	 * The context of a local variable declarator takes the order of the declarations
+	 * into account. For example in 'int a=..., b=..., c=...', the initialization of each variable can reference the 
+	 * variables to its left.Thus, 'int a=3,b=a,c=b' is valid, while in 'int a=b, b=c,c=3' the intializations of 
+	 * both a and b are invalid.
+	 * 
+	 * @throws MetamodelException 
+	 */
+ /*@
+   @ public behavior
+   @
+   @ post declarations().indexOf(element) == 0) ==> \result == parent().lexicalContext(this);
+   @ post declarations().indexOf(Element) > 0) ==> 
+   @      \result == declarations().elementAt(declarations().indexOf(element) - 1).lexicalContext();
+   @*/
+	public Context lexicalContext(Element element) throws MetamodelException {
+		List<VariableDeclaration<LocalVariable>> declarations = variableDeclarations();
+		int index = declarations.indexOf(element);
+		if(index == 0) {
+			return parent().lexicalContext(this);
+		} else if (index > 0) {
+			return declarations.get(index-1).lexicalContext();
+		} else {
+		  throw new ChameleonProgrammerException("Invoking lexicalContext(element) with an element that is not a child.");
+		}
+	}
 
 }
