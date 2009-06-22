@@ -3,6 +3,7 @@ package chameleon.support.statement;
 import java.util.List;
 
 import org.rejuse.association.OrderedReferenceSet;
+import org.rejuse.association.Reference;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
@@ -23,6 +24,10 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
 
   public SwitchCase() {
 	}
+  
+  public SwitchCase(SwitchLabel label) {
+  	setLabel(label);
+  }
 
 	/**
 	 * STATEMENTS
@@ -49,22 +54,18 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
 	/**
 	 * LABELS
 	 */
-	private OrderedReferenceSet<SwitchCase,SwitchLabel> _labels = new OrderedReferenceSet<SwitchCase,SwitchLabel>(this);
+	private Reference<SwitchCase,SwitchLabel> _labels = new Reference<SwitchCase,SwitchLabel>(this);
 
-  public OrderedReferenceSet getLabelsLink() {
-    return _labels;
+  public void setLabel(SwitchLabel label) {
+  	if(label != null) {
+    _labels.connectTo(label.parentLink());
+  	} else {
+  		_labels.connectTo(null);
+  	}
   }
 
-  public void addLabel(SwitchLabel label) {
-    _labels.add(label.parentLink());
-  }
-
-  public void removeLabel(SwitchLabel label) {
-    _labels.add(label.parentLink());
-  }
-
-  public List<SwitchLabel> getLabels() {
-    return _labels.getOtherEnds();
+  public SwitchLabel getLabel() {
+    return _labels.getOtherEnd();
   }
 
   public Type getNearestType() {
@@ -82,11 +83,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
         result.addStatement(element.clone());
       }
     }.applyTo(getStatements());
-    new Visitor<SwitchLabel>() {
-      public void visit(SwitchLabel element) {
-        result.addLabel(((SwitchLabel<? extends SwitchLabel>)element).clone());
-      }
-    }.applyTo(getLabels());
+    result.setLabel(getLabel().clone());
     return result;
   }
 
@@ -150,7 +147,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
    @*/
   public List<Element> children() {
     List result = getStatements();
-    result.addAll(getLabels());
+    result.add(getLabel());
     return result;
   }
   

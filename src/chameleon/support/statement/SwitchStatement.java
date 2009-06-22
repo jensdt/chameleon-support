@@ -25,14 +25,13 @@
 package chameleon.support.statement;
 
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.java.collections.Visitor;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.ExpressionContainingStatement;
-import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.util.Util;
 
@@ -57,6 +56,12 @@ public class SwitchStatement extends ExpressionContainingStatement<SwitchStateme
   public void addCase(SwitchCase switchCase) {
     _switchCases.add(switchCase.parentLink());
   }
+  
+  public void addAllCases(List<SwitchCase> cases) {
+  	for(SwitchCase kees: cases) {
+  		addCase(kees);
+  	}
+  }
 
   public void removeCase(SwitchCase switchCase) {
     _switchCases.remove(switchCase.parentLink());
@@ -76,7 +81,7 @@ public class SwitchStatement extends ExpressionContainingStatement<SwitchStateme
     return result;
   }
 
-  public List children() {
+  public List<Element> children() {
     List result = Util.createNonNullList(getExpression());
     result.addAll(getSwitchCases());
     return result;
