@@ -15,6 +15,10 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
   public ThisLiteral() {
     super("this");
   }
+  
+  public ThisLiteral(TypeReference ref) {
+    super("this", ref);
+  }
 
   public Type getType() throws MetamodelException {
     if (getTypeReference() == null) {
@@ -35,7 +39,4 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
     return result;
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
-//    return getType().getTypeAccessibilityDomain();
-//  }
 }

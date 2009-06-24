@@ -16,6 +16,11 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
     super(value);
   }
 
+  public LiteralWithTypeReference(String value, TypeReference ref) {
+    super(value);
+    setTypeReference(ref);
+  }
+
 	/**
 	 * TARGET
 	 */
