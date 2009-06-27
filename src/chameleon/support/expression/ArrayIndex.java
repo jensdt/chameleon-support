@@ -1,7 +1,6 @@
 package chameleon.support.expression;
 
-import chameleon.core.MetamodelException;
-import chameleon.core.context.LexicalContext;
+import chameleon.core.context.Context;
 import chameleon.core.element.Element;
 import chameleon.core.expression.InvocationTargetContainer;
 import chameleon.core.type.Type;
@@ -26,6 +25,5 @@ public abstract class ArrayIndex<E extends ArrayIndex> extends TypeDescendantImp
     }
 
     public abstract E clone();
-
-
+    
 }

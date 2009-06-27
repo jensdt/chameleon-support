@@ -19,6 +19,7 @@ import chameleon.core.expression.Expression;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendantImpl;
 import chameleon.core.variable.Variable;
+import chameleon.util.Util;
 
 public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
 
@@ -64,7 +65,7 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 
 	public List<Element> children() {
 		List<Element> result = new ArrayList<Element>();
-		result.add(expression());
+		Util.addNonNull(expression(), result);
 		result.add(signature());
 		return result;
 	}
@@ -89,7 +90,9 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   }
   
   public V variable() {
-  	V result = parent().createVariable(signature().clone(),expression().clone());
+  	Expression expression = expression();
+		Expression initClone = (expression == null ? null : expression.clone());
+		V result = parent().createVariable(signature().clone(),initClone);
   	result.setUniParent(parent().parent());
   	transform(result);
   	return result;

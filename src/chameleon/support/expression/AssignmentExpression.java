@@ -59,7 +59,11 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
   }
 
   public void setValue(Expression expression) {
-    _value.connectTo(expression.parentLink());
+  	if(expression != null) {
+      _value.connectTo(expression.parentLink());
+  	} else {
+  		_value.connectTo(null);
+  	}
   }
 
   public Type getType() throws MetamodelException {

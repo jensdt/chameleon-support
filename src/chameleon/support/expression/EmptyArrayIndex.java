@@ -14,7 +14,6 @@ import chameleon.core.expression.InvocationTargetContainer;
  *                     == 2 it corresponds to [,,]
  *                     ...
  * 
- * After the creation, the dimension is zero
  */
 public class EmptyArrayIndex extends ArrayIndex<EmptyArrayIndex>{
 	
