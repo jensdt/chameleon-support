@@ -7,7 +7,6 @@ import org.rejuse.association.Reference;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.ExpressionContainingStatement;
-import chameleon.util.Util;
 
 public class AssertStatement  extends ExpressionContainingStatement<AssertStatement> {
 

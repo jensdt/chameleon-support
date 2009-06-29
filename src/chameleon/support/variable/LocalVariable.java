@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.rejuse.predicate.TypePredicate;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.expression.Expression;
 import chameleon.core.scope.Scope;
@@ -37,7 +37,7 @@ public class LocalVariable extends RegularVariable<LocalVariable,VariableContain
     return new LocalVariable(signature().clone(), (TypeReference)getTypeReference().clone(), expr);
   }
 
-  public Scope scope() throws MetamodelException {
+  public Scope scope() throws LookupException {
     List ancestors = ancestors();
     new TypePredicate(StatementListContainer.class).filter(ancestors);
     return new StatementListScope((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());

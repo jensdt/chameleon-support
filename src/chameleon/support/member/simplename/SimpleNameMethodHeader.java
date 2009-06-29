@@ -3,7 +3,6 @@ package chameleon.support.member.simplename;
 import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
-import chameleon.core.method.MethodSignature;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespacepart.NamespacePart;
 import chameleon.core.variable.FormalParameter;

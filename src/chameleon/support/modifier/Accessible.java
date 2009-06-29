@@ -1,6 +1,5 @@
 package chameleon.support.modifier;
 
-import org.rejuse.property.Property;
 import org.rejuse.property.PropertyUniverse;
 import org.rejuse.property.StaticProperty;
 

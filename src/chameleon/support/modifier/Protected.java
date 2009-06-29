@@ -1,8 +1,5 @@
 package chameleon.support.modifier;
 
-import java.util.Set;
-
-import org.rejuse.property.Property;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
@@ -24,7 +21,7 @@ public class Protected extends ModifierImpl<Protected, ModifierContainer> {
 //    return ! (other instanceof Public);
 //  }
 
-//  public AccessibilityDomain getAccessibilityDomain(Type type) throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain(Type type) throws LookupException {
 //    return new HierarchyDomain(type).union(new NamespaceDomain(type.getNamespace()));
 //  }
 

@@ -1,6 +1,6 @@
 package chameleon.support.expression;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 
@@ -18,7 +18,7 @@ public class ConditionalAndExpression extends ConditionalBooleanExpression {
     super(first, second);
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof ConditionalAndExpression) && super.superOf(target);
   }
 

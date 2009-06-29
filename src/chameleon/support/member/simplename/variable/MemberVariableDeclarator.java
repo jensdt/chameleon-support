@@ -8,7 +8,7 @@ import java.util.Set;
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
@@ -93,7 +93,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	 */
 	private Reference<MemberVariableDeclarator,TypeReference> _typeReference = new Reference<MemberVariableDeclarator,TypeReference>(this);
 
-  public Type type() throws MetamodelException {
+  public Type type() throws LookupException {
   	return typeReference().getType();
   }
 	
@@ -105,7 +105,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
     _typeReference.connectTo(type.parentLink());
   }
 
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		return getIntroducedMembers();
 	}
 

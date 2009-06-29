@@ -1,12 +1,6 @@
 package chameleon.support.statement;
 
-import java.util.Set;
-
-import org.rejuse.java.collections.Visitor;
-
-import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
-import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren

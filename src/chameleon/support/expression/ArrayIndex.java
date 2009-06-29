@@ -1,7 +1,5 @@
 package chameleon.support.expression;
 
-import chameleon.core.context.Context;
-import chameleon.core.element.Element;
 import chameleon.core.expression.InvocationTargetContainer;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendant;

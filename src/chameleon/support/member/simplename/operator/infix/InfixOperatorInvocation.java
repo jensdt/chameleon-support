@@ -1,8 +1,8 @@
 package chameleon.support.member.simplename.operator.infix;
 
 
-import chameleon.core.MetamodelException;
-import chameleon.core.declaration.DeclarationSelector;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 
@@ -20,7 +20,7 @@ public class InfixOperatorInvocation extends SimpleNameMethodInvocation<InfixOpe
     super(target, name);
   }
 
-  public InfixOperator getInfixOperator() throws MetamodelException {
+  public InfixOperator getInfixOperator() throws LookupException {
     return (InfixOperator)getMethod();
   }
 

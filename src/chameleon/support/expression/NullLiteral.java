@@ -27,7 +27,7 @@ package chameleon.support.expression;
 
 
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.Literal;
 import chameleon.core.scope.Scope;
@@ -43,11 +43,11 @@ public class NullLiteral extends Literal<NullLiteral> {
     super("null");
   }
 
-  public Type getType() throws MetamodelException {
-	  return getNamespace().getNullType();
+  public Type getType() throws LookupException {
+	  return language().getNullType();
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return target instanceof NullLiteral;
   }
 
@@ -55,7 +55,7 @@ public class NullLiteral extends Literal<NullLiteral> {
     return new NullLiteral();
   }
 
-  public Scope getAccessibilityDomain() throws MetamodelException {
+  public Scope getAccessibilityDomain() throws LookupException {
     return new UniversalScope();
   }
 

@@ -1,6 +1,6 @@
 package chameleon.support.expression;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.type.Type;
 import chameleon.support.member.simplename.method.NormalMethod;
@@ -18,11 +18,11 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
     return "this";
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return language().voidType();
   }
 
-  public NormalMethod getMethod() throws MetamodelException {
+  public NormalMethod getMethod() throws LookupException {
 	   return ((Type)getNearestType()).lexicalContext().lookUp(selector());
   }
 

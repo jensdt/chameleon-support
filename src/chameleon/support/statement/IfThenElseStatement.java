@@ -26,7 +26,6 @@ package chameleon.support.statement;
 
 
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 

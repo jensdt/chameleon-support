@@ -3,8 +3,7 @@ package chameleon.support.member.simplename.operator.postfix;
 
 
 
-import chameleon.core.MetamodelException;
-import chameleon.core.declaration.DeclarationSelector;
+import chameleon.core.context.DeclarationSelector;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 

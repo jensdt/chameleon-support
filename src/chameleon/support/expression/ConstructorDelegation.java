@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.relation.WeakPartialOrder;
@@ -29,7 +29,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
       DeclarationSelector<NormalMethod> {
     @Override
     public NormalMethod filter(Declaration declaration)
-        throws MetamodelException {
+        throws LookupException {
       NormalMethod result = null;
       if (selectedClass().isInstance(declaration)) {
         NormalMethod decl = (NormalMethod) declaration;
@@ -50,7 +50,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
       return new WeakPartialOrder<NormalMethod>() {
         @Override
         public boolean contains(NormalMethod first, NormalMethod second)
-            throws MetamodelException {
+            throws LookupException {
           return new MoreSpecificTypesOrder().contains(first.header()
               .getParameterTypes(), second.header().getParameterTypes());
         }

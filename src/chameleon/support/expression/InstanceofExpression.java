@@ -3,11 +3,10 @@ package chameleon.support.expression;
 import java.util.HashSet;
 import java.util.Set;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 
@@ -21,11 +20,11 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
     setTypeReference(type);
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return language().booleanType();
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof InstanceofExpression) &&
            ((InstanceofExpression)target).getType().equals(getType()) &&
            getExpression().compatibleWith(((InstanceofExpression)target).getExpression());
@@ -35,11 +34,11 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
     return new InstanceofExpression(getExpression().clone(), (TypeReference)getTypeReference().clone());
   }
 
-  public Set<Type> getDirectExceptions() throws MetamodelException {
+  public Set<Type> getDirectExceptions() throws LookupException {
     return new HashSet<Type>();
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getTypeReference().getType().getTypeAccessibilityDomain().intersect(getExpression().getAccessibilityDomain());
 //  }
 }

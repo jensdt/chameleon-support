@@ -1,8 +1,7 @@
 package chameleon.support.expression;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 
@@ -20,7 +19,7 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
     super("this", ref);
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     if (getTypeReference() == null) {
       return getNearestType();
     }
@@ -29,7 +28,7 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
     }
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof ThisLiteral) && ((ThisLiteral)target).getType().assignableTo(getType());
   }
 

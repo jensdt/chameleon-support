@@ -24,9 +24,6 @@
  */
 package chameleon.support.modifier;
 
-import java.util.Set;
-
-import org.rejuse.property.Property;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;

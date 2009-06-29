@@ -2,11 +2,10 @@ package chameleon.support.expression;
 
 import java.util.Set;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.util.Util;
@@ -23,16 +22,16 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
   }
 
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     Type result = getTypeReference().getType();
     if(result == null) {
       getTypeReference().getType();
-      throw new MetamodelException();
+      throw new LookupException("Type reference of class cast expression returns null", getTypeReference());
     }
     return result;
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     if(!(target instanceof ClassCastExpression)) {
       return false;
     }
@@ -40,7 +39,7 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
     return cce.getType().equals(getType()) && getExpression().compatibleWith(cce.getExpression());
   }
   
-  public boolean subOf(InvocationTarget target) throws MetamodelException {
+  public boolean subOf(InvocationTarget target) throws LookupException {
     return target.compatibleWith(getExpression());
   }
 
@@ -48,11 +47,11 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
     return new ClassCastExpression((TypeReference)getTypeReference().clone(), getExpression().clone());
   }
 
-  public Set<Type> getDirectExceptions() throws MetamodelException {
+  public Set<Type> getDirectExceptions() throws LookupException {
     return Util.createNonNullSet(language().classCastException());
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getType().getTypeAccessibilityDomain().intersect(getExpression().getAccessibilityDomain());
 //  }
 }

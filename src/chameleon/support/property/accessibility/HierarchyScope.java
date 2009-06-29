@@ -1,6 +1,6 @@
 package chameleon.support.property.accessibility;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.Element;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
@@ -23,7 +23,7 @@ public class HierarchyScope extends Scope {
     _type = type;
   }
   
-  public boolean contains(Element element) throws MetamodelException {
+  public boolean contains(Element element) throws LookupException {
   	return (element instanceof TypeDescendant) && (((TypeDescendant)element).getNearestType().subTypeOf(getType()));
   }
 
@@ -35,7 +35,7 @@ public class HierarchyScope extends Scope {
    @                 ((other instanceof LexicalScope) && 
    @		 	            ((LexicalScope)other).element().nearestAncestor(Type.class).assignableTo(getType()));
    @*/
-  public boolean geRecursive(Scope other) throws MetamodelException {
+  public boolean geRecursive(Scope other) throws LookupException {
     return (
     		    (other instanceof HierarchyScope) && 
             ((HierarchyScope)other).getType().assignableTo(getType())
@@ -52,7 +52,7 @@ public class HierarchyScope extends Scope {
    @
    @ post \result != null;
    @*/
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return _type;
   }
 

@@ -6,12 +6,11 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Assignable;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.util.Util;
 
@@ -66,11 +65,11 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
   	}
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return getVariable().getType();
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof AssignmentExpression) &&
            ((Expression)getVariable()).compatibleWith((Expression)((AssignmentExpression)target).getVariable()) &&
            getValue().compatibleWith(((AssignmentExpression)target).getValue());
@@ -86,11 +85,11 @@ public class AssignmentExpression extends Expression<AssignmentExpression> imple
     return result;
   }
 
-  public Set getDirectExceptions() throws MetamodelException {
+  public Set getDirectExceptions() throws LookupException {
     return new HashSet();
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getVariable().getAccessibilityDomain().intersect(getValue().getAccessibilityDomain());
 //  }
 

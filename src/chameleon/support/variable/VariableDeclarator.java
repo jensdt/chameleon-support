@@ -12,5 +12,5 @@ public interface VariableDeclarator<E extends VariableDeclarator, V extends Vari
 
 	public V createVariable(SimpleNameSignature signature, Expression expression);
 
-//	public Type type() throws MetamodelException;
+//	public Type type() throws LookupException;
 }

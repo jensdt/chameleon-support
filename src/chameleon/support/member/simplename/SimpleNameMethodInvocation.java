@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NonConstructorInvocation;
 import chameleon.core.method.Method;
@@ -36,10 +36,10 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
     _methodName = method;
   }
 
-//  public D getMethod() throws MetamodelException {
+//  public D getMethod() throws LookupException {
 //	    D result = lexicalContext().lookUp(selector());
 //	    if(result == null) {
-//	      throw new MetamodelException();
+//	      throw new LookupException();
 //	    }
 //	    return result;
 //  }
@@ -47,7 +47,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
 
   public abstract class SimpleNameMethodSelector extends DeclarationSelector<D> {
     
-    public D filter(Declaration declaration) throws MetamodelException {
+    public D filter(Declaration declaration) throws LookupException {
       D result = null;
       if(selectedClass().isInstance(declaration)) {
         D decl = (D)declaration;
@@ -67,7 +67,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
       return new WeakPartialOrder<D>() {
         @Override
         public boolean contains(D first, D second)
-            throws MetamodelException {
+            throws LookupException {
           return new MoreSpecificTypesOrder().contains(((MethodHeader) first.header()).getParameterTypes(), ((MethodHeader) second.header()).getParameterTypes());
         }
       };

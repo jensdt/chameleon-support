@@ -1,11 +1,7 @@
 package chameleon.support.statement;
 
-import java.util.List;
-
-import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.ExpressionContainingStatement;
-import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren

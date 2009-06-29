@@ -28,11 +28,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 import chameleon.util.Util;
 
@@ -57,7 +56,7 @@ public class ConditionalExpression extends TernaryExpression {
   	setThird(condition);
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
   	//GENERALIZE PROMOTIONS
     Type firstType = getFirst().getType();
     Type secondType = getSecond().getType();
@@ -89,7 +88,7 @@ public class ConditionalExpression extends TernaryExpression {
     }
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof ConditionalExpression) &&
            (getCondition().compatibleWith(((ConditionalExpression)target).getCondition())) &&
            (getFirst().compatibleWith(((ConditionalExpression)target).getFirst())) &&
@@ -107,11 +106,11 @@ public class ConditionalExpression extends TernaryExpression {
     return result;
   }
 
-  public Set getDirectExceptions() throws MetamodelException {
+  public Set getDirectExceptions() throws LookupException {
     return new HashSet();
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getCondition().getAccessibilityDomain().intersect(
 //             getFirst().getAccessibilityDomain().intersect(
 //                 getSecond().getAccessibilityDomain())

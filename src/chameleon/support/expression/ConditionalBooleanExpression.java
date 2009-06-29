@@ -5,12 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
 
 
@@ -27,11 +26,11 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     super(first, second);
   }
   
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return language().booleanType(); 
   }
   
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     if(!(target instanceof ConditionalBooleanExpression)) {
       return false;
     }
@@ -39,7 +38,7 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     return getFirst().compatibleWith(other.getFirst()) && (getSecond().compatibleWith(other.getSecond()));
   }
   
-  public Set<Type> getDirectExceptions() throws MetamodelException {
+  public Set<Type> getDirectExceptions() throws LookupException {
     return new HashSet<Type>();
   }
   
@@ -50,7 +49,7 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     return result;
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getFirst().getAccessibilityDomain().intersect(getSecond().getAccessibilityDomain());
 //  }
   

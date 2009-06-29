@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.member.Member;
 import chameleon.core.statement.Block;
 import chameleon.core.statement.CheckedExceptionList;
@@ -75,7 +75,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
    @
    @ post \result == getBlock().getCEL();
    @*/
-  public CheckedExceptionList getCEL() throws MetamodelException {
+  public CheckedExceptionList getCEL() throws LookupException {
     return getBlock().getCEL();
   }
 
@@ -84,7 +84,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
    @
    @ post \result == getBlock().getAbsCEL();
    @*/
-  public CheckedExceptionList getAbsCEL() throws MetamodelException {
+  public CheckedExceptionList getAbsCEL() throws LookupException {
     return getBlock().getAbsCEL();
   }
 
@@ -115,7 +115,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
 // /*@
 //   @ post \result instanceof EmptyDomain;
 //   @*/
-//  public AccessibilityDomain getAccessibilityDomain() throws MetamodelException {
+//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //	  return new EmptyDomain();
 //  }
 

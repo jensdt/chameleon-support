@@ -7,9 +7,9 @@ import java.util.Set;
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.java.collections.Visitor;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.element.Element;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.Statement;
@@ -78,7 +78,7 @@ public class LocalVariableDeclarationStatement extends Statement<LocalVariableDe
   }
   
   //COPIED FROM chameleon.core.type.Type
-  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws MetamodelException {
+  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
     Set<Declaration> tmp = declarations();
     Set<T> result = selector.selection(tmp);
     return result;

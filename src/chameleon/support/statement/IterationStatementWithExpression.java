@@ -3,7 +3,6 @@ package chameleon.support.statement;
 import org.rejuse.association.Reference;
 
 import chameleon.core.expression.Expression;
-import chameleon.core.statement.ExpressionContainingStatement;
 import chameleon.core.statement.Statement;
 
 public abstract class IterationStatementWithExpression<E extends IterationStatementWithExpression> extends IterationStatement<E> {

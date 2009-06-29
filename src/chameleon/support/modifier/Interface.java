@@ -1,9 +1,5 @@
 package chameleon.support.modifier;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import org.rejuse.property.Property;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;

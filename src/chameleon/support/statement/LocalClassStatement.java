@@ -30,10 +30,10 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
 import chameleon.core.context.ContextFactory;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
@@ -89,7 +89,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 		return Util.createNonNullList(getType());
 	}
 
-	public Scope getTypeAccessibilityDomain() throws MetamodelException {
+	public Scope getTypeAccessibilityDomain() throws LookupException {
 		if (parent() instanceof StatementListContainer) {
 			return new StatementListScope((StatementListContainer) parent(), this);
 		} else {
@@ -111,7 +111,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
   }
   
   //COPIED FROM chameleon.core.type.Type
-  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws MetamodelException {
+  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
     Set<Declaration> tmp = declarations();
     Set<T> result = selector.selection(tmp);
     return result;

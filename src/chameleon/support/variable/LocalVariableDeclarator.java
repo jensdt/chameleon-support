@@ -8,10 +8,8 @@ import java.util.Set;
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
 import chameleon.core.context.Context;
-import chameleon.core.context.LexicalContext;
-import chameleon.core.context.TargetContext;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.ChameleonProgrammerException;
@@ -73,7 +71,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	 */
 	private Reference<LocalVariableDeclarator,TypeReference> _typeReference = new Reference<LocalVariableDeclarator,TypeReference>(this);
 
-  public Type type() throws MetamodelException {
+  public Type type() throws LookupException {
   	return typeReference().getType();
   }
 	
@@ -166,7 +164,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
    @ 
    @ post \result == variables();
    @*/
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		return variables();
 	}
 	
@@ -176,7 +174,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	 * variables to its left.Thus, 'int a=3,b=a,c=b' is valid, while in 'int a=b, b=c,c=3' the intializations of 
 	 * both a and b are invalid.
 	 * 
-	 * @throws MetamodelException 
+	 * @throws LookupException 
 	 */
  /*@
    @ public behavior
@@ -185,7 +183,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
    @ post declarations().indexOf(Element) > 0) ==> 
    @      \result == declarations().elementAt(declarations().indexOf(element) - 1).lexicalContext();
    @*/
-	public Context lexicalContext(Element element) throws MetamodelException {
+	public Context lexicalContext(Element element) throws LookupException {
 		List<VariableDeclaration<LocalVariable>> declarations = variableDeclarations();
 		int index = declarations.indexOf(element);
 		if(index == 0) {

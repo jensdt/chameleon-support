@@ -4,11 +4,12 @@ import org.rejuse.property.PropertyMutex;
 import org.rejuse.property.PropertyUniverse;
 
 import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.Element;
-import chameleon.core.namespace.NamespaceScope;
 import chameleon.core.namespace.NamespaceElement;
-import chameleon.core.scope.ScopeProperty;
+import chameleon.core.namespace.NamespaceScope;
 import chameleon.core.scope.Scope;
+import chameleon.core.scope.ScopeProperty;
 import chameleon.core.type.Type;
 import chameleon.support.property.accessibility.HierarchyScope;
 
@@ -28,7 +29,7 @@ public class ProtectedProperty extends ScopeProperty {
 		try {
 			return new HierarchyScope((Type) element).union(new NamespaceScope(((NamespaceElement) element).getNamespace()));
 		} catch (ClassCastException exc) {
-			throw new MetamodelException();
+			throw new MetamodelException("The given element is of the wrong type.");
 		}
 	}
 }

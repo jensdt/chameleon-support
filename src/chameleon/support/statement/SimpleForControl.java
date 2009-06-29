@@ -1,20 +1,17 @@
 package chameleon.support.statement;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
-import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendantImpl;
 import chameleon.util.Util;
 
 public class SimpleForControl extends ForControl<SimpleForControl> implements StatementContainer<SimpleForControl, ForStatement> {
@@ -118,7 +115,7 @@ public class SimpleForControl extends ForControl<SimpleForControl> implements St
     }
   }
 
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		return getForInit().declarations();
 	}
 

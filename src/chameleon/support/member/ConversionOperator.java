@@ -5,7 +5,6 @@ import chameleon.core.type.TypeReference;
 import chameleon.support.member.simplename.SimpleNameMethodHeader;
 import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;
-import chameleon.support.member.simplename.operator.prefix.PrefixOperator;
 
 /**
  * @author Marko van Dooren

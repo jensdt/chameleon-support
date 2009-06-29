@@ -26,7 +26,7 @@ package chameleon.support.statement;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
@@ -59,7 +59,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
     return _statement.getOtherEnd();
   }
 
-  public CheckedExceptionList getCEL() throws MetamodelException {
+  public CheckedExceptionList getCEL() throws LookupException {
     CheckedExceptionList result = new CheckedExceptionList(parent().language());
     if(getStatement() != null) {
       result.absorb(getStatement().getCEL());
@@ -67,7 +67,7 @@ public abstract class Clause<E extends Clause> extends TypeDescendantImpl<E,TryS
     return result;
   }
 
-  public CheckedExceptionList getAbsCEL() throws MetamodelException {
+  public CheckedExceptionList getAbsCEL() throws LookupException {
     CheckedExceptionList result = new CheckedExceptionList(parent().language());
     if(getStatement() != null) {
       result.absorb(getStatement().getAbsCEL());

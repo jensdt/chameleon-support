@@ -25,7 +25,6 @@
 package chameleon.support.statement;
 
 import java.util.List;
-import java.util.Set;
 
 import chameleon.core.statement.Statement;
 import chameleon.util.Util;

@@ -2,7 +2,7 @@ package chameleon.support.expression;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Literal;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
@@ -35,7 +35,7 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
     _typeReference.connectTo(type.parentLink());
   }
   
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
   	return getTypeReference().getType();
   }
 }

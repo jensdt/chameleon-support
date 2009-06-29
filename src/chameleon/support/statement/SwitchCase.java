@@ -7,7 +7,7 @@ import org.rejuse.association.Reference;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.Element;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
@@ -87,11 +87,11 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
     return result;
   }
 
-  public CheckedExceptionList getCEL() throws MetamodelException {
+  public CheckedExceptionList getCEL() throws LookupException {
     final CheckedExceptionList cel = new CheckedExceptionList(getNamespace().language());
     try {
       new RobustVisitor() {
-        public Object visit(Object element) throws MetamodelException {
+        public Object visit(Object element) throws LookupException {
           cel.absorb(((ExceptionSource)element).getCEL());
           return null;
         }
@@ -102,7 +102,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
       }.applyTo(getStatements());
       return cel;
     }
-    catch (MetamodelException e) {
+    catch (LookupException e) {
       throw e;
     }
     catch (Exception e) {
@@ -111,11 +111,11 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
     }
   }
 
-  public CheckedExceptionList getAbsCEL() throws MetamodelException {
+  public CheckedExceptionList getAbsCEL() throws LookupException {
     final CheckedExceptionList cel = new CheckedExceptionList(getNamespace().language());
     try {
       new RobustVisitor() {
-        public Object visit(Object element) throws MetamodelException {
+        public Object visit(Object element) throws LookupException {
           cel.absorb(((ExceptionSource)element).getAbsCEL());
           return null;
         }
@@ -126,7 +126,7 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
       }.applyTo(getStatements());
       return cel;
     }
-    catch (MetamodelException e) {
+    catch (LookupException e) {
       throw e;
     }
     catch (Exception e) {

@@ -6,7 +6,6 @@ import chameleon.core.method.MethodHeader;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.method.RegularMethod;
 import chameleon.core.type.TypeReference;
-import chameleon.support.member.simplename.SimpleNameMethodSignature;
 
 
 /**

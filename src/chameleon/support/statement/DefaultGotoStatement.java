@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.element.Element;
-import chameleon.core.statement.Statement;
 
 public class DefaultGotoStatement extends GotoStatement<DefaultGotoStatement> {
 

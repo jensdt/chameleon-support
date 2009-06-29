@@ -25,15 +25,13 @@
 package chameleon.support.statement;
 
 import java.util.List;
-import java.util.Set;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.method.exception.TypeExceptionDeclaration;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionPair;
 import chameleon.core.statement.ExpressionContainingStatement;
-import chameleon.core.statement.Statement;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.util.Util;
@@ -66,7 +64,7 @@ public class ThrowStatement extends ExpressionContainingStatement<ThrowStatement
     return Util.createNonNullList(getExpression());
   }
 
-  public CheckedExceptionList getDirectCEL() throws MetamodelException {
+  public CheckedExceptionList getDirectCEL() throws LookupException {
 	    CheckedExceptionList cel = new CheckedExceptionList(language());
 	    Type type = getExpression().getType();
 	    TypeReference tr = new TypeReference(null, type.getFullyQualifiedName());

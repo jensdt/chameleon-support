@@ -32,7 +32,7 @@ import org.rejuse.association.Reference;
 import org.rejuse.java.collections.Visitor;
 import org.rejuse.predicate.PrimitivePredicate;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
@@ -121,15 +121,15 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
    @ post \result == (\forall CatchClause cc; getCatchClauses().contains(cc);
    @                    cc.isValid());
    @*/
-  public boolean hasValidCatchClauses() throws MetamodelException {
+  public boolean hasValidCatchClauses() throws LookupException {
     try {
       return new PrimitivePredicate() {
-        public boolean eval(Object o) throws MetamodelException {
+        public boolean eval(Object o) throws LookupException {
           return ((CatchClause)o).isValid();
         }
       }.forAll(getCatchClauses());
     }
-    catch (MetamodelException e) {
+    catch (LookupException e) {
       throw e;
     }
     catch (Exception e) {
@@ -138,7 +138,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
     }
   }
   
-  public CheckedExceptionList getCEL() throws MetamodelException {
+  public CheckedExceptionList getCEL() throws LookupException {
     final CheckedExceptionList cel = getStatement().getCEL();
 
     Iterator iter = getCatchClauses().iterator();
@@ -158,7 +158,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
     return cel;
   }
   
-  public CheckedExceptionList getAbsCEL() throws MetamodelException {
+  public CheckedExceptionList getAbsCEL() throws LookupException {
     final CheckedExceptionList cel = getStatement().getAbsCEL();
 
     Iterator iter = getCatchClauses().iterator();

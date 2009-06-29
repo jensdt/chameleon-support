@@ -24,7 +24,7 @@
  */
 package chameleon.support.expression;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
@@ -40,7 +40,7 @@ public class RegularLiteral extends LiteralWithTypeReference<RegularLiteral> {
     setTypeReference(type);
   }
 
-  public boolean superOf(InvocationTarget target) throws MetamodelException {
+  public boolean superOf(InvocationTarget target) throws LookupException {
     return (target instanceof RegularLiteral) && 
            (getValue().equals(((RegularLiteral)target).getValue())) &&
     	   (getType().equals(((RegularLiteral)target).getType()));
@@ -51,7 +51,7 @@ public class RegularLiteral extends LiteralWithTypeReference<RegularLiteral> {
     return new RegularLiteral((TypeReference)getTypeReference().clone(), getValue());
   }
 
-  public Scope getAccessibilityDomain() throws MetamodelException {
+  public Scope getAccessibilityDomain() throws LookupException {
     return new UniversalScope();
   }
   

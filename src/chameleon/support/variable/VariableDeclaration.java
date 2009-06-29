@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
 import chameleon.core.context.Context;
 import chameleon.core.context.LexicalContext;
+import chameleon.core.context.LookupException;
 import chameleon.core.context.TargetContext;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
@@ -101,7 +101,7 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   protected void transform(V variable) {
   }
 
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		Set<Variable> result = new HashSet<Variable>();
 		result.add(variable());
 		return result;
@@ -111,7 +111,7 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 	 * Return a standard lexical context that is attached to this variable declaration,
 	 * and to a target context which is also attached to this variable declaration.
 	 */
-	public Context lexicalContext(Element element) throws MetamodelException {
+	public Context lexicalContext(Element element) throws LookupException {
 		return new LexicalContext(new TargetContext<VariableDeclaration>(this),this);
 	}
   

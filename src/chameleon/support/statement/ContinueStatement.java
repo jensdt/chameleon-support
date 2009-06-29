@@ -3,9 +3,6 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import chameleon.core.statement.Statement;
-import chameleon.util.Util;
-
 /**
  * @author Marko van Dooren
  */

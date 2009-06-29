@@ -8,9 +8,9 @@ import java.util.Set;
 import org.rejuse.association.Reference;
 import org.rejuse.predicate.PrimitivePredicate;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
@@ -73,17 +73,17 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
   /**
    * @return
    */
-  public boolean isValid() throws MetamodelException {
+  public boolean isValid() throws LookupException {
     try {
       CheckedExceptionList cel = parent().getStatement().getCEL();
       Collection checkedExceptionTypes = cel.getExceptions();
       return new PrimitivePredicate() {
-        public boolean eval(Object o) throws MetamodelException {
+        public boolean eval(Object o) throws LookupException {
           return ((Type)o).assignableTo(getExceptionParameter().getType());
         }
       }.exists(checkedExceptionTypes);
     }
-    catch (MetamodelException e) {
+    catch (LookupException e) {
       throw e;
     }
     catch (Exception e) {
@@ -111,7 +111,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
   }
   
   //COPIED FROM chameleon.core.type.Type
-  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws MetamodelException {
+  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
     Set<Declaration> tmp = declarations();
     Set<T> result = selector.selection(tmp);
     return result;

@@ -69,11 +69,14 @@ public class ArgumentParser {
 	private MetaModelFactory _factory;
 
 	  /**
+	   * The first argument is structured as follows:
 	   * outputDir?
 	   * inputDir+
 	   * @packageName : recursive
 	   * #packageName : direct
 	   * %packageName : 
+	   * 
+	   * The extension argument is e.g. ".java"
 	   */
   public Arguments parse(String[] args, String extension) throws ParseException, MalformedURLException, FileNotFoundException, IOException, Exception {
     int low = (getOutput() ? 1 : 0);
@@ -86,6 +89,7 @@ public class ArgumentParser {
     		files.addAll(getFactory().loadFiles(args[i],extension,true));
       }
     }
+    System.out.println("Parsing "+files.size() +" files.");
     Namespace mm = _factory.getMetaModel(new OutputParserFactory(), files);
     Set types = new HashSet();
     

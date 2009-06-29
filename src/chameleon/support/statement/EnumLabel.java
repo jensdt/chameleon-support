@@ -3,13 +3,13 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.DeclarationSelector;
+import chameleon.core.context.LookupException;
+import chameleon.core.context.SelectorWithoutOrder;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
-import chameleon.core.expression.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
 import chameleon.core.variable.Variable;
 
@@ -38,7 +38,7 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	
 	private String _name;
 
-	public Declaration getElement() throws MetamodelException {
+	public Declaration getElement() throws LookupException {
 		// class must move to Jnome because of enum dependency?
 		Expression switchExpr = parent().parent().getExpression();
 		return switchExpr.getType().targetContext().lookUp(selector());

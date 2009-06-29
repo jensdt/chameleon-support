@@ -3,7 +3,7 @@ package chameleon.support.modifier;
 import org.rejuse.property.PropertyMutex;
 import org.rejuse.property.PropertyUniverse;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.element.Element;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
@@ -21,11 +21,11 @@ public class PrivateProperty extends ScopeProperty {
 		super(name, universe, family);
 	}
 
-	public Scope scope(Element element) throws MetamodelException {
+	public Scope scope(Element element) throws LookupException {
 		try {
 			return new LexicalScope(((TypeDescendant)element).getNearestType().getTopLevelType());
 		} catch (ClassCastException exc) {
-			throw new MetamodelException("Private property does not support elements that are no TypeDescendant.");
+			throw new LookupException("Private property does not support elements that are no TypeDescendant.");
 		}
 	}
 

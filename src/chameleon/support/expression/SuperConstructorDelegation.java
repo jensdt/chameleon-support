@@ -1,17 +1,8 @@
 package chameleon.support.expression;
 
-import java.util.List;
-
-import org.rejuse.logic.ternary.Ternary;
-
-import chameleon.core.MetamodelException;
-import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationSelector;
+import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.method.Method;
-import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
-import chameleon.support.member.MoreSpecificTypesOrder;
 import chameleon.support.member.simplename.method.NormalMethod;
 
 /**
@@ -23,12 +14,12 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
     super(null);
   }
 
-  public Type getType() throws MetamodelException {
+  public Type getType() throws LookupException {
     return language().voidType();
   }
   
   // @FIXME: does not work with multiple inheritance. Call is ambiguous.
-  public NormalMethod getMethod() throws MetamodelException {
+  public NormalMethod getMethod() throws LookupException {
 	    return getNearestType().getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
   }
   

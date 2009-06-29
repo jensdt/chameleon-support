@@ -3,8 +3,6 @@ package chameleon.support.expression;
 import java.util.ArrayList;
 import java.util.List;
 
-import chameleon.core.expression.InvocationTargetContainer;
-
 /**
  * @author Tim Laeremans
  *

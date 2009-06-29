@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.rejuse.association.OrderedReferenceSet;
 
-import chameleon.core.MetamodelException;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Signature;
 import chameleon.core.element.Element;
 import chameleon.core.method.Method;
@@ -58,7 +58,7 @@ private OrderedReferenceSet<SimpleNameMethodSignature,TypeReference> _parameters
   	return result;
   }
 
-	public boolean sameAs(Signature other) throws MetamodelException {
+	public boolean sameAs(Signature other) throws LookupException {
 		boolean result = false;
 		if(other instanceof SimpleNameMethodSignature) {
 			SimpleNameMethodSignature sig = (SimpleNameMethodSignature) other;
@@ -68,7 +68,7 @@ private OrderedReferenceSet<SimpleNameMethodSignature,TypeReference> _parameters
 	}
 
 	@Override
-	public List<Type> parameterTypes() throws MetamodelException {
+	public List<Type> parameterTypes() throws LookupException {
 		List<Type> result = new ArrayList<Type>();
   	for(TypeReference ref: typeReferences()) {
   		result.add(ref.getType());

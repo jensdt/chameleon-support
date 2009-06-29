@@ -5,8 +5,8 @@ import org.rejuse.property.PropertyUniverse;
 
 import chameleon.core.MetamodelException;
 import chameleon.core.element.Element;
-import chameleon.core.scope.ScopeProperty;
 import chameleon.core.scope.Scope;
+import chameleon.core.scope.ScopeProperty;
 import chameleon.core.scope.UniversalScope;
 
 public class PublicProperty extends ScopeProperty {
@@ -21,11 +21,7 @@ public class PublicProperty extends ScopeProperty {
 		super(name, universe, family);
 	}
 
-	public Scope scope(Element element) throws MetamodelException {
-		try {
+	public Scope scope(Element element) {
 			return new UniversalScope();
-		} catch (ClassCastException exc) {
-			throw new MetamodelException();
-		}
 	}
 }

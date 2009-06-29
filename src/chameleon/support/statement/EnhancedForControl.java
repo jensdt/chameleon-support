@@ -7,10 +7,8 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
-import chameleon.core.context.Context;
+import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
-import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.namespace.NamespaceElement;
@@ -81,7 +79,7 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> implement
 		return parent();
 	}
 
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		Set<Declaration> result = new HashSet<Declaration>();
 		result.addAll(variableDeclarator().variables());
 		return result;

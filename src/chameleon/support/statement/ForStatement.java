@@ -5,9 +5,9 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.MetamodelException;
 import chameleon.core.context.Context;
 import chameleon.core.context.LexicalContext;
+import chameleon.core.context.LookupException;
 import chameleon.core.context.TargetContext;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
@@ -22,7 +22,7 @@ import chameleon.util.Util;
 public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement, StatementContainer> {
 
 	@SuppressWarnings("unchecked")
-	public Context lexicalContext(Element element) throws MetamodelException {
+	public Context lexicalContext(Element element) throws LookupException {
 		return new LexicalContext(new TargetContext<ForStatement>(this),this);
 	}
 	
@@ -60,7 +60,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
 		return new ForStatement(forControl().clone(), getStatement().clone());
 	}
 
-	public Set<? extends Declaration> declarations() throws MetamodelException {
+	public Set<? extends Declaration> declarations() throws LookupException {
 		return forControl().declarations();
 	}
 
