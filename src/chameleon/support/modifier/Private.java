@@ -28,8 +28,11 @@ public class Private extends ModifierImpl<Private, ModifierContainer> {
 		return new Private();
 	}
 
+	/**
+	 * A private element has a private scope, and is not inheritable.
+	 */
   public PropertySet<Element> impliedProperties() {
-	  return createSet(language().property(PrivateProperty.ID));
+	  return createSet(language().property(PrivateProperty.ID), language().INHERITABLE.inverse());
   }
 
 }

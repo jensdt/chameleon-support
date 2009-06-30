@@ -1,6 +1,3 @@
-/*
- * Created on Aug 27, 2004
- */
 package chameleon.support.modifier;
 
 import org.rejuse.property.PropertySet;
@@ -25,6 +22,15 @@ public class Constructor extends ModifierImpl<Constructor,ModifierContainer> {
 			return new Constructor();
 		}
 
+		/**
+		 * A constructor modifier assigns the language().CONSTRUCTOR property to
+		 * an element. Subclasses can add additional properties.
+		 */
+	 /*@
+	   @ public behavior
+	   @
+	   @ post \result.contains(language().CONSTRUCTOR);
+	   @*/
     public PropertySet<Element> impliedProperties() {
       return createSet(language().CONSTRUCTOR);
     }
