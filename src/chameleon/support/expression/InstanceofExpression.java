@@ -3,10 +3,10 @@ package chameleon.support.expression;
 import java.util.HashSet;
 import java.util.Set;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 

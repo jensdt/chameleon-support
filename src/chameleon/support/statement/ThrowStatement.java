@@ -26,8 +26,8 @@ package chameleon.support.statement;
 
 import java.util.List;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.method.exception.TypeExceptionDeclaration;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionPair;

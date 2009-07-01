@@ -6,10 +6,10 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.util.Util;

@@ -26,7 +26,7 @@ package chameleon.support.statement;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.LookupException;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;

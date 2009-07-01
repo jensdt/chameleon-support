@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
-import chameleon.core.context.DeclarationSelector;
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;

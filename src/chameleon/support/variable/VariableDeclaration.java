@@ -7,15 +7,15 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.Context;
-import chameleon.core.context.LexicalContext;
-import chameleon.core.context.LookupException;
-import chameleon.core.context.TargetContext;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LexicalLookupStrategy;
+import chameleon.core.lookup.LocalLookupStrategy;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeDescendantImpl;
 import chameleon.core.variable.Variable;
@@ -111,8 +111,8 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 	 * Return a standard lexical context that is attached to this variable declaration,
 	 * and to a target context which is also attached to this variable declaration.
 	 */
-	public Context lexicalContext(Element element) throws LookupException {
-		return new LexicalContext(new TargetContext<VariableDeclaration>(this),this);
+	public LookupStrategy lexicalContext(Element element) throws LookupException {
+		return new LexicalLookupStrategy(new LocalLookupStrategy<VariableDeclaration>(this),this);
 	}
   
 }

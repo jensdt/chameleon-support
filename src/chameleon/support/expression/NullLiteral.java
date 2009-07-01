@@ -27,9 +27,9 @@ package chameleon.support.expression;
 
 
 
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.Literal;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
 import chameleon.core.type.Type;

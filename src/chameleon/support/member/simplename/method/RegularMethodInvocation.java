@@ -1,8 +1,8 @@
 package chameleon.support.member.simplename.method;
 
 
-import chameleon.core.context.DeclarationSelector;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 
 

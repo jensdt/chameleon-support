@@ -2,8 +2,8 @@ package chameleon.support.expression;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.Literal;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 

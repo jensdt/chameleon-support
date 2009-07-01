@@ -28,10 +28,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.util.Util;
 

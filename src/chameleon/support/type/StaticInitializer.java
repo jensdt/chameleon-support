@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.LookupException;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.member.Member;
 import chameleon.core.statement.Block;
 import chameleon.core.statement.CheckedExceptionList;

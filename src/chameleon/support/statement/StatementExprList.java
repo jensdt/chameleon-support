@@ -8,8 +8,8 @@ import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;

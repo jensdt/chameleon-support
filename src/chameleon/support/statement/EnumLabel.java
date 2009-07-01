@@ -3,13 +3,13 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import chameleon.core.context.DeclarationSelector;
-import chameleon.core.context.LookupException;
-import chameleon.core.context.SelectorWithoutOrder;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
 import chameleon.core.variable.Variable;
 

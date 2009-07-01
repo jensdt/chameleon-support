@@ -32,8 +32,8 @@ import org.rejuse.association.Reference;
 import org.rejuse.java.collections.Visitor;
 import org.rejuse.predicate.PrimitivePredicate;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.element.ChameleonProgrammerException;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
 import chameleon.util.Util;

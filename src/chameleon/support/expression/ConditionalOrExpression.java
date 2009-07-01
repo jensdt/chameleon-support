@@ -24,9 +24,9 @@
  */
 package chameleon.support.expression;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.LookupException;
 
 
 /**

@@ -30,10 +30,10 @@ import java.util.Set;
 
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.ContextFactory;
-import chameleon.core.context.DeclarationSelector;
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
+import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.LookupStrategyFactory;
 import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
@@ -101,7 +101,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 		return null;
 	}
 
-	public ContextFactory getContextFactory() {
+	public LookupStrategyFactory getContextFactory() {
 		return language().contextFactory();
 	}
   public Set<Declaration> declarations() {

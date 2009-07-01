@@ -1,9 +1,9 @@
 package chameleon.support.member.simplename.operator.infix;
 
 
-import chameleon.core.context.DeclarationSelector;
-import chameleon.core.context.LookupException;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 
 

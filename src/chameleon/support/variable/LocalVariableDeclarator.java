@@ -8,13 +8,13 @@ import java.util.Set;
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 
-import chameleon.core.context.Context;
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
@@ -183,7 +183,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
    @ post declarations().indexOf(Element) > 0) ==> 
    @      \result == declarations().elementAt(declarations().indexOf(element) - 1).lexicalContext();
    @*/
-	public Context lexicalContext(Element element) throws LookupException {
+	public LookupStrategy lexicalContext(Element element) throws LookupException {
 		List<VariableDeclaration<LocalVariable>> declarations = variableDeclarations();
 		int index = declarations.indexOf(element);
 		if(index == 0) {

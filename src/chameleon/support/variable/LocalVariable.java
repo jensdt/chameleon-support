@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.rejuse.predicate.TypePredicate;
 
-import chameleon.core.context.LookupException;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementListContainer;

@@ -6,7 +6,7 @@ package chameleon.support.member;
 import java.util.Iterator;
 import java.util.List;
 
-import chameleon.core.context.LookupException;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 

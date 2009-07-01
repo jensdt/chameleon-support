@@ -3,8 +3,8 @@ package chameleon.support.member.simplename.operator.postfix;
 
 
 
-import chameleon.core.context.DeclarationSelector;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 
 

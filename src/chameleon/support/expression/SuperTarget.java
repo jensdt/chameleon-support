@@ -3,13 +3,13 @@ package chameleon.support.expression;
 import java.util.HashSet;
 import java.util.Set;
 
-import chameleon.core.context.LookupException;
-import chameleon.core.context.TargetContext;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.InvocationTargetContainer;
 import chameleon.core.expression.InvocationTargetWithTarget;
 import chameleon.core.expression.NamedTarget;
+import chameleon.core.lookup.LocalLookupStrategy;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
 import chameleon.core.statement.CheckedExceptionList;
@@ -84,7 +84,7 @@ public boolean compatibleWith(InvocationTarget target) throws LookupException {
     }
   }
 
-  public TargetContext targetContext() throws LookupException {
+  public LocalLookupStrategy targetContext() throws LookupException {
     return getType().targetContext();
   }
 
