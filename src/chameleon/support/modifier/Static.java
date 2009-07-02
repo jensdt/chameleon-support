@@ -51,7 +51,7 @@ public class Static extends ModifierImpl<Static, ModifierContainer> {
   @ post \result.size() == 2;
   @*/
  public PropertySet<Element> impliedProperties() {
-   return createSet(language().INHERITABLE,language().CLASS);
+   return createSet(language().CLASS);
  }
 
 }
