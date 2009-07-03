@@ -186,13 +186,18 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	public LookupStrategy lexicalContext(Element element) throws LookupException {
 		List<VariableDeclaration<LocalVariable>> declarations = variableDeclarations();
 		int index = declarations.indexOf(element);
-		if(index == 0) {
+		if(index <= 0) {
 			return parent().lexicalContext(this);
-		} else if (index > 0) {
-			return declarations.get(index-1).lexicalContext();
 		} else {
-		  throw new ChameleonProgrammerException("Invoking lexicalContext(element) with an element that is not a child.");
+			return declarations.get(index-1).linearContext();
 		}
+	}
+	
+	public int numberOfVariableDeclarations() {
+		return _declarations.size();
+	}
+	public LookupStrategy linearContext() throws LookupException {
+		return variableDeclarations().get(numberOfVariableDeclarations()-1).linearContext();
 	}
 
 }

@@ -31,8 +31,10 @@ import java.util.Set;
 import org.rejuse.association.Reference;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.element.Element;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.lookup.LookupStrategyFactory;
 import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
@@ -102,7 +104,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 	}
 
 	public LookupStrategyFactory getContextFactory() {
-		return language().contextFactory();
+		return language().lookupFactory();
 	}
   public Set<Declaration> declarations() {
     Set<Declaration> result = new HashSet<Declaration>();
@@ -117,4 +119,11 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
     return result;
   }
 
+  public LookupStrategy lexicalContext(Element element) {
+  	return language().lookupFactory().createLexicalContext(this, language().lookupFactory().createTargetContext(this));
+  }
+  
+  public LookupStrategy linearContext() {
+  	return lexicalContext(getType());
+  }
 }

@@ -53,12 +53,6 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         D decl = (D)declaration;
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
-        if(decl.signature() instanceof SimpleNameMethodSignature) {
-        	SimpleNameMethodSignature sig = (SimpleNameMethodSignature)decl.signature();
-        	if(sig.getName().equals("!=")) {
-        		System.out.println("checking !=");
-        	}
-        }
         if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
         	 new MoreSpecificTypesOrder().contains(actuals,formals) && 
            ((SimpleNameMethodSignature)decl.signature()).getName().equals(getName())) {

@@ -16,6 +16,7 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.member.Member;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.type.Type;
+import chameleon.core.type.TypeDescendant;
 import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeElementImpl;
 import chameleon.core.type.TypeReference;
@@ -24,7 +25,7 @@ import chameleon.core.variable.RegularMemberVariable;
 import chameleon.support.variable.VariableDeclaration;
 import chameleon.support.variable.VariableDeclarator;
 
-public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Type> implements TypeElement<MemberVariableDeclarator, Type>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Type> {
+public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,TypeDescendant> implements TypeElement<MemberVariableDeclarator, TypeDescendant>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,TypeDescendant> {
 
 	public MemberVariableDeclarator() {
 		

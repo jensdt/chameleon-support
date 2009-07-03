@@ -54,7 +54,7 @@ public class Native extends ModifierImpl<Native, ModifierContainer> {
    @ post \result.size() == 2;
    @*/
   public PropertySet<Element> impliedProperties() {
-    return createSet(language().OVERRIDABLE,language().DEFINED);
+    return createSet(language().DEFINED);
   }
 
 }

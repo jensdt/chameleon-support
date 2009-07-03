@@ -90,10 +90,10 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   }
   
   public V variable() {
-  	Expression expression = expression();
-		Expression initClone = (expression == null ? null : expression.clone());
+  	Expression init = expression();
+		Expression initClone = (init == null ? null : init.clone());
 		V result = parent().createVariable(signature().clone(),initClone);
-  	result.setUniParent(parent().parent());
+  	result.setUniParent(parent());
   	transform(result);
   	return result;
   }
@@ -111,7 +111,7 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 	 * Return a standard lexical context that is attached to this variable declaration,
 	 * and to a target context which is also attached to this variable declaration.
 	 */
-	public LookupStrategy lexicalContext(Element element) throws LookupException {
+	public LookupStrategy linearContext() throws LookupException {
 		return new LexicalLookupStrategy(new LocalLookupStrategy<VariableDeclaration>(this),this);
 	}
   
