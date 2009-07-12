@@ -20,7 +20,7 @@ public class RegularMethodInvocation extends SimpleNameMethodInvocation<RegularM
    ********/
   
   protected RegularMethodInvocation cloneInvocation(InvocationTarget target) {
-    return new RegularMethodInvocation(getName(), target);
+    return new RegularMethodInvocation(name(), target);
   }
 
   @Override

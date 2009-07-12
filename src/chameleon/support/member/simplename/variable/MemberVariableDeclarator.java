@@ -12,6 +12,7 @@ import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.member.Member;
 import chameleon.core.modifier.Modifier;
@@ -81,8 +82,8 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 		return result;
 	}
 
-	public Set<Member> getIntroducedMembers() {
-		Set<Member> result = new HashSet();
+	public List<MemberVariable> getIntroducedMembers() {
+		List<MemberVariable> result = new ArrayList<MemberVariable>();
 		for(VariableDeclaration<MemberVariable> declaration: variableDeclarations()) {
 			result.add(declaration.variable());
 		}
@@ -106,8 +107,12 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
     _typeReference.connectTo(type.parentLink());
   }
 
-	public Set<? extends Declaration> declarations() throws LookupException {
+	public List<? extends Declaration> declarations() throws LookupException {
 		return getIntroducedMembers();
+	}
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return selector.selection(declarations());
 	}
 
 }

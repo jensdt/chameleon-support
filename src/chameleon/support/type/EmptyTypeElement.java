@@ -17,8 +17,8 @@ public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
 		return new EmptyTypeElement();
 	}
 
-	public Set<Member> getIntroducedMembers() {
-		return new HashSet<Member>();
+	public List<Member> getIntroducedMembers() {
+		return new ArrayList<Member>();
 	}
 
 	public Type getNearestType() {

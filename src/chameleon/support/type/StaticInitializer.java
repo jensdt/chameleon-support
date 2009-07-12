@@ -122,8 +122,8 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
   /**
    * A static initializer does not add members to a type.
    */
-  public Set<Member> getIntroducedMembers() {
-    return new HashSet<Member>();
+  public List<Member> getIntroducedMembers() {
+    return new ArrayList<Member>();
   }
 
 

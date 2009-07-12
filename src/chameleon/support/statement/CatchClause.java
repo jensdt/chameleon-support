@@ -1,9 +1,8 @@
 package chameleon.support.statement;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 import org.rejuse.predicate.PrimitivePredicate;
@@ -17,6 +16,7 @@ import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.core.variable.FormalParameter;
+import chameleon.core.variable.Variable;
 import chameleon.core.variable.VariableContainer;
 import chameleon.util.Util;
 
@@ -104,18 +104,23 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
     return result;
   }
   
-  public Set<Declaration> declarations() {
-    Set<Declaration> result = new HashSet<Declaration>();
+  public List<? extends Variable> declarations() {
+    List<Variable> result = new ArrayList<Variable>();
     result.add(getExceptionParameter());
     return result;
   }
   
-  //COPIED FROM chameleon.core.type.Type
-  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
-    Set<Declaration> tmp = declarations();
-    Set<T> result = selector.selection(tmp);
-    return result;
-  }
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return selector.selection(declarations());
+	}
+
+  
+//  //COPIED FROM chameleon.core.type.Type
+//  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
+//    Set<Declaration> tmp = declarations();
+//    Set<T> result = selector.selection(tmp);
+//    return result;
+//  }
 
 	public NamespaceElement variableScopeElement() {
 		return this;

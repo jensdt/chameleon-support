@@ -24,7 +24,7 @@
  */
 package chameleon.support.statement;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -106,18 +106,19 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 	public LookupStrategyFactory getContextFactory() {
 		return language().lookupFactory();
 	}
-  public Set<Declaration> declarations() {
-    Set<Declaration> result = new HashSet<Declaration>();
+  public List<Declaration> declarations() {
+    List<Declaration> result = new ArrayList<Declaration>();
     result.add(getType());
     return result;
   }
   
-  //COPIED FROM chameleon.core.type.Type
-  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
-    Set<Declaration> tmp = declarations();
-    Set<T> result = selector.selection(tmp);
-    return result;
-  }
+//  //COPIED FROM chameleon.core.type.Type
+//  @SuppressWarnings("unchecked")
+//  public <T extends Declaration> Set<T> declarations(DeclarationSelector<T> selector) throws LookupException {
+//    List<Declaration> tmp = declarations();
+//    List<T> result = selector.selection(tmp);
+//    return result;
+//  }
 
   public LookupStrategy lexicalContext(Element element) {
   	return language().lookupFactory().createLexicalContext(this, language().lookupFactory().createTargetContext(this));
@@ -126,4 +127,13 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
   public LookupStrategy linearContext() {
   	return lexicalContext(getType());
   }
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+    List<D> result = new ArrayList<D>();
+    D element = selector.selection(getType());
+    if(element != null) {
+      result.add(element);
+    }
+    return result;
+	}
 }

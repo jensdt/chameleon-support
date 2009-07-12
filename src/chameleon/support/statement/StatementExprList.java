@@ -1,14 +1,14 @@
 package chameleon.support.statement;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
@@ -133,8 +133,12 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,Simp
     return getStatements();
   }
 
-	public Set<? extends Declaration> declarations() throws LookupException {
-		return new HashSet<Declaration>();
+	public List<? extends Declaration> declarations() throws LookupException {
+		return new ArrayList<Declaration>();
+	}
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return new ArrayList<D>();
 	}
 
 }

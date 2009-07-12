@@ -1,9 +1,7 @@
 package chameleon.support.variable;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
@@ -13,6 +11,7 @@ import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.modifier.Modifier;
@@ -20,6 +19,7 @@ import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
+import chameleon.core.variable.Variable;
 import chameleon.support.statement.ForInit;
 
 public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,StatementContainer>, ForInit<LocalVariableDeclarator, StatementContainer> {
@@ -29,8 +29,8 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 		
 	}
 	
-	public Set<LocalVariable> variables() {
-		Set<LocalVariable> result = new HashSet();
+	public List<LocalVariable> variables() {
+		List<LocalVariable> result = new ArrayList<LocalVariable>();
 		for(VariableDeclaration<LocalVariable> declaration: variableDeclarations()) {
 			result.add(declaration.variable());
 		}
@@ -42,7 +42,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	}
 
 	@Override
-	public List children() {
+	public List<Element> children() {
 			List<Element> result = new ArrayList<Element>();
 			result.addAll(variableDeclarations());
 			result.add(typeReference());
@@ -164,10 +164,14 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
    @ 
    @ post \result == variables();
    @*/
-	public Set<? extends Declaration> declarations() throws LookupException {
+	public List<? extends Variable> declarations() throws LookupException {
 		return variables();
 	}
 	
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return selector.selection(declarations());
+	}
+
 	/**
 	 * The context of a local variable declarator takes the order of the declarations
 	 * into account. For example in 'int a=..., b=..., c=...', the initialization of each variable can reference the 

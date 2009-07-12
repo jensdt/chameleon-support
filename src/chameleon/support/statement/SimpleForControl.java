@@ -2,16 +2,17 @@ package chameleon.support.statement;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
+import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
 public class SimpleForControl extends ForControl<SimpleForControl> implements StatementContainer<SimpleForControl, ForStatement> {
@@ -115,8 +116,12 @@ public class SimpleForControl extends ForControl<SimpleForControl> implements St
     }
   }
 
-	public Set<? extends Declaration> declarations() throws LookupException {
+	public List<? extends Variable> declarations() throws LookupException {
 		return getForInit().declarations();
+	}
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return selector.selection(declarations());
 	}
 
 }

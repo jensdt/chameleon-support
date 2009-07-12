@@ -1,19 +1,21 @@
 package chameleon.support.statement;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.element.Element;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LexicalLookupStrategy;
 import chameleon.core.lookup.LocalLookupStrategy;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementContainer;
+import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
 /**
@@ -60,8 +62,12 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
 		return new ForStatement(forControl().clone(), getStatement().clone());
 	}
 
-	public Set<? extends Declaration> declarations() throws LookupException {
+	public List<? extends Variable> declarations() throws LookupException {
 		return forControl().declarations();
+	}
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		return selector.selection(declarations());
 	}
 
 }

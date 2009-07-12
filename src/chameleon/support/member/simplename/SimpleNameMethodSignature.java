@@ -19,7 +19,7 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
     setName(name);
   }
   
-  public String getName() {
+  public String name() {
     return _name;
   }
   
@@ -51,7 +51,7 @@ private OrderedReferenceSet<SimpleNameMethodSignature,TypeReference> _parameters
   
   @Override
   public SimpleNameMethodSignature clone() {
-  	SimpleNameMethodSignature result = new SimpleNameMethodSignature(getName());
+  	SimpleNameMethodSignature result = new SimpleNameMethodSignature(name());
   	for(TypeReference ref: typeReferences()) {
   		result.add(ref.clone());
   	}
@@ -62,7 +62,7 @@ private OrderedReferenceSet<SimpleNameMethodSignature,TypeReference> _parameters
 		boolean result = false;
 		if(other instanceof SimpleNameMethodSignature) {
 			SimpleNameMethodSignature sig = (SimpleNameMethodSignature) other;
-			result = getName().equals(sig.getName()) && sameParameterTypesAs(sig);
+			result = name().equals(sig.name()) && sameParameterTypesAs(sig);
 		}
 		return result;
 	}

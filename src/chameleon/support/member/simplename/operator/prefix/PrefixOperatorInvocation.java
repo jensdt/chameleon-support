@@ -19,7 +19,7 @@ public class PrefixOperatorInvocation extends SimpleNameMethodInvocation<PrefixO
   }
 
   protected PrefixOperatorInvocation cloneInvocation(InvocationTarget target) {
-    return new PrefixOperatorInvocation(getName(), target);
+    return new PrefixOperatorInvocation(name(), target);
   }
 
   @Override

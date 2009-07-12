@@ -25,7 +25,7 @@ public class InfixOperatorInvocation extends SimpleNameMethodInvocation<InfixOpe
   }
 
   protected InfixOperatorInvocation cloneInvocation(InvocationTarget target) {
-    return new InfixOperatorInvocation(getName(), target);
+    return new InfixOperatorInvocation(name(), target);
   }
 
   @Override

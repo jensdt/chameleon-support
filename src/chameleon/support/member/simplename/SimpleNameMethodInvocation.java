@@ -28,7 +28,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
 
   private String _methodName;
 
-  public String getName() {
+  public String name() {
     return _methodName;
   }
 
@@ -55,7 +55,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
         if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
         	 new MoreSpecificTypesOrder().contains(actuals,formals) && 
-           ((SimpleNameMethodSignature)decl.signature()).getName().equals(getName())) {
+           ((SimpleNameMethodSignature)decl.signature()).name().equals(name())) {
           result = decl;
         }
       }

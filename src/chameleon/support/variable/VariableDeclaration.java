@@ -12,6 +12,7 @@ import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LexicalLookupStrategy;
 import chameleon.core.lookup.LocalLookupStrategy;
 import chameleon.core.lookup.LookupException;
@@ -101,8 +102,8 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
   protected void transform(V variable) {
   }
 
-	public Set<? extends Declaration> declarations() throws LookupException {
-		Set<Variable> result = new HashSet<Variable>();
+	public List<? extends Declaration> declarations() throws LookupException {
+		List<Variable> result = new ArrayList<Variable>();
 		result.add(variable());
 		return result;
 	}
@@ -113,6 +114,15 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 	 */
 	public LookupStrategy linearContext() throws LookupException {
 		return new LexicalLookupStrategy(new LocalLookupStrategy<VariableDeclaration>(this),this);
+	}
+
+	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
+		List<D> result = new ArrayList<D>();
+		D element = selector.selection(variable());
+		if(element != null) {
+		  result.add(element);
+		}
+		return result;
 	}
   
 }

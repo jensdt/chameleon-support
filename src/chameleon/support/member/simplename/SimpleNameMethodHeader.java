@@ -1,6 +1,11 @@
 package chameleon.support.member.simplename;
 
+import java.util.List;
+
 import chameleon.core.compilationunit.CompilationUnit;
+import chameleon.core.declaration.Declaration;
+import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
 import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.namespace.Namespace;
