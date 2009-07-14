@@ -34,7 +34,10 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
 
   public ThisLiteral clone() {
     ThisLiteral result = new ThisLiteral();
-    result.setTypeReference((TypeReference)getTypeReference().clone());
+    TypeReference tref = getTypeReference();
+    if(tref != null) {
+      result.setTypeReference(tref.clone());
+    }
     return result;
   }
 

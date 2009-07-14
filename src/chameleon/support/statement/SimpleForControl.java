@@ -117,7 +117,12 @@ public class SimpleForControl extends ForControl<SimpleForControl> implements St
   }
 
 	public List<? extends Variable> declarations() throws LookupException {
-		return getForInit().declarations();
+		ForInit init = getForInit();
+		if(init != null) {
+		  return getForInit().declarations();
+		} else {
+			return new ArrayList<Variable>();
+		}
 	}
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {

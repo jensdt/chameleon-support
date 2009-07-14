@@ -1,9 +1,7 @@
 package chameleon.support.variable;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 
@@ -12,6 +10,7 @@ import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LexicalLookupStrategy;
 import chameleon.core.lookup.LocalLookupStrategy;
@@ -22,7 +21,7 @@ import chameleon.core.type.TypeDescendantImpl;
 import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
-public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
+public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>>, ExpressionContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
 
 	public VariableDeclaration(String name) {
 		this(new SimpleNameSignature(name), null);
