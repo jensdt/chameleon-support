@@ -34,6 +34,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
    */
   public ForStatement(ForControl control, Statement statement) {
     super(statement);
+  	setForControl(control);
   }
   
   public ForControl forControl() {

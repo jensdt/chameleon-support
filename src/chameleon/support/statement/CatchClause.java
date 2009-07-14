@@ -8,8 +8,10 @@ import org.rejuse.association.Reference;
 import org.rejuse.predicate.PrimitivePredicate;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.element.Element;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
@@ -112,6 +114,11 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
   
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return selector.selection(declarations());
+	}
+	
+	@Override
+	public LookupStrategy lexicalContext(Element element) {
+		return language().lookupFactory().createLexicalContext(this, language().lookupFactory().createTargetContext(this));
 	}
 
   

@@ -25,7 +25,14 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
   
   public void setName(String name) {
     _name = name;
+    _nameHash = _name.hashCode();
   }
+  
+  public int nameHash() {
+  	return _nameHash;
+  }
+  
+  private int _nameHash;
   
   private String _name;
 

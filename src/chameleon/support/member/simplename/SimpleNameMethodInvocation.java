@@ -46,17 +46,19 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
 
 
   public abstract class SimpleNameMethodSelector extends DeclarationSelector<D> {
+  	
+  	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
     
     public D filter(Declaration declaration) throws LookupException {
       D result = null;
-      if(selectedClass().isInstance(declaration)) {
-        D decl = (D)declaration;
+      D decl = (D)declaration;
+      SimpleNameMethodSignature sig =((SimpleNameMethodSignature)decl.signature());
+      if((_nameHash == sig.nameHash()) && sig.name().equals(name())) {
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
         if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
-        	 new MoreSpecificTypesOrder().contains(actuals,formals) && 
-           ((SimpleNameMethodSignature)decl.signature()).name().equals(name())) {
-          result = decl;
+        	 new MoreSpecificTypesOrder().contains(actuals,formals)) {
+           result = decl;
         }
       }
       return result;
