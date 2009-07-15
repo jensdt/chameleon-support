@@ -38,7 +38,12 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 	
 	@Override
 	public VariableDeclaration clone() {
-		return new VariableDeclaration(signature().clone(), expression().clone());
+		Expression expression = expression();
+		Expression clonedExpression = null;
+		if(expression != null) {
+			clonedExpression = expression.clone();
+		}
+		return new VariableDeclaration(signature().clone(), clonedExpression);
 	}
 
 	public Type getNearestType() {

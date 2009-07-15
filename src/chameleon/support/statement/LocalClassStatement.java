@@ -26,11 +26,11 @@ package chameleon.support.statement;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.Reference;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.element.Element;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
@@ -43,7 +43,6 @@ import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
 import chameleon.core.statement.TypeDeclaringStatement;
 import chameleon.core.type.Type;
-import chameleon.core.type.TypeContainer;
 import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
 
@@ -51,7 +50,7 @@ import chameleon.util.Util;
  * @author marko
  */
 public class LocalClassStatement extends Statement<LocalClassStatement> 
-             implements TypeContainer<LocalClassStatement,StatementContainer>, TypeDeclaringStatement {
+             implements DeclarationContainer<LocalClassStatement,StatementContainer>, TypeDeclaringStatement {
 
 	public LocalClassStatement() {
 	}
