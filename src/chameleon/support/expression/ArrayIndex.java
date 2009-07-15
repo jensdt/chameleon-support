@@ -1,25 +1,19 @@
 package chameleon.support.expression;
 
-import chameleon.core.expression.InvocationTargetContainer;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendant;
-import chameleon.core.type.TypeDescendantImpl;
+import chameleon.core.element.Element;
+import chameleon.core.namespacepart.NamespaceElementImpl;
 
 /**
  * @author Tim Laeremans
  * @author Marko van Dooren
  */
-public abstract class ArrayIndex<E extends ArrayIndex> extends TypeDescendantImpl<E,InvocationTargetContainer> implements TypeDescendant<E,InvocationTargetContainer> {
+public abstract class ArrayIndex<E extends ArrayIndex> extends NamespaceElementImpl<E,Element> {
 //RESEARCH: with type members, the choice of extension is open. With generic params, we are forced to decide on extensibility
 //          when we develop this class, possibly preventing unanticipated reuse.
 	
 	
     public ArrayIndex() {
         super();
-    }
-
-    public Type getNearestType() {
-        return parent().getNearestType();
     }
 
     public abstract E clone();

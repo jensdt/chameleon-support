@@ -32,13 +32,12 @@ import org.rejuse.java.collections.Visitor;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.ExpressionContainingStatement;
-import chameleon.core.statement.StatementContainer;
 import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren
  */
-public class SwitchStatement extends ExpressionContainingStatement<SwitchStatement> implements StatementContainer<SwitchStatement,StatementContainer> {
+public class SwitchStatement extends ExpressionContainingStatement<SwitchStatement> {
 
   public SwitchStatement(Expression expression) {
     super(expression);

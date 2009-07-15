@@ -21,7 +21,7 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
 
   public Type getType() throws LookupException {
     if (getTypeReference() == null) {
-      return getNearestType();
+      return nearestAncestor(Type.class);
     }
     else {
       return getTypeReference().getType();

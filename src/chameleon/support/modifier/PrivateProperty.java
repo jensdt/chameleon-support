@@ -8,7 +8,7 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.ScopeProperty;
-import chameleon.core.type.TypeDescendant;
+import chameleon.core.type.Type;
 
 public class PrivateProperty extends ScopeProperty {
 	
@@ -23,7 +23,7 @@ public class PrivateProperty extends ScopeProperty {
 
 	public Scope scope(Element element) throws LookupException {
 		try {
-			return new LexicalScope(((TypeDescendant)element).getNearestType().getTopLevelType());
+			return new LexicalScope(((Type)element.nearestAncestor(Type.class)).getTopLevelType());
 		} catch (ClassCastException exc) {
 			throw new LookupException("Private property does not support elements that are no TypeDescendant.");
 		}

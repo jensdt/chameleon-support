@@ -1,6 +1,5 @@
 package chameleon.support.statement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.rejuse.association.Reference;
@@ -14,14 +13,13 @@ import chameleon.core.lookup.LocalLookupStrategy;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.statement.Statement;
-import chameleon.core.statement.StatementContainer;
 import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren
  */
-public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement, StatementContainer> {
+public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement, Element> {
 
 	@SuppressWarnings("unchecked")
 	public LookupStrategy lexicalContext(Element element) throws LookupException {

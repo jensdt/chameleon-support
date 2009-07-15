@@ -1,9 +1,7 @@
 package chameleon.support.member.simplename.variable;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
@@ -14,10 +12,8 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.member.Member;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendant;
 import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeElementImpl;
 import chameleon.core.type.TypeReference;
@@ -26,7 +22,7 @@ import chameleon.core.variable.RegularMemberVariable;
 import chameleon.support.variable.VariableDeclaration;
 import chameleon.support.variable.VariableDeclarator;
 
-public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,TypeDescendant> implements TypeElement<MemberVariableDeclarator, TypeDescendant>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,TypeDescendant> {
+public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Element> implements TypeElement<MemberVariableDeclarator, Element>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Element> {
 
 	public MemberVariableDeclarator() {
 		
@@ -36,10 +32,6 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 		setTypeReference(tref);
 	}
 	
-	public Type getNearestType() {
-		return parent().getNearestType();
-	}
-
 	public List<Element> children() {
 		List<Element> result = new ArrayList<Element>();
 		result.addAll(variableDeclarations());

@@ -5,13 +5,12 @@ import java.util.List;
 import org.rejuse.association.OrderedReferenceSet;
 
 import chameleon.core.expression.Expression;
-import chameleon.core.expression.ExpressionContainer;
-import chameleon.core.expression.InvocationTargetContainer;
 
 /**
+ * @author Marko van Dooren
  * @author Tim Laeremans
  */
-public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> implements ExpressionContainer<FilledArrayIndex,InvocationTargetContainer>{
+public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 
 	public FilledArrayIndex(){
 

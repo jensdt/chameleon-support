@@ -47,16 +47,4 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 		return (S) result;
 	}
 
-	public CompilationUnit getCompilationUnit() {
-		return parent().getCompilationUnit();
-	}
-
-	public NamespacePart getNearestNamespacePart() {
-		return parent().getNearestNamespacePart();
-	}
-
-	public Namespace getNamespace() {
-		return parent().getNamespace();
-	}
-
 }

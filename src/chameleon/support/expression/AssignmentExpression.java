@@ -8,7 +8,6 @@ import org.rejuse.association.Reference;
 
 import chameleon.core.expression.Assignable;
 import chameleon.core.expression.Expression;
-import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
@@ -17,7 +16,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class AssignmentExpression extends Expression<AssignmentExpression> implements ExpressionContainer<AssignmentExpression,ExpressionContainer> {
+public class AssignmentExpression extends Expression<AssignmentExpression> {
 
   /**
    * @param first

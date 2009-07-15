@@ -10,12 +10,11 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
-public class SimpleForControl extends ForControl<SimpleForControl> implements StatementContainer<SimpleForControl, ForStatement> {
+public class SimpleForControl extends ForControl<SimpleForControl> {
 
 	public SimpleForControl(ForInit init, Expression condition, StatementExprList update) {
 		setForInit(init);
@@ -80,14 +79,10 @@ public class SimpleForControl extends ForControl<SimpleForControl> implements St
     }
     StatementExprList update = null;
     if(getUpdate() != null) {
-      update = getUpdate().cloneUpdate();
+      update = getUpdate().clone();
     }
     return new SimpleForControl(init, cond, update);
   }
-
-	public Type getNearestType() {
-		return parent().getNearestType();
-	}
 
 	public List<? extends Element> children() {
 		List<Element> result = new ArrayList<Element>();

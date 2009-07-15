@@ -5,7 +5,6 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
 import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendant;
 
 /**
  * @author Marko van Dooren
@@ -24,7 +23,12 @@ public class HierarchyScope extends Scope {
   }
   
   public boolean contains(Element element) throws LookupException {
-  	return (element instanceof TypeDescendant) && (((TypeDescendant)element).getNearestType().subTypeOf(getType()));
+  	Type type = (Type) element.nearestAncestor(Type.class);
+  	if(type != null) {
+		  return type.subTypeOf(getType());
+  	} else {
+  		return false;
+  	}
   }
 
  /*@

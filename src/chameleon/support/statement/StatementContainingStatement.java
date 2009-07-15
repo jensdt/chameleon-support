@@ -27,12 +27,11 @@ package chameleon.support.statement;
 import org.rejuse.association.Reference;
 
 import chameleon.core.statement.Statement;
-import chameleon.core.statement.StatementContainer;
 
 /**
  * @author Marko van Dooren
  */
-public abstract class StatementContainingStatement<E extends StatementContainingStatement> extends Statement<E> implements StatementContainer<E, StatementContainer> {
+public abstract class StatementContainingStatement<E extends StatementContainingStatement> extends Statement<E> {
   
   public StatementContainingStatement(Statement statement) {
     setStatement(statement);

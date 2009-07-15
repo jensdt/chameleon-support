@@ -15,7 +15,6 @@ import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
-import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.core.variable.FormalParameter;
 import chameleon.core.variable.Variable;
@@ -25,7 +24,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class CatchClause extends Clause<CatchClause> implements VariableContainer<CatchClause,TryStatement>, StatementContainer<CatchClause,TryStatement> {
+public class CatchClause extends Clause<CatchClause> implements VariableContainer<CatchClause,TryStatement> {
   
   public CatchClause(FormalParameter exc, Statement statement) {
     super(statement);

@@ -10,12 +10,10 @@ import org.rejuse.java.collections.Visitor;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.namespacepart.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
-import chameleon.core.statement.StatementContainer;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendantImpl;
 
 /**
  * A list of statement expressions as used in the initialization clause of a 
@@ -23,7 +21,7 @@ import chameleon.core.type.TypeDescendantImpl;
  * 
  * @author Marko van Dooren
  */
-public class StatementExprList extends TypeDescendantImpl<StatementExprList,SimpleForControl> implements ForInit<StatementExprList,SimpleForControl>, StatementContainer<StatementExprList,SimpleForControl>, ExceptionSource<StatementExprList,SimpleForControl> {
+public class StatementExprList extends NamespaceElementImpl<StatementExprList,SimpleForControl> implements ForInit<StatementExprList,SimpleForControl>, ExceptionSource<StatementExprList,SimpleForControl> {
 
 	public StatementExprList() {
 	}
@@ -45,14 +43,10 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,Simp
     return _statementExpressions.getOtherEnds();
   }
 
-  public Type getNearestType() {
-    return parent().getNearestType();
-  }
-
   /**
    * @FIXME why is this method here?
    */
-  public StatementExprList cloneUpdate() {
+  public StatementExprList clone() {
     final StatementExprList result = new StatementExprList();
     new Visitor() {
       public void visit(Object element) {
@@ -60,10 +54,6 @@ public class StatementExprList extends TypeDescendantImpl<StatementExprList,Simp
       }
     }.applyTo(getStatements());
     return result;
-  }
-
-  public StatementExprList clone() {
-    return cloneUpdate();
   }
 
   public CheckedExceptionList getCEL() throws LookupException {

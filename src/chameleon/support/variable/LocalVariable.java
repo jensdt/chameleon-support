@@ -25,10 +25,6 @@ public class LocalVariable extends RegularVariable<LocalVariable,VariableContain
     super(sig, type, init);
   }
 
-  public Type getNearestType() {
-    return parent().getNearestType();
-  }
-
   protected LocalVariable cloneThis() {
     Expression expr = null;
     if(getInitialization() != null) {

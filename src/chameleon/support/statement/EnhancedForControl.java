@@ -11,13 +11,11 @@ import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElement;
-import chameleon.core.statement.StatementContainer;
-import chameleon.core.type.Type;
 import chameleon.core.variable.Variable;
 import chameleon.support.variable.LocalVariableDeclarator;
 import chameleon.util.Util;
 
-public class EnhancedForControl extends ForControl<EnhancedForControl> implements StatementContainer<EnhancedForControl,ForStatement> {
+public class EnhancedForControl extends ForControl<EnhancedForControl> {
 
 	
 	
@@ -43,10 +41,6 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> implement
 	@Override
 	public EnhancedForControl clone() {
 		return new EnhancedForControl(variableDeclarator().clone(),collection().clone());
-	}
-
-	public Type getNearestType() {
-		return parent().getNearestType();
 	}
 
 	public List<Element> children() {

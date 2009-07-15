@@ -10,18 +10,16 @@ import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
-import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LexicalLookupStrategy;
 import chameleon.core.lookup.LocalLookupStrategy;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendantImpl;
+import chameleon.core.namespacepart.NamespaceElementImpl;
 import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
-public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>>, ExpressionContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
+public class VariableDeclaration<V extends Variable> extends NamespaceElementImpl<VariableDeclaration<V>,VariableDeclarator<?,V,?>> implements DeclarationContainer<VariableDeclaration<V>,VariableDeclarator<?,V,?>> {
 
 	public VariableDeclaration(String name) {
 		this(new SimpleNameSignature(name), null);
@@ -46,10 +44,6 @@ public class VariableDeclaration<V extends Variable> extends TypeDescendantImpl<
 		return new VariableDeclaration(signature().clone(), clonedExpression);
 	}
 
-	public Type getNearestType() {
-		return parent().getNearestType();
-	}
-	
 	 public void setSignature(SimpleNameSignature signature) {
 	    if(signature != null) {
 	    	_signature.connectTo(signature.parentLink());

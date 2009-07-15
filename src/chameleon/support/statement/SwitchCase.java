@@ -9,18 +9,16 @@ import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.namespacepart.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
-import chameleon.core.statement.StatementContainer;
 import chameleon.core.statement.StatementListContainer;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeDescendantImpl;
 
 /**
  * @author Marko van Dooren
  */
-public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> implements StatementContainer<SwitchCase,SwitchStatement>, StatementListContainer<SwitchCase,SwitchStatement>, ExceptionSource<SwitchCase,SwitchStatement> {
+public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement> implements StatementListContainer<SwitchCase,SwitchStatement>, ExceptionSource<SwitchCase,SwitchStatement> {
 
   public SwitchCase() {
 	}
@@ -67,11 +65,6 @@ public class SwitchCase extends TypeDescendantImpl<SwitchCase,SwitchStatement> i
   public SwitchLabel getLabel() {
     return _labels.getOtherEnd();
   }
-
-  public Type getNearestType() {
-    return parent().getNearestType();
-  }
-
 
   /**
    * @return

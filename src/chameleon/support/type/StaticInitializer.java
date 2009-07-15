@@ -12,7 +12,6 @@ import chameleon.core.member.Member;
 import chameleon.core.statement.Block;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
-import chameleon.core.statement.StatementContainer;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeElementImpl;
 import chameleon.util.Util;
@@ -20,7 +19,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> implements StatementContainer<StaticInitializer,Type>, ExceptionSource<StaticInitializer,Type> {
+public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> implements ExceptionSource<StaticInitializer,Type> {
 
   public StaticInitializer(Block block) {
       setBlock(block);

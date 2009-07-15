@@ -5,7 +5,6 @@ import java.util.Set;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.expression.InvocationTargetContainer;
 import chameleon.core.expression.InvocationTargetWithTarget;
 import chameleon.core.expression.NamedTarget;
 import chameleon.core.lookup.LookupException;
@@ -18,7 +17,7 @@ import chameleon.core.type.Type;
 /**
  * @author Marko van Dooren
  */
-public class SuperTarget extends InvocationTargetWithTarget<SuperTarget> implements InvocationTargetContainer<SuperTarget, InvocationTargetContainer> {
+public class SuperTarget extends InvocationTargetWithTarget<SuperTarget> {
 
   public SuperTarget() {
 		
@@ -80,7 +79,7 @@ public boolean compatibleWith(InvocationTarget target) throws LookupException {
     if(getTarget() != null) {
       return (Type)((NamedTarget)getTarget()).getElement();
     } else {
-      return getNearestType();
+      return nearestAncestor(Type.class);
     }
   }
 

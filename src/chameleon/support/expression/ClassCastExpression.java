@@ -3,7 +3,6 @@ package chameleon.support.expression;
 import java.util.Set;
 
 import chameleon.core.expression.Expression;
-import chameleon.core.expression.ExpressionContainer;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
@@ -13,8 +12,7 @@ import chameleon.util.Util;
 /**
  * @author Tim Laeremans
  */
-public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCastExpression>
-       implements ExpressionContainer<ClassCastExpression,ExpressionContainer> {
+public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCastExpression> {
 
   public ClassCastExpression(TypeReference type, Expression expression) {
 	  setTypeReference(type);
