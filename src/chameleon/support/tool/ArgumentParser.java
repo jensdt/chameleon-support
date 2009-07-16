@@ -13,6 +13,8 @@ import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.element.Element;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespace.NamespaceOrTypeReference;
+import chameleon.core.type.Type;
+import chameleon.core.type.TypeReference;
 import chameleon.input.MetaModelFactory;
 import chameleon.input.ParseException;
 import chameleon.linkage.ILinkage;
@@ -91,7 +93,7 @@ public class ArgumentParser {
     }
     System.out.println("Parsing "+files.size() +" files.");
     Namespace mm = _factory.getMetaModel(new OutputParserFactory(), files);
-    Set types = new HashSet();
+    Set<Type> types = new HashSet<Type>();
     
     for(int i = low; i < args.length;i++) {
       if(args[i].startsWith("@")) {
@@ -107,6 +109,13 @@ public class ArgumentParser {
       	ref.setUniParent(mm);
       	Namespace ns = ref.getNamespace();
         types.addAll(ns.getTypes());
+      }
+    }
+    for(int i = low; i < args.length;i++) {
+      if(args[i].startsWith("$")) {
+      	TypeReference ref= new TypeReference(args[i].substring(1));
+      	ref.setUniParent(mm);
+        types.add(ref.getType());
       }
     }
 //    new PrimitiveTotalPredicate() {

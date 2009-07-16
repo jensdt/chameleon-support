@@ -19,7 +19,7 @@ import chameleon.core.variable.VariableContainer;
 /**
  * @author Marko van Dooren
  */
-public class LocalVariable extends RegularVariable<LocalVariable,VariableContainer> {
+public class LocalVariable extends RegularVariable<LocalVariable,VariableContainer,LocalVariable> {
 
   public LocalVariable(SimpleNameSignature sig, TypeReference type, Expression init) {
     super(sig, type, init);
@@ -38,5 +38,9 @@ public class LocalVariable extends RegularVariable<LocalVariable,VariableContain
     new TypePredicate(StatementListContainer.class).filter(ancestors);
     return new StatementListScope((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());
   }
+
+	public LocalVariable resolveForResult() throws LookupException {
+		return this;
+	}
 	
 }

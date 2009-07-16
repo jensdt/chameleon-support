@@ -11,7 +11,7 @@ import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElement;
-import chameleon.core.variable.Variable;
+import chameleon.support.variable.LocalVariable;
 import chameleon.support.variable.LocalVariableDeclarator;
 import chameleon.util.Util;
 
@@ -73,7 +73,7 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 		return parent();
 	}
 
-	public List<? extends Variable> declarations() throws LookupException {
+	public List<LocalVariable> declarations() throws LookupException {
 		return variableDeclarator().variables();
 	}
 

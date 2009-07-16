@@ -30,11 +30,7 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 
 	@Override
 	public E cloneThis() {
-		SimpleNameMethodHeader result = new SimpleNameMethodHeader(getName());
-		for(FormalParameter param: getParameters()) {
-			result.addParameter(param.clone());
-		}
-		return (E) result;
+		return (E) new SimpleNameMethodHeader(getName());
 	}
 
 	@Override
