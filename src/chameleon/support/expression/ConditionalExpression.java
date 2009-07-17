@@ -56,7 +56,7 @@ public class ConditionalExpression extends TernaryExpression {
   	setThird(condition);
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
   	//GENERALIZE PROMOTIONS
     Type firstType = getFirst().getType();
     Type secondType = getSecond().getType();

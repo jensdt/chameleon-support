@@ -14,7 +14,7 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
     super(null);
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     return language().voidType();
   }
   

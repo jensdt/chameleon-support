@@ -35,7 +35,7 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
     _typeReference.connectTo(type.parentLink());
   }
   
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
   	return getTypeReference().getType();
   }
 }

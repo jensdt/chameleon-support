@@ -18,7 +18,7 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
     return "this";
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     return language().voidType();
   }
 

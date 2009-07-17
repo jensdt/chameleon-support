@@ -43,7 +43,7 @@ public class NullLiteral extends Literal<NullLiteral> {
     super("null");
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
 	  return language().getNullType();
   }
 

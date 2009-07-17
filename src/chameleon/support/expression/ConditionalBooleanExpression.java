@@ -26,7 +26,7 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     super(first, second);
   }
   
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     return language().booleanType(); 
   }
   

@@ -19,7 +19,7 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
     setTypeReference(type);
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     return language().booleanType();
   }
 

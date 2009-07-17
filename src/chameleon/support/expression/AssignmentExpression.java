@@ -64,7 +64,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
   	}
   }
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     return getVariable().getType();
   }
 

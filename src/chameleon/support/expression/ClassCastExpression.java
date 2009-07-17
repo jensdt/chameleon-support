@@ -20,7 +20,7 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
   }
 
 
-  public Type getType() throws LookupException {
+  protected Type actualType() throws LookupException {
     Type result = getTypeReference().getType();
     if(result == null) {
       getTypeReference().getType();

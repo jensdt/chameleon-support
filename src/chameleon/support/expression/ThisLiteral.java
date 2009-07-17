@@ -19,12 +19,13 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
     super("this", ref);
   }
 
-  public Type getType() throws LookupException {
-    if (getTypeReference() == null) {
+  protected Type actualType() throws LookupException {
+    TypeReference tref = getTypeReference();
+		if (tref == null) {
       return nearestAncestor(Type.class);
     }
     else {
-      return getTypeReference().getType();
+      return tref.getType();
     }
   }
 
