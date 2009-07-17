@@ -24,7 +24,7 @@ public class ReturnStatement extends ExpressionContainingStatement<ReturnStateme
   	if(childClone != null) {
   		childClone = childClone.clone();
   	}
-    return new ReturnStatement(getExpression().clone());
+    return new ReturnStatement(childClone);
   }
 
 }
