@@ -95,7 +95,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 //  }
 
   public LookupStrategy lexicalContext(Element element) {
-  	return language().lookupFactory().createLexicalContext(this, language().lookupFactory().createTargetContext(this));
+  	return language().lookupFactory().createLexicalLookupStrategy(language().lookupFactory().createTargetLookupStrategy(this), this);
   }
   
   public LookupStrategy linearContext() {

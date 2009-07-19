@@ -117,7 +117,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
 	
 	@Override
 	public LookupStrategy lexicalContext(Element element) {
-		return language().lookupFactory().createLexicalContext(this, language().lookupFactory().createTargetContext(this));
+		return language().lookupFactory().createLexicalLookupStrategy(language().lookupFactory().createTargetLookupStrategy(this), this);
 	}
 
   
