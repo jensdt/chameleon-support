@@ -6,7 +6,7 @@ import chameleon.support.member.simplename.SimpleNameMethodHeader;
 import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;
 
-public class PrefixOperator<E extends PrefixOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S> {
+public class PrefixOperator<E extends PrefixOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S,PrefixOperator> {
   
   public PrefixOperator(H header, TypeReference returnType) {
     super(header, returnType);
@@ -19,6 +19,10 @@ public class PrefixOperator<E extends PrefixOperator<E,H,S>, H extends SimpleNam
   protected E cloneThis() {
     return (E) new PrefixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
   }
+
+	public Class<PrefixOperator> introducedDeclarationType() {
+		return PrefixOperator.class;
+	}
 
 	
 	

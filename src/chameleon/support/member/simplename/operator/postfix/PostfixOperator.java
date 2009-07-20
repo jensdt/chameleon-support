@@ -9,7 +9,7 @@ import chameleon.support.member.simplename.operator.Operator;
 /**
  * @author Marko van Dooren
  */
-public class PostfixOperator<E extends PostfixOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S> {
+public class PostfixOperator<E extends PostfixOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S,PostfixOperator> {
 
   public PostfixOperator(H header, TypeReference returnType) {
     super(header, returnType);
@@ -22,6 +22,10 @@ public class PostfixOperator<E extends PostfixOperator<E,H,S>, H extends SimpleN
   protected E cloneThis() {
     return (E) new PostfixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
   }
+
+	public Class<PostfixOperator> introducedDeclarationType() {
+		return PostfixOperator.class;
+	}
   
 	
 	

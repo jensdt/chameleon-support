@@ -10,7 +10,7 @@ import chameleon.support.member.simplename.operator.Operator;
  * @author Marko van Dooren
  * @author Tim Laeremans
  */
-public class ConversionOperator<E extends ConversionOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S> {
+public class ConversionOperator<E extends ConversionOperator<E,H,S>, H extends SimpleNameMethodHeader<H,E,S>, S extends SimpleNameMethodSignature> extends Operator<E,H,S,ConversionOperator> {
 
 	  public ConversionOperator(TypeReference returnType) {
 		    super((H)new SimpleNameMethodHeader(""), returnType);
@@ -23,6 +23,10 @@ public class ConversionOperator<E extends ConversionOperator<E,H,S>, H extends S
 	  protected E cloneThis() {
 	    return (E) new ConversionOperator((TypeReference)getReturnTypeReference().clone());
 	  }
+
+		public Class<ConversionOperator> introducedDeclarationType() {
+			return ConversionOperator.class;
+		}
 
 
 }

@@ -31,15 +31,16 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     public NormalMethod filter(Declaration declaration)
         throws LookupException {
       NormalMethod result = null;
-      if (selectedClass().isInstance(declaration)) {
-        NormalMethod decl = (NormalMethod) declaration;
+//      if (selectedClass().isInstance(declaration)) {
+      NormalMethod decl = (NormalMethod) declaration;
+      if(decl.is(language().CONSTRUCTOR) == Ternary.TRUE) {
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = decl.header().getParameterTypes();
-        if (new MoreSpecificTypesOrder().contains(actuals, formals)
-            && (decl.is(language().CONSTRUCTOR) == Ternary.TRUE)) {
+        if (new MoreSpecificTypesOrder().contains(actuals, formals)) {
           result = decl;
         }
       }
+//      }
       return result;
     }
 

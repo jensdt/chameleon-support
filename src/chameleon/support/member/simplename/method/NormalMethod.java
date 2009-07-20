@@ -11,7 +11,7 @@ import chameleon.core.type.TypeReference;
 /**
  * @author Marko van Dooren
  */
-public class NormalMethod<E extends RegularMethod<E,H,S>, H extends MethodHeader<H, E, S>, S extends MethodSignature> extends RegularMethod<E,H,S>  {
+public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends MethodHeader<H, E, S>, S extends MethodSignature> extends RegularMethod<E,H,S,NormalMethod>  {
 
   public NormalMethod(H header, TypeReference returnType) {
     super(header, returnType);
@@ -25,6 +25,11 @@ public class NormalMethod<E extends RegularMethod<E,H,S>, H extends MethodHeader
   protected E cloneThis() {
     return (E) new NormalMethod(header().clone(), (TypeReference)getReturnTypeReference().clone());
   }
+
+
+	public Class<NormalMethod> introducedDeclarationType() {
+		return NormalMethod.class;
+	}
   
 	
 //	   private Reference<RegularMethod,ConstructorDelegation> _invokingConstructor = new Reference<RegularMethod,ConstructorDelegation>(this);
