@@ -20,16 +20,4 @@ public class PrefixOperator<E extends PrefixOperator<E,H,S>, H extends SimpleNam
     return (E) new PrefixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
   }
 
-	public Class<PrefixOperator> introducedDeclarationType() {
-		return PrefixOperator.class;
-	}
-
-	
-	
-	
-
-
-	
-  
-  
 }

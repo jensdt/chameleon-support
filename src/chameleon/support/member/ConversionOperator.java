@@ -24,9 +24,4 @@ public class ConversionOperator<E extends ConversionOperator<E,H,S>, H extends S
 	    return (E) new ConversionOperator((TypeReference)getReturnTypeReference().clone());
 	  }
 
-		public Class<ConversionOperator> introducedDeclarationType() {
-			return ConversionOperator.class;
-		}
-
-
 }

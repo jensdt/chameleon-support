@@ -23,16 +23,4 @@ public class PostfixOperator<E extends PostfixOperator<E,H,S>, H extends SimpleN
     return (E) new PostfixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
   }
 
-	public Class<PostfixOperator> introducedDeclarationType() {
-		return PostfixOperator.class;
-	}
-  
-	
-	
-	
-
-
-	
-  
-  
 }

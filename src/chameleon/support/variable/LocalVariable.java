@@ -39,12 +39,8 @@ public class LocalVariable extends RegularVariable<LocalVariable,VariableContain
     return new StatementListScope((StatementListContainer)ancestors.get(ancestors.size() - 1), (Statement)parent());
   }
 
-	public LocalVariable introducedDeclaration() throws LookupException {
+	public LocalVariable actualDeclaration() throws LookupException {
 		return this;
 	}
 
-	public Class<LocalVariable> introducedDeclarationType() {
-		return LocalVariable.class;
-	}
-	
 }

@@ -21,10 +21,6 @@ public class InfixOperator <E extends InfixOperator<E,H,S>, H extends SimpleName
 
   public boolean sameKind(Method other) {
 	  return(other instanceof InfixOperator);
-}
-
-	public Class<InfixOperator> introducedDeclarationType() {
-		return InfixOperator.class;
-	}
+  }
 
 }
