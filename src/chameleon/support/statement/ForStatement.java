@@ -22,7 +22,7 @@ import chameleon.util.Util;
 public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement, Element> {
 
 	@SuppressWarnings("unchecked")
-	public LookupStrategy lexicalContext(Element element) throws LookupException {
+	public LookupStrategy lexicalLookupStrategy(Element element) throws LookupException {
 		return new LexicalLookupStrategy(new LocalLookupStrategy<ForStatement>(this),this);
 	}
 	

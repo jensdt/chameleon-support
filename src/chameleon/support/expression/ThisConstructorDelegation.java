@@ -23,7 +23,7 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
   }
 
   public NormalMethod getMethod() throws LookupException {
-	   return nearestAncestor(Type.class).lexicalContext().lookUp(selector());
+	   return nearestAncestor(Type.class).lexicalLookupStrategy().lookUp(selector());
   }
 
   public boolean superOf(InvocationTarget target) {

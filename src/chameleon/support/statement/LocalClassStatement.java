@@ -94,12 +94,12 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
 //    return result;
 //  }
 
-  public LookupStrategy lexicalContext(Element element) {
+  public LookupStrategy lexicalLookupStrategy(Element element) {
   	return language().lookupFactory().createLexicalLookupStrategy(language().lookupFactory().createTargetLookupStrategy(this), this);
   }
   
   public LookupStrategy linearContext() {
-  	return lexicalContext(getType());
+  	return lexicalLookupStrategy(getType());
   }
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {

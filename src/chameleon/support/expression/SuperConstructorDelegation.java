@@ -20,7 +20,7 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   
   // @FIXME: does not work with multiple inheritance. Call is ambiguous.
   public NormalMethod getMethod() throws LookupException {
-	    return nearestAncestor(Type.class).getDirectSuperTypes().get(0).lexicalContext().lookUp(selector());
+	    return nearestAncestor(Type.class).getDirectSuperTypes().get(0).lexicalLookupStrategy().lookUp(selector());
   }
   
   public boolean superOf(InvocationTarget target) {
