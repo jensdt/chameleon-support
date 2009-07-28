@@ -29,6 +29,7 @@ package chameleon.support.expression;
 
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.Literal;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
@@ -44,7 +45,7 @@ public class NullLiteral extends Literal<NullLiteral> {
   }
 
   protected Type actualType() throws LookupException {
-	  return language().getNullType();
+	  return language(ObjectOrientedLanguage.class).getNullType();
   }
 
   public boolean superOf(InvocationTarget target) throws LookupException {

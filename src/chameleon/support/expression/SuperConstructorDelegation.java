@@ -1,6 +1,7 @@
 package chameleon.support.expression;
 
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.support.member.simplename.method.NormalMethod;
@@ -15,7 +16,7 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   }
 
   protected Type actualType() throws LookupException {
-    return language().voidType();
+    return language(ObjectOrientedLanguage.class).voidType();
   }
   
   // @FIXME: does not work with multiple inheritance. Call is ambiguous.

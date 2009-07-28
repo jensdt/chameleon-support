@@ -3,6 +3,7 @@ package chameleon.support.modifier;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
@@ -32,7 +33,7 @@ public class Private extends ModifierImpl<Private, ModifierContainer> {
 	 * A private element has a private scope, and is not inheritable.
 	 */
   public PropertySet<Element> impliedProperties() {
-	  return createSet(language().property(PrivateProperty.ID), language().INHERITABLE.inverse());
+	  return createSet(language().property(PrivateProperty.ID), language(ObjectOrientedLanguage.class).INHERITABLE.inverse());
   }
 
 }

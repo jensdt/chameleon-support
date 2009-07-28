@@ -64,11 +64,11 @@ public boolean compatibleWith(InvocationTarget target) throws LookupException {
   }
 
   public CheckedExceptionList getCEL() {
-    return new CheckedExceptionList(language());
+    return new CheckedExceptionList();
   }
 
   public CheckedExceptionList getAbsCEL() {
-    return new CheckedExceptionList(language());
+    return new CheckedExceptionList();
   }
 
   public Scope getAccessibilityDomain() throws LookupException {

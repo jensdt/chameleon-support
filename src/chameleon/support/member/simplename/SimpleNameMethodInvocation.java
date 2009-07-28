@@ -7,6 +7,7 @@ import org.rejuse.logic.ternary.Ternary;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NonConstructorInvocation;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.method.Method;
@@ -56,7 +57,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
       if((_nameHash == sig.nameHash()) && sig.name().equals(name())) {
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
-        if((decl.is(language().CONSTRUCTOR) != Ternary.TRUE) &&
+        if((decl.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) != Ternary.TRUE) &&
         	 new MoreSpecificTypesOrder().contains(actuals,formals)) {
            result = decl;
         }

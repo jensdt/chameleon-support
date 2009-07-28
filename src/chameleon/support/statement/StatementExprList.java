@@ -57,7 +57,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
   }
 
   public CheckedExceptionList getCEL() throws LookupException {
-    final CheckedExceptionList cel = new CheckedExceptionList(getNamespace().language());
+    final CheckedExceptionList cel = new CheckedExceptionList();
     try {
       new RobustVisitor() {
         public Object visit(Object element) throws LookupException {
@@ -82,7 +82,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
   }
 
   public CheckedExceptionList getAbsCEL() throws LookupException {
-    final CheckedExceptionList cel = new CheckedExceptionList(getNamespace().language());
+    final CheckedExceptionList cel = new CheckedExceptionList();
     try {
       new RobustVisitor() {
         public Object visit(Object element) throws LookupException {

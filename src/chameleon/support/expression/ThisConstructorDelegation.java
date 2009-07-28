@@ -1,6 +1,7 @@
 package chameleon.support.expression;
 
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.support.member.simplename.method.NormalMethod;
@@ -19,7 +20,7 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
   }
 
   protected Type actualType() throws LookupException {
-    return language().voidType();
+    return language(ObjectOrientedLanguage.class).voidType();
   }
 
   public NormalMethod getMethod() throws LookupException {

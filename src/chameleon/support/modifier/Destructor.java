@@ -3,6 +3,7 @@ package chameleon.support.modifier;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
@@ -22,6 +23,6 @@ public class Destructor extends ModifierImpl<Destructor,ModifierContainer> {
 	}
 
   public PropertySet<Element> impliedProperties() {
-    return createSet(language().DESTRUCTOR);
+    return createSet(language(ObjectOrientedLanguage.class).DESTRUCTOR);
   }
 }

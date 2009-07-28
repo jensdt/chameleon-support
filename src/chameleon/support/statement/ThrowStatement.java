@@ -65,7 +65,7 @@ public class ThrowStatement extends ExpressionContainingStatement<ThrowStatement
   }
 
   public CheckedExceptionList getDirectCEL() throws LookupException {
-	    CheckedExceptionList cel = new CheckedExceptionList(language());
+	    CheckedExceptionList cel = new CheckedExceptionList();
 	    Type type = getExpression().getType();
 	    TypeReference tr = new TypeReference(null, type.getFullyQualifiedName());
 	    TypeExceptionDeclaration ted = new TypeExceptionDeclaration(tr);

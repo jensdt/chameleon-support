@@ -4,6 +4,7 @@ import java.util.Set;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
@@ -46,7 +47,7 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
   }
 
   public Set<Type> getDirectExceptions() throws LookupException {
-    return Util.createNonNullSet(language().classCastException());
+    return Util.createNonNullSet(language(ObjectOrientedLanguage.class).classCastException());
   }
 
 //  public AccessibilityDomain getAccessibilityDomain() throws LookupException {

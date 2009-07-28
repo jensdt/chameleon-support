@@ -5,6 +5,7 @@ import java.util.Set;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
@@ -20,7 +21,7 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
   }
 
   protected Type actualType() throws LookupException {
-    return language().booleanType();
+    return language(ObjectOrientedLanguage.class).booleanType();
   }
 
   public boolean superOf(InvocationTarget target) throws LookupException {

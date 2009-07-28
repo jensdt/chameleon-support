@@ -35,7 +35,7 @@ public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E,Tr
   }
 
   public CheckedExceptionList getCEL() throws LookupException {
-    CheckedExceptionList result = new CheckedExceptionList(parent().language());
+    CheckedExceptionList result = new CheckedExceptionList();
     if(getStatement() != null) {
       result.absorb(getStatement().getCEL());
     }
@@ -43,7 +43,7 @@ public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E,Tr
   }
 
   public CheckedExceptionList getAbsCEL() throws LookupException {
-    CheckedExceptionList result = new CheckedExceptionList(parent().language());
+    CheckedExceptionList result = new CheckedExceptionList();
     if(getStatement() != null) {
       result.absorb(getStatement().getAbsCEL());
     }

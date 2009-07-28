@@ -9,6 +9,7 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 
@@ -27,7 +28,7 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
   }
   
   protected Type actualType() throws LookupException {
-    return language().booleanType(); 
+    return language(ObjectOrientedLanguage.class).booleanType(); 
   }
   
   public boolean superOf(InvocationTarget target) throws LookupException {

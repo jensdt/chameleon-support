@@ -7,6 +7,7 @@ import org.rejuse.logic.ternary.Ternary;
 import chameleon.core.declaration.Declaration;
 import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.relation.WeakPartialOrder;
@@ -33,7 +34,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
       NormalMethod result = null;
 //      if (selectedClass().isInstance(declaration)) {
       NormalMethod decl = (NormalMethod) declaration;
-      if(decl.is(language().CONSTRUCTOR) == Ternary.TRUE) {
+      if(decl.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) == Ternary.TRUE) {
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = decl.header().getParameterTypes();
         if (new MoreSpecificTypesOrder().contains(actuals, formals)) {

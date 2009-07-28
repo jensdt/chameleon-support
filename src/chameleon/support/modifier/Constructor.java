@@ -3,6 +3,7 @@ package chameleon.support.modifier;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
+import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
@@ -32,7 +33,7 @@ public class Constructor extends ModifierImpl<Constructor,ModifierContainer> {
 	   @ post \result.contains(language().CONSTRUCTOR);
 	   @*/
     public PropertySet<Element> impliedProperties() {
-      return createSet(language().CONSTRUCTOR);
+      return createSet(language(ObjectOrientedLanguage.class).CONSTRUCTOR);
     }
 
 }
