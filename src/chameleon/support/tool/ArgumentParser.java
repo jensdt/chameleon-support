@@ -100,7 +100,7 @@ public class ArgumentParser {
       	NamespaceOrTypeReference ref= new NamespaceOrTypeReference(args[i].substring(1));
       	ref.setUniParent(mm);
       	Namespace ns = ref.getNamespace();
-        types.addAll(ns.getAllTypes());
+        types.addAll(ns.allDeclarations(Type.class));
       }
     }
     for(int i = low; i < args.length;i++) {
@@ -108,7 +108,7 @@ public class ArgumentParser {
       	NamespaceOrTypeReference ref= new NamespaceOrTypeReference(args[i].substring(1));
       	ref.setUniParent(mm);
       	Namespace ns = ref.getNamespace();
-        types.addAll(ns.getTypes());
+        types.addAll(ns.declarations(Type.class));
       }
     }
     for(int i = low; i < args.length;i++) {
