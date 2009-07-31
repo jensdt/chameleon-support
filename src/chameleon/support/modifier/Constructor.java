@@ -4,7 +4,6 @@ import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
-import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
 /**
@@ -12,7 +11,7 @@ import chameleon.core.modifier.ModifierImpl;
  * 
  * @author Marko van Dooren
  */
-public class Constructor extends ModifierImpl<Constructor,ModifierContainer> {
+public class Constructor extends ModifierImpl<Constructor,Element> {
 	
 	  public Constructor() {
 		  

@@ -4,14 +4,13 @@ import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
-import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
 
 /**
  * @author Marko van Dooren
  */
-public class Final extends ModifierImpl<Final, ModifierContainer> {
+public class Final extends ModifierImpl<Final, Element> {
 
   public Final() {
   }

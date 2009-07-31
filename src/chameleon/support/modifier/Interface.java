@@ -4,10 +4,9 @@ import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
-import chameleon.core.modifier.ModifierContainer;
 import chameleon.core.modifier.ModifierImpl;
 
-public class Interface extends ModifierImpl<Interface, ModifierContainer> {
+public class Interface extends ModifierImpl<Interface, Element> {
 	
 	  public Interface() {
 		  
