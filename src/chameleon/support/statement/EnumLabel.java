@@ -13,7 +13,7 @@ import chameleon.core.lookup.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
 import chameleon.core.variable.Variable;
 
-public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<EnumLabel, SwitchCase>{
+public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<EnumLabel, SwitchCase, Variable>{
 
 	public EnumLabel(String name) {
 		_name = name;
@@ -38,13 +38,13 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	
 	private String _name;
 
-	public Declaration getElement() throws LookupException {
+	public Variable getElement() throws LookupException {
 		// class must move to Jnome because of enum dependency?
 		Expression switchExpr = parent().parent().getExpression();
 		return switchExpr.getType().targetContext().lookUp(selector());
 	}
 
-	private DeclarationSelector selector() {
+	private DeclarationSelector<Variable> selector() {
 		return new SelectorWithoutOrder<Variable>(new SimpleNameSignature(name()),Variable.class);
 	}
 	
