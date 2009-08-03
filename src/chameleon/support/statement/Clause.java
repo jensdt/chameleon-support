@@ -3,7 +3,7 @@ package chameleon.support.statement;
 import org.rejuse.association.Reference;
 
 import chameleon.core.lookup.LookupException;
-import chameleon.core.namespacepart.NamespaceElementImpl;
+import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;

@@ -1,7 +1,7 @@
 package chameleon.support.expression;
 
 import chameleon.core.element.Element;
-import chameleon.core.namespacepart.NamespaceElementImpl;
+import chameleon.core.namespace.NamespaceElementImpl;
 
 /**
  * @author Tim Laeremans
