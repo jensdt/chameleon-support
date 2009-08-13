@@ -30,7 +30,7 @@ import java.util.List;
 import org.rejuse.association.OrderedReferenceSet;
 import org.rejuse.association.Reference;
 import org.rejuse.java.collections.Visitor;
-import org.rejuse.predicate.PrimitivePredicate;
+import org.rejuse.predicate.AbstractPredicate;
 
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.lookup.LookupException;
@@ -123,7 +123,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
    @*/
   public boolean hasValidCatchClauses() throws LookupException {
     try {
-      return new PrimitivePredicate() {
+      return new AbstractPredicate() {
         public boolean eval(Object o) throws LookupException {
           return ((CatchClause)o).isValid();
         }

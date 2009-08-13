@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.rejuse.association.Reference;
-import org.rejuse.predicate.PrimitivePredicate;
+import org.rejuse.predicate.AbstractPredicate;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
@@ -78,7 +78,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
     try {
       CheckedExceptionList cel = parent().getStatement().getCEL();
       Collection checkedExceptionTypes = cel.getExceptions();
-      return new PrimitivePredicate() {
+      return new AbstractPredicate() {
         public boolean eval(Object o) throws LookupException {
           return ((Type)o).assignableTo(getExceptionParameter().getType());
         }
