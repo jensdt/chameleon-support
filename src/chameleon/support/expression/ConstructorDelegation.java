@@ -32,7 +32,6 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     public NormalMethod filter(Declaration declaration)
         throws LookupException {
       NormalMethod result = null;
-//      if (selectedClass().isInstance(declaration)) {
       NormalMethod decl = (NormalMethod) declaration;
       if(decl.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) == Ternary.TRUE) {
         List<Type> actuals = getActualParameterTypes();
@@ -41,7 +40,6 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
           result = decl;
         }
       }
-//      }
       return result;
     }
 

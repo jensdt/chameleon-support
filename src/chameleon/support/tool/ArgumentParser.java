@@ -1,6 +1,5 @@
 package chameleon.support.tool;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -9,17 +8,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import chameleon.core.compilationunit.CompilationUnit;
-import chameleon.core.element.Element;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespace.NamespaceOrTypeReference;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
-import chameleon.input.MetaModelFactory;
+import chameleon.input.ModelFactory;
 import chameleon.input.ParseException;
-import chameleon.linkage.ILinkage;
-import chameleon.linkage.ILinkageFactory;
-import chameleon.linkage.IParseErrorHandler;
 
 /**
  * @author Tim Laeremans
@@ -33,7 +27,7 @@ public class ArgumentParser {
    @
    @ post getFactory() == factory;
    @*/
-  public ArgumentParser(MetaModelFactory factory, boolean output) {
+  public ArgumentParser(ModelFactory factory, boolean output) {
     _factory = factory;
     _output = output;
   }
@@ -46,7 +40,7 @@ public class ArgumentParser {
    @ post getFactory() == factory;
    @ post getOutput() == true;
    @*/
-  public ArgumentParser(MetaModelFactory factory) {
+  public ArgumentParser(ModelFactory factory) {
    this(factory, true);
  }
  
@@ -64,11 +58,11 @@ public class ArgumentParser {
    @
    @ post \result != null;
    @*/
-  public MetaModelFactory getFactory() {
+  public ModelFactory getFactory() {
     return _factory;
   }
 
-	private MetaModelFactory _factory;
+	private ModelFactory _factory;
 
 	  /**
 	   * The first argument is structured as follows:
@@ -92,7 +86,7 @@ public class ArgumentParser {
       }
     }
     System.out.println("Parsing "+files.size() +" files.");
-    Namespace mm = _factory.getMetaModel(new OutputParserFactory(), files);
+    Namespace mm = _factory.getMetaModel(files);
     Set<Type> types = new HashSet<Type>();
     
     for(int i = low; i < args.length;i++) {
@@ -136,28 +130,28 @@ public class ArgumentParser {
     }
   }
   
-  static class OutputParserFactory implements ILinkageFactory{
-
-	public ILinkage createLinkage(File file) {
-		return new ILinkage(){
-
-			public IParseErrorHandler getParseErrorHandler() {
-				return null;
-			}
-
-			public String getSource() {
-				return null;
-			}
-
-			public void decoratePosition(int offset, int length, String dectype, Element el) {
-			}
-
-			public int getLineOffset(int i) {
-				return 0;
-			}
-
-			public void addCompilationUnit(CompilationUnit cu) {
-				
-			}};
-	}}
+//  static class OutputParserFactory implements ILinkageFactory{
+//
+//	public ILinkage createLinkage(File file) {
+//		return new ILinkage(){
+//
+//			public IParseErrorHandler getParseErrorHandler() {
+//				return null;
+//			}
+//
+//			public String getSource() {
+//				return null;
+//			}
+//
+//			public void decoratePosition(int offset, int length, String dectype, Element el) {
+//			}
+//
+//			public int getLineOffset(int i) {
+//				return 0;
+//			}
+//
+//			public void addCompilationUnit(CompilationUnit cu) {
+//				
+//			}};
+//	}}
 }

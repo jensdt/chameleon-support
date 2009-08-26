@@ -37,7 +37,7 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 	public S signature() {
 		SimpleNameMethodSignature result =  new SimpleNameMethodSignature(getName());
 		result.setUniParent(parent());
-		for(FormalParameter param: getParameters()) {
+		for(FormalParameter param: formalParameters()) {
 			result.add(param.getTypeReference().clone());
 		}
 		return (S) result;
