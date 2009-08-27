@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.rejuse.io.DirectoryScanner;
+
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespace.NamespaceOrTypeReference;
 import chameleon.core.type.Type;
@@ -82,11 +84,11 @@ public class ArgumentParser {
     for(int i = low; i < args.length;i++) {
     	if(! args[i].startsWith("@") && ! args[i].startsWith("#")&& ! args[i].startsWith("%")) {
         //files.include(new PatternPredicate(new File(args[i]), new FileNamePattern("**/*.csharp")));
-    		files.addAll(getFactory().loadFiles(args[i],extension,true));
+    		files.addAll(new DirectoryScanner().scan(args[i],extension,true));
       }
     }
     System.out.println("Parsing "+files.size() +" files.");
-    Namespace mm = _factory.getMetaModel(files);
+    Namespace mm = _factory.createModel(files);
     Set<Type> types = new HashSet<Type>();
     
     for(int i = low; i < args.length;i++) {
