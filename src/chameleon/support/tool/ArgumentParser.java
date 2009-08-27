@@ -88,7 +88,8 @@ public class ArgumentParser {
       }
     }
     System.out.println("Parsing "+files.size() +" files.");
-    Namespace mm = _factory.createModel(files);
+    _factory.addToModel(files);
+    Namespace mm = _factory.language().defaultNamespace();
     Set<Type> types = new HashSet<Type>();
     
     for(int i = low; i < args.length;i++) {

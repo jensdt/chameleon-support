@@ -16,7 +16,6 @@ import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
-import chameleon.core.statement.TypeDeclaringStatement;
 import chameleon.core.type.Type;
 import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
@@ -25,7 +24,7 @@ import chameleon.util.Util;
  * @author marko
  */
 public class LocalClassStatement extends Statement<LocalClassStatement> 
-             implements DeclarationContainer<LocalClassStatement,Element>, TypeDeclaringStatement {
+             implements DeclarationContainer<LocalClassStatement,Element> {
 
 	public LocalClassStatement() {
 	}
