@@ -8,6 +8,7 @@ import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.DeclaratorSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
@@ -37,14 +38,22 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	}
 	
 	private String _name;
-
+	
 	public Variable getElement() throws LookupException {
+		return getElement(selector());
+	}
+	
+	public <X extends Declaration> X getElement(DeclarationSelector<X> selector) throws LookupException {
 		// class must move to Jnome because of enum dependency?
 		Expression switchExpr = parent().parent().getExpression();
-		return switchExpr.getType().targetContext().lookUp(selector());
+		return switchExpr.getType().targetContext().lookUp(selector);
 	}
 
-	private DeclarationSelector<Variable> selector() {
+	public Declaration getDeclarator() throws LookupException {
+		return getElement(new DeclaratorSelector(selector()));
+	}
+
+	public DeclarationSelector<Variable> selector() {
 		return new SelectorWithoutOrder<Variable>(new SimpleNameSignature(name()),Variable.class);
 	}
 	

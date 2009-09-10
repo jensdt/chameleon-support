@@ -1,29 +1,59 @@
 package chameleon.support.expression;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.rejuse.association.Reference;
+
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.expression.InvocationTargetWithTarget;
 import chameleon.core.expression.NamedTarget;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
+import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.type.Type;
+import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren
  */
-public class SuperTarget extends InvocationTargetWithTarget<SuperTarget> {
+public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> implements InvocationTarget<SuperTarget,Element> {
 
   public SuperTarget() {
-		
 	}
+  
+  public SuperTarget(InvocationTarget target) {
+  	setTarget(target);
+  }
 
-public boolean compatibleWith(InvocationTarget target) throws LookupException {
+	/**
+	 * TARGET
+	 */
+	private Reference<InvocationTarget,InvocationTarget> _target = new Reference<InvocationTarget,InvocationTarget>(this);
+
+  public InvocationTarget<?,?> getTarget() {
+    return _target.getOtherEnd();
+  }
+
+  public void setTarget(InvocationTarget target) {
+    if (target != null) {
+      _target.connectTo(target.parentLink());
+    }
+    else {
+      _target.connectTo(null);
+    }
+  }
+
+  public List<Element> children() {
+  	return Util.createNonNullList(getTarget());
+  }
+
+  public boolean compatibleWith(InvocationTarget target) throws LookupException {
     return superOf(target) || target.subOf(this);
   }
 
