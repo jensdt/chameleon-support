@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.Signature;
 import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
@@ -12,12 +13,14 @@ import chameleon.core.lookup.DeclaratorSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
+import chameleon.core.reference.SpecificReference;
 import chameleon.core.variable.Variable;
 
 public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<EnumLabel, SwitchCase, Variable>{
 
 	public EnumLabel(String name) {
 		_name = name;
+		_signature = new SimpleNameSignature(_name);
 	}
 	
 	@Override
@@ -35,9 +38,12 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	
 	public void setName(String name) {
 		_name = name;
+		_signature.setName(name);
 	}
 	
 	private String _name;
+	
+	private SimpleNameSignature _signature;
 	
 	public Variable getElement() throws LookupException {
 		return getElement(selector());
@@ -54,7 +60,11 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	}
 
 	public DeclarationSelector<Variable> selector() {
-		return new SelectorWithoutOrder<Variable>(new SimpleNameSignature(name()),Variable.class);
+		return new SelectorWithoutOrder<Variable>(new SelectorWithoutOrder.SignatureSelector() {
+			public Signature signature() {
+				return _signature;
+			}
+		},Variable.class);
 	}
 	
 }
