@@ -45,11 +45,9 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 	}
 
 	@Override public FilledArrayIndex clone() {
-		    List<Expression> els = descendants(Expression.class);
         FilledArrayIndex result = new FilledArrayIndex();
-        for (Expression e : els) {
-            Expression expr = e.clone();
-            result.addIndex(expr);
+        for (Expression e : getIndices()) {
+            result.addIndex(e.clone());
         }
         return result;
 
