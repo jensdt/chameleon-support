@@ -1,7 +1,11 @@
 package chameleon.support.expression;
 
+import java.util.List;
+
+import chameleon.core.declaration.Declaration;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.language.ObjectOrientedLanguage;
+import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.support.member.simplename.method.NormalMethod;
@@ -30,6 +34,19 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
 
   protected SuperConstructorDelegation cloneInvocation(InvocationTarget target) {
     return new SuperConstructorDelegation();
+  }
+
+  public <X extends Declaration> X getElement(DeclarationSelector<X> selector) throws LookupException {
+  	X result = null;
+  	Type parent = nearestAncestor(Type.class);
+  	List<Type> types = parent.directSuperTypes();
+  	for(Type type: types) {
+  		result = type.targetContext().lookUp(selector);
+  		if(result != null) {
+  			break;
+  		}
+  	}
+  	return result;
   }
 
 }

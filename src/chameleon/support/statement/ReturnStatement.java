@@ -1,7 +1,6 @@
 package chameleon.support.statement;
 
 import chameleon.core.expression.Expression;
-import chameleon.core.statement.ExpressionContainingStatement;
 
 /**
  * @author Marko van Dooren
