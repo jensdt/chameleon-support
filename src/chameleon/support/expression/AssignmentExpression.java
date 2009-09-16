@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.Assignable;
 import chameleon.core.expression.Expression;
@@ -31,7 +31,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
 	/**
 	 * VARIABLE
 	 */
-	private Reference<AssignmentExpression,Assignable> _variable = new Reference<AssignmentExpression,Assignable>(this);
+	private SingleAssociation<AssignmentExpression,Assignable> _variable = new SingleAssociation<AssignmentExpression,Assignable>(this);
 
 
   public Assignable getVariable() {
@@ -50,7 +50,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
 	/**
 	 * VALUE
 	 */
-	private Reference<AssignmentExpression,Expression> _value = new Reference<AssignmentExpression,Expression>(this);
+	private SingleAssociation<AssignmentExpression,Expression> _value = new SingleAssociation<AssignmentExpression,Expression>(this);
 
   public Expression getValue() {
     return (Expression)_value.getOtherEnd();

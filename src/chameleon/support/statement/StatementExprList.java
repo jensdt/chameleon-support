@@ -3,7 +3,7 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
+import org.rejuse.association.OrderedMultiAssociation;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
@@ -29,7 +29,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
 	/**
 	 * STATEMENT EXPRESSIONS
 	 */
-	private OrderedReferenceSet<StatementExprList,StatementExpression> _statementExpressions = new OrderedReferenceSet<StatementExprList,StatementExpression>(this);
+	private OrderedMultiAssociation<StatementExprList,StatementExpression> _statementExpressions = new OrderedMultiAssociation<StatementExprList,StatementExpression>(this);
 
   public void addStatement(StatementExpression statement) {
     _statementExpressions.add(statement.parentLink());

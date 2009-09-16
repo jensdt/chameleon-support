@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.lookup.LookupException;
 import chameleon.core.member.Member;
@@ -37,7 +37,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
    * BLOCK *
    *********/
 
-  public Reference getBlockLink() {
+  public SingleAssociation getBlockLink() {
     return _blockLink;
   }
 
@@ -46,7 +46,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
   }
 
 
-  private Reference<StaticInitializer,Block> _blockLink = new Reference<StaticInitializer,Block>(this);
+  private SingleAssociation<StaticInitializer,Block> _blockLink = new SingleAssociation<StaticInitializer,Block>(this);
 
   public void setBlock(Block block) {
     _blockLink.connectTo(block.parentLink());

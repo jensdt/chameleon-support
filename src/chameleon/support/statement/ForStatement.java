@@ -2,7 +2,7 @@ package chameleon.support.statement;
 
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
@@ -47,7 +47,7 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
   	}
   }
   
-  private Reference<ForStatement,ForControl> _control = new Reference<ForStatement, ForControl>(this); 
+  private SingleAssociation<ForStatement,ForControl> _control = new SingleAssociation<ForStatement, ForControl>(this); 
 
 
   public List<Element> children() {

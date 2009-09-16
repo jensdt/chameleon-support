@@ -27,8 +27,8 @@ package chameleon.support.statement;
 import java.util.Iterator;
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
-import org.rejuse.association.Reference;
+import org.rejuse.association.OrderedMultiAssociation;
+import org.rejuse.association.SingleAssociation;
 import org.rejuse.java.collections.Visitor;
 import org.rejuse.predicate.AbstractPredicate;
 
@@ -50,10 +50,10 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
 	/**
 	 * CATCH CLAUSES
 	 */
-	private OrderedReferenceSet<TryStatement,CatchClause> _catchClausesLink = new OrderedReferenceSet<TryStatement,CatchClause>(this);
+	private OrderedMultiAssociation<TryStatement,CatchClause> _catchClausesLink = new OrderedMultiAssociation<TryStatement,CatchClause>(this);
 
 
-  public OrderedReferenceSet<TryStatement,CatchClause> getCatchClausesLink() {
+  public OrderedMultiAssociation<TryStatement,CatchClause> getCatchClausesLink() {
     return _catchClausesLink;
   }
 
@@ -82,7 +82,7 @@ public class TryStatement extends StatementContainingStatement<TryStatement> {
 	/**
 	 * FINALLY
 	 */
-	private Reference _finally = new Reference(this);
+	private SingleAssociation _finally = new SingleAssociation(this);
 
   public FinallyClause getFinallyClause() {
     return (FinallyClause)_finally.getOtherEnd();

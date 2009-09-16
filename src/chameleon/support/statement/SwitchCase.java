@@ -2,8 +2,8 @@ package chameleon.support.statement;
 
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
-import org.rejuse.association.Reference;
+import org.rejuse.association.OrderedMultiAssociation;
+import org.rejuse.association.SingleAssociation;
 import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
@@ -30,10 +30,10 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
 	/**
 	 * STATEMENTS
 	 */
-	private OrderedReferenceSet<SwitchCase,Statement> _statements = new OrderedReferenceSet<SwitchCase,Statement>(this);
+	private OrderedMultiAssociation<SwitchCase,Statement> _statements = new OrderedMultiAssociation<SwitchCase,Statement>(this);
 
 
-  public OrderedReferenceSet getStatementsLink() {
+  public OrderedMultiAssociation getStatementsLink() {
     return _statements;
   }
 
@@ -52,7 +52,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
 	/**
 	 * LABELS
 	 */
-	private Reference<SwitchCase,SwitchLabel> _labels = new Reference<SwitchCase,SwitchLabel>(this);
+	private SingleAssociation<SwitchCase,SwitchLabel> _labels = new SingleAssociation<SwitchCase,SwitchLabel>(this);
 
   public void setLabel(SwitchLabel label) {
   	if(label != null) {

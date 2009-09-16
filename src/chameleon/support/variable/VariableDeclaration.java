@@ -3,7 +3,7 @@ package chameleon.support.variable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
@@ -59,7 +59,7 @@ public class VariableDeclaration<V extends Variable> extends NamespaceElementImp
 	    return _signature.getOtherEnd();
 	  }
 	  
-	  private Reference<VariableDeclaration, SimpleNameSignature> _signature = new Reference<VariableDeclaration, SimpleNameSignature>(this);
+	  private SingleAssociation<VariableDeclaration, SimpleNameSignature> _signature = new SingleAssociation<VariableDeclaration, SimpleNameSignature>(this);
 
 
 	public List<Element> children() {
@@ -72,7 +72,7 @@ public class VariableDeclaration<V extends Variable> extends NamespaceElementImp
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<VariableDeclaration,Expression> _expression = new Reference<VariableDeclaration,Expression>(this);
+	private SingleAssociation<VariableDeclaration,Expression> _expression = new SingleAssociation<VariableDeclaration,Expression>(this);
 
   
   public Expression expression() {

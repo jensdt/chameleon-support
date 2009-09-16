@@ -3,8 +3,8 @@ package chameleon.support.member.simplename.variable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
-import org.rejuse.association.Reference;
+import org.rejuse.association.OrderedMultiAssociation;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
@@ -55,7 +55,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 		}
 	}
 	
-	private OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>> _declarations = new OrderedReferenceSet<MemberVariableDeclarator, VariableDeclaration<MemberVariable>>(this);
+	private OrderedMultiAssociation<MemberVariableDeclarator, VariableDeclaration<MemberVariable>> _declarations = new OrderedMultiAssociation<MemberVariableDeclarator, VariableDeclaration<MemberVariable>>(this);
 
 	public MemberVariable createVariable(SimpleNameSignature signature, Expression expression) {
 		MemberVariable result = new RegularMemberVariable(signature, typeReference().clone(),expression);
@@ -85,7 +85,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	/**
 	 * TYPE
 	 */
-	private Reference<MemberVariableDeclarator,TypeReference> _typeReference = new Reference<MemberVariableDeclarator,TypeReference>(this);
+	private SingleAssociation<MemberVariableDeclarator,TypeReference> _typeReference = new SingleAssociation<MemberVariableDeclarator,TypeReference>(this);
 
   public Type type() throws LookupException {
   	return typeReference().getType();

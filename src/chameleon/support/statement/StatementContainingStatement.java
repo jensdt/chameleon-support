@@ -24,7 +24,7 @@
  */
 package chameleon.support.statement;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.statement.Statement;
 
@@ -41,7 +41,7 @@ public abstract class StatementContainingStatement<E extends StatementContaining
 	 * STATEMENT
 	 */
   
-	private Reference<StatementContainingStatement,Statement> _statement = new Reference<StatementContainingStatement,Statement>(this);
+	private SingleAssociation<StatementContainingStatement,Statement> _statement = new SingleAssociation<StatementContainingStatement,Statement>(this);
 
   
   public void setStatement(Statement statement) {

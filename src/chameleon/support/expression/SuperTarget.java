@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
@@ -34,7 +34,7 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
 	/**
 	 * TARGET
 	 */
-	private Reference<InvocationTarget,InvocationTarget> _target = new Reference<InvocationTarget,InvocationTarget>(this);
+	private SingleAssociation<InvocationTarget,InvocationTarget> _target = new SingleAssociation<InvocationTarget,InvocationTarget>(this);
 
   public InvocationTarget<?,?> getTarget() {
     return _target.getOtherEnd();

@@ -3,7 +3,7 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.DeclarationContainer;
@@ -37,7 +37,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
    * CLASS *
    *********/
 
-	private Reference<LocalClassStatement,Type> _type = new Reference<LocalClassStatement,Type>(this);
+	private SingleAssociation<LocalClassStatement,Type> _type = new SingleAssociation<LocalClassStatement,Type>(this);
 
 	public void setType(Type type) {
     _type.connectTo(type.parentLink());
@@ -47,7 +47,7 @@ public class LocalClassStatement extends Statement<LocalClassStatement>
     return _type.getOtherEnd();
   }
 
-  public Reference<LocalClassStatement,Type> getTypesLink() {
+  public SingleAssociation<LocalClassStatement,Type> getTypesLink() {
     return _type;
   }
 

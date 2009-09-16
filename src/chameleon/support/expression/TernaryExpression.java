@@ -1,6 +1,6 @@
 package chameleon.support.expression;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
@@ -15,7 +15,7 @@ public abstract class TernaryExpression extends BinaryExpression {
 	/**
 	 * THIRD
 	 */
-	private Reference<TernaryExpression,Expression> _third = new Reference<TernaryExpression,Expression>(this);
+	private SingleAssociation<TernaryExpression,Expression> _third = new SingleAssociation<TernaryExpression,Expression>(this);
 
   public Expression getThird() {
     return _third.getOtherEnd();

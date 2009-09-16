@@ -2,7 +2,7 @@ package chameleon.support.expression;
 
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
@@ -15,7 +15,7 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<ExprTypeRefContainingExpression,Expression> _expression = new Reference<ExprTypeRefContainingExpression,Expression>(this);
+	private SingleAssociation<ExprTypeRefContainingExpression,Expression> _expression = new SingleAssociation<ExprTypeRefContainingExpression,Expression>(this);
 
 
   public Expression<? extends Expression> getExpression() {
@@ -34,7 +34,7 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
 	/**
 	 * TYPE
 	 */
-	private Reference<ExprTypeRefContainingExpression,TypeReference> _typeReference = new Reference<ExprTypeRefContainingExpression,TypeReference>(this);
+	private SingleAssociation<ExprTypeRefContainingExpression,TypeReference> _typeReference = new SingleAssociation<ExprTypeRefContainingExpression,TypeReference>(this);
 
   public TypeReference getTypeReference() {
     return _typeReference.getOtherEnd();

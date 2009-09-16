@@ -1,6 +1,6 @@
 package chameleon.support.expression;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.Literal;
 import chameleon.core.lookup.LookupException;
@@ -24,7 +24,7 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
 	/**
 	 * TARGET
 	 */
-	private Reference<LiteralWithTypeReference,TypeReference> _typeReference = new Reference<LiteralWithTypeReference,TypeReference>(this);
+	private SingleAssociation<LiteralWithTypeReference,TypeReference> _typeReference = new SingleAssociation<LiteralWithTypeReference,TypeReference>(this);
 
   
   public TypeReference getTypeReference() {

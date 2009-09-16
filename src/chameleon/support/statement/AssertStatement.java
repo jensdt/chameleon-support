@@ -2,7 +2,7 @@ package chameleon.support.statement;
 
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
@@ -23,7 +23,7 @@ public class AssertStatement  extends ExpressionContainingStatement<AssertStatem
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<AssertStatement,Expression> _messageExpression = new Reference<AssertStatement,Expression>(this);
+	private SingleAssociation<AssertStatement,Expression> _messageExpression = new SingleAssociation<AssertStatement,Expression>(this);
 
   
   public Expression messageExpression() {

@@ -1,6 +1,6 @@
 package chameleon.support.statement;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElementImpl;
@@ -20,7 +20,7 @@ public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E,Tr
 	/**
 	 * Statement
 	 */
-	private Reference<Clause,Statement> _statement = new Reference<Clause,Statement>(this);
+	private SingleAssociation<Clause,Statement> _statement = new SingleAssociation<Clause,Statement>(this);
 
   public void setStatement(Statement statement) {
     _statement.connectTo(statement.parentLink());

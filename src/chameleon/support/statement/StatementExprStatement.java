@@ -1,7 +1,7 @@
 package chameleon.support.statement;
 
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
@@ -19,7 +19,7 @@ public abstract class StatementExprStatement<E extends StatementExprStatement> e
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<StatementExprStatement,Expression> _expression = new Reference<StatementExprStatement,Expression>(this);
+	private SingleAssociation<StatementExprStatement,Expression> _expression = new SingleAssociation<StatementExprStatement,Expression>(this);
 
   
   public Expression<? extends Expression> getExpression() {

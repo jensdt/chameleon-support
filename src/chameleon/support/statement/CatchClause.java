@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 import org.rejuse.predicate.UnsafePredicate;
 
 import chameleon.core.declaration.Declaration;
@@ -35,9 +35,9 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
    * EXCEPTION * 
    *************/
   
-	private Reference<CatchClause,FormalParameter> _exceptionLink = new Reference<CatchClause,FormalParameter>(this);
+	private SingleAssociation<CatchClause,FormalParameter> _exceptionLink = new SingleAssociation<CatchClause,FormalParameter>(this);
 
-	public Reference getExceptionLink() {
+	public SingleAssociation getExceptionLink() {
     return _exceptionLink;
   }
   

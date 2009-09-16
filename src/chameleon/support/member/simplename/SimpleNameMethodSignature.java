@@ -3,7 +3,7 @@ package chameleon.support.member.simplename;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
+import org.rejuse.association.OrderedMultiAssociation;
 
 import chameleon.core.declaration.Signature;
 import chameleon.core.element.Element;
@@ -53,7 +53,7 @@ public int getNbTypeReferences() {
  return _parameters.size();
 }
 
-private OrderedReferenceSet<SimpleNameMethodSignature,TypeReference> _parameters = new OrderedReferenceSet<SimpleNameMethodSignature,TypeReference>(this);
+private OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference> _parameters = new OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference>(this);
 
   
   @Override

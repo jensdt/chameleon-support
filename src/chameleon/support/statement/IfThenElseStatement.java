@@ -3,7 +3,7 @@ package chameleon.support.statement;
 
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
@@ -23,7 +23,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * IF STATEMENT
 	 */
-	private Reference<IfThenElseStatement,Statement> _ifStatement = new Reference<IfThenElseStatement,Statement>(this);
+	private SingleAssociation<IfThenElseStatement,Statement> _ifStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
 
 
   public void setIfStatement(Statement statement) {
@@ -37,7 +37,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * ELSE STATEMENT
 	 */
-	private Reference<IfThenElseStatement,Statement> _elseStatement = new Reference<IfThenElseStatement,Statement>(this);
+	private SingleAssociation<IfThenElseStatement,Statement> _elseStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
 
   public void setElseStatement(Statement statement) {
     if (statement != null) {

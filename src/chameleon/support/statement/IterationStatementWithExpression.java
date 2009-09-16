@@ -1,6 +1,6 @@
 package chameleon.support.statement;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
@@ -17,7 +17,7 @@ public abstract class IterationStatementWithExpression<E extends IterationStatem
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<IterationStatementWithExpression,Expression> _expression = new Reference<IterationStatementWithExpression,Expression>(this);
+	private SingleAssociation<IterationStatementWithExpression,Expression> _expression = new SingleAssociation<IterationStatementWithExpression,Expression>(this);
 
   
   public Expression condition() {

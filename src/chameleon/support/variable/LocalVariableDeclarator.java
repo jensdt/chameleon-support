@@ -3,8 +3,8 @@ package chameleon.support.variable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
-import org.rejuse.association.Reference;
+import org.rejuse.association.OrderedMultiAssociation;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
@@ -68,7 +68,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 	/**
 	 * TYPE
 	 */
-	private Reference<LocalVariableDeclarator,TypeReference> _typeReference = new Reference<LocalVariableDeclarator,TypeReference>(this);
+	private SingleAssociation<LocalVariableDeclarator,TypeReference> _typeReference = new SingleAssociation<LocalVariableDeclarator,TypeReference>(this);
 
   public Type type() throws LookupException {
   	return typeReference().getType();
@@ -98,7 +98,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 		}
 	}
 	
-	private OrderedReferenceSet<LocalVariableDeclarator, VariableDeclaration<LocalVariable>> _declarations = new OrderedReferenceSet<LocalVariableDeclarator, VariableDeclaration<LocalVariable>>(this);
+	private OrderedMultiAssociation<LocalVariableDeclarator, VariableDeclaration<LocalVariable>> _declarations = new OrderedMultiAssociation<LocalVariableDeclarator, VariableDeclaration<LocalVariable>>(this);
 
 	
 	
@@ -108,7 +108,7 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
   /*************
    * MODIFIERS *
    *************/
-  private OrderedReferenceSet<LocalVariableDeclarator, Modifier> _modifiers = new OrderedReferenceSet<LocalVariableDeclarator, Modifier>(this);
+  private OrderedMultiAssociation<LocalVariableDeclarator, Modifier> _modifiers = new OrderedMultiAssociation<LocalVariableDeclarator, Modifier>(this);
 
 
   /**

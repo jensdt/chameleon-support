@@ -3,7 +3,7 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
@@ -25,10 +25,10 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
   /**
 	 * FOR INIT
 	 */
-	private Reference<SimpleForControl,ForInit> _forInit = new Reference<SimpleForControl,ForInit>(this);
+	private SingleAssociation<SimpleForControl,ForInit> _forInit = new SingleAssociation<SimpleForControl,ForInit>(this);
 
 
-  public Reference<SimpleForControl,ForInit> getInitLink() {
+  public SingleAssociation<SimpleForControl,ForInit> getInitLink() {
     return _forInit;
   }
 
@@ -49,9 +49,9 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
 	 * UPDATE
 	 */
 
-  private Reference<SimpleForControl,StatementExprList> _update = new Reference<SimpleForControl,StatementExprList>(this);
+  private SingleAssociation<SimpleForControl,StatementExprList> _update = new SingleAssociation<SimpleForControl,StatementExprList>(this);
 
-  public Reference<SimpleForControl,StatementExprList> getUpdateLink() {
+  public SingleAssociation<SimpleForControl,StatementExprList> getUpdateLink() {
     return _update;
   }
 
@@ -95,7 +95,7 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<SimpleForControl,Expression> _expression = new Reference<SimpleForControl,Expression>(this);
+	private SingleAssociation<SimpleForControl,Expression> _expression = new SingleAssociation<SimpleForControl,Expression>(this);
 
   
   public Expression<? extends Expression> condition() {

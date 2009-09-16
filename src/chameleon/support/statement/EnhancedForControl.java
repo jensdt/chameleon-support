@@ -3,7 +3,7 @@ package chameleon.support.statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.rejuse.association.Reference;
+import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
@@ -36,7 +36,7 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 		}
 	}
 	
-	private Reference<EnhancedForControl,LocalVariableDeclarator> _variable = new Reference<EnhancedForControl,LocalVariableDeclarator>(this);
+	private SingleAssociation<EnhancedForControl,LocalVariableDeclarator> _variable = new SingleAssociation<EnhancedForControl,LocalVariableDeclarator>(this);
 	
 	@Override
 	public EnhancedForControl clone() {
@@ -53,7 +53,7 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 	/**
 	 * EXPRESSION
 	 */
-	private Reference<EnhancedForControl,Expression> _expression = new Reference<EnhancedForControl,Expression>(this);
+	private SingleAssociation<EnhancedForControl,Expression> _expression = new SingleAssociation<EnhancedForControl,Expression>(this);
 
   
   public Expression collection() {

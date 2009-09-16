@@ -2,7 +2,7 @@ package chameleon.support.expression;
 
 import java.util.List;
 
-import org.rejuse.association.OrderedReferenceSet;
+import org.rejuse.association.OrderedMultiAssociation;
 
 import chameleon.core.expression.Expression;
 
@@ -21,7 +21,7 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 	}
 
 
-	private OrderedReferenceSet<FilledArrayIndex,Expression> _expressions = new OrderedReferenceSet<FilledArrayIndex,Expression>(this);
+	private OrderedMultiAssociation<FilledArrayIndex,Expression> _expressions = new OrderedMultiAssociation<FilledArrayIndex,Expression>(this);
 
 
 	public void addIndex(Expression expr){
