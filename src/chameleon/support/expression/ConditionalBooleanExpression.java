@@ -12,6 +12,9 @@ import chameleon.core.expression.InvocationTarget;
 import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 
 /**
@@ -49,9 +52,5 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     result.add(getSecond());
     return result;
   }
-
-//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
-//    return getFirst().getAccessibilityDomain().intersect(getSecond().getAccessibilityDomain());
-//  }
   
 }

@@ -6,11 +6,15 @@ import java.util.Set;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Assignable;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
@@ -78,16 +82,47 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
     return new AssignmentExpression(getVariable().clone(), ((Expression<? extends Expression>)getValue()).clone());
   }
 
-  public List children() {
-    List result = Util.createNonNullList(getVariable());
+  public List<Element> children() {
+    List<Element> result = Util.createNonNullList(getVariable());
     Util.addNonNull(getValue(), result);
     return result;
   }
 
-  public Set getDirectExceptions() throws LookupException {
-    return new HashSet();
+  public Set<Type> getDirectExceptions() throws LookupException {
+    return new HashSet<Type>();
   }
 
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = Valid.create();
+		try {
+			Assignable var = getVariable();
+			if(var == null) {
+				result = result.and(new BasicProblem(this, "The assignment has no variable at the left-hand side"));
+			}
+			Expression value = getValue();
+			if(value == null) {
+				result = result.and(new BasicProblem(this, "The assignment has no valid expression at the right-hand side"));
+			}
+			Type varType = var.getType();
+			Type exprType = value.getType();
+			if(! exprType.assignableTo(varType)) {
+				result = result.and(new InvalidType(this, varType, exprType));
+			}
+		}
+	  catch (LookupException e) {
+			result = result.and(new BasicProblem(this, "The type of the expression is not assignable to the type of the variable."));
+	  }
+	  return result;
+	}
+
+	public static class InvalidType extends BasicProblem {
+
+		public InvalidType(Element element, Type varType, Type exprType) {
+			super(element, "The type of the left-hand side ("+exprType.getFullyQualifiedName()+") is not assignable to a variable of type "+varType.getFullyQualifiedName());
+		}
+		
+	}
 //  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
 //    return getVariable().getAccessibilityDomain().intersect(getValue().getAccessibilityDomain());
 //  }

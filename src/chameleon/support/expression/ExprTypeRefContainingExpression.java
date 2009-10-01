@@ -7,6 +7,9 @@ import org.rejuse.association.SingleAssociation;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.type.TypeReference;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefContainingExpression> 
@@ -49,5 +52,18 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
   	Util.addNonNull(getTypeReference(), result);
     return result;
   }
+  
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = Valid.create();
+    if(getTypeReference() == null) {
+    	result = result.and(new BasicProblem(this,"The type is missing."));
+    }
+    if(getExpression() == null) {
+    	result = result.and(new BasicProblem(this,"The cast is missing."));
+    }
+    return result;
+	}
+
 
 }

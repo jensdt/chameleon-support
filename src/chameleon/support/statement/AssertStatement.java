@@ -6,8 +6,12 @@ import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.language.ObjectOrientedLanguage;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.VerificationResult;
 
-public class AssertStatement  extends ExpressionContainingStatement<AssertStatement> {
+public class AssertStatement extends ExpressionContainingStatement<AssertStatement> {
 
   /**
    * @param expression
@@ -46,6 +50,19 @@ public class AssertStatement  extends ExpressionContainingStatement<AssertStatem
   	}
   	return result;
   }
-
+  
+  @Override
+  public VerificationResult verifyThis() {
+  	VerificationResult result = super.verifyThis();
+  	Expression expr = getExpression();
+  	try {
+  	  if(expr != null && ! expr.getType().subTypeOf(language(ObjectOrientedLanguage.class).booleanType())) {
+  		  result = result.and(new BasicProblem(this, "The condition is not a boolean."));
+  	  }
+  	} catch(LookupException exc) {
+		  result = result.and(new BasicProblem(this, "The condition is not a boolean."));
+  	}
+  	return result;
+  }
 
 }

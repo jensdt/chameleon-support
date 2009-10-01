@@ -3,6 +3,9 @@ package chameleon.support.expression;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 
 /**
@@ -27,6 +30,5 @@ public class ConditionalAndExpression extends ConditionalBooleanExpression {
     Expression second = getSecond().clone();
     return new ConditionalAndExpression(first, second);
   }
-
-
+  
 }

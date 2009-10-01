@@ -17,6 +17,8 @@ import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.type.Type;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
@@ -116,5 +118,15 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
   public LookupStrategy targetContext() throws LookupException {
     return getType().targetContext();
   }
+
+  /**
+   * A super target is always valid. If invocations on a super target must always resolve to an effective declaration, 
+   * as is the case in Java, then the language must add that rule. For mixins, for example, that must only be the case for
+   * an actual combination of mixins.
+   */
+	@Override
+	public VerificationResult verifyThis() {
+		return Valid.create();
+	}
 
 }

@@ -12,6 +12,9 @@ import chameleon.core.method.Method;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodSignature, Method>{
 
@@ -85,6 +88,15 @@ private OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference> _parame
 
 	public List<? extends Element> children() {
 		return typeReferences();
+	}
+
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = Valid.create();
+		if(name() == null) {
+			result = result.and(new BasicProblem(this, "The signature has no name."));
+		}
+		return result;
 	}
 
 

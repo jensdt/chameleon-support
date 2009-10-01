@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.element.Element;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * @author Marko van Dooren
@@ -25,5 +26,10 @@ public class BreakStatement extends JumpStatement<BreakStatement> {
   public List<Element> children() {
     return new ArrayList();
   }
+
+	@Override
+	public VerificationResult verifyThis() {
+		compile
+	}
 
 }

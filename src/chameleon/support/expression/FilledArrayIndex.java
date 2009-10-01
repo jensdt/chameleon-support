@@ -5,6 +5,8 @@ import java.util.List;
 import org.rejuse.association.OrderedMultiAssociation;
 
 import chameleon.core.expression.Expression;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * @author Marko van Dooren
@@ -20,9 +22,7 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 		addIndex(expr);
 	}
 
-
 	private OrderedMultiAssociation<FilledArrayIndex,Expression> _expressions = new OrderedMultiAssociation<FilledArrayIndex,Expression>(this);
-
 
 	public void addIndex(Expression expr){
 		if(expr != null) {
@@ -53,17 +53,9 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 
 	}
 
-	@Override public String toString(){
-		int i = descendants(Expression.class).size();
-		StringBuffer result = new StringBuffer("[");
-
-		while(i > 1){
-			result.append(",");
-			i--;
-		}
-
-		result.append("]");
-		return result.toString();
+	@Override
+	public VerificationResult verifyThis() {
+		return Valid.create();
 	}
 
 }

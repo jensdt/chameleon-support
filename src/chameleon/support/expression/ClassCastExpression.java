@@ -8,9 +8,13 @@ import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
+ * @author Marko van Dooren
  * @author Tim Laeremans
  */
 public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCastExpression> {
@@ -50,7 +54,4 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
     return Util.createNonNullSet(language(ObjectOrientedLanguage.class).classCastException());
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
-//    return getType().getTypeAccessibilityDomain().intersect(getExpression().getAccessibilityDomain());
-//  }
 }

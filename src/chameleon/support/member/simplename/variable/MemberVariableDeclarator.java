@@ -17,6 +17,9 @@ import chameleon.core.type.Type;
 import chameleon.core.type.TypeElement;
 import chameleon.core.type.TypeElementImpl;
 import chameleon.core.type.TypeReference;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.MemberVariable;
 import chameleon.core.variable.RegularMemberVariable;
 import chameleon.support.variable.VariableDeclaration;
@@ -105,6 +108,15 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return selector.selection(declarations());
+	}
+
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = Valid.create();
+		if(typeReference() == null) {
+			result = result.and(new BasicProblem(this, "The variable declaration has no type"));
+		}
+		return result;
 	}
 
 }

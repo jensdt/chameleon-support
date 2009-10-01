@@ -10,6 +10,9 @@ import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespacepart.NamespacePart;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.FormalParameter;
 
 public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends Method, S extends SimpleNameMethodSignature> extends MethodHeader<E, P, S>{
@@ -41,6 +44,15 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 			result.add(param.getTypeReference().clone());
 		}
 		return (S) result;
+	}
+
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = Valid.create();
+		if(getName() == null) {
+			result = result.and(new BasicProblem(this, "The method has no name"));
+		}
+		return result;
 	}
 
 }

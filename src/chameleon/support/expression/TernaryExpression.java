@@ -4,6 +4,9 @@ import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 public abstract class TernaryExpression extends BinaryExpression {
 
@@ -28,5 +31,14 @@ public abstract class TernaryExpression extends BinaryExpression {
   		_third.connectTo(null);
   	}
   }
+
+	@Override
+	public VerificationResult verifyThis() {
+		VerificationResult result = super.verifyThis();
+    if(getThird() == null) {
+    	result = result.and(new BasicProblem(this,"The expression has no third expression."));
+    }
+    return result;
+	}
 
 }
