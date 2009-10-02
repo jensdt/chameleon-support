@@ -28,10 +28,4 @@ public class DoStatement extends IterationStatementWithExpression<DoStatement> {
     return result;
   }
 
-	@Override
-	public VerificationResult verifySelf() {
-		VerificationResult result = checkNull(condition(), "Condition is missing", Valid.create());
-		result = checkNull(getStatement(), "Statement is missing", result);
-		return result;
-	}
 }

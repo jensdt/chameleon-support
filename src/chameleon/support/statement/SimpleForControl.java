@@ -11,6 +11,8 @@ import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
 import chameleon.util.Util;
 
@@ -122,6 +124,11 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return selector.selection(declarations());
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return Valid.create();
 	}
 
 }

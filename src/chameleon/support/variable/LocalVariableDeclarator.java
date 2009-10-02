@@ -18,6 +18,8 @@ import chameleon.core.modifier.Modifier;
 import chameleon.core.statement.StatementImpl;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
 import chameleon.support.statement.ForInit;
 
@@ -200,6 +202,12 @@ public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarat
 	}
 	public LookupStrategy linearContext() throws LookupException {
 		return variableDeclarations().get(numberOfVariableDeclarations()-1).linearContext();
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		VerificationResult result = Valid.create();
+		return result;
 	}
 
 }
