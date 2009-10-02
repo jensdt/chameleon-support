@@ -13,7 +13,7 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.lookup.LookupStrategyFactory;
 import chameleon.core.scope.Scope;
-import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
 import chameleon.core.type.Type;
@@ -23,7 +23,7 @@ import chameleon.util.Util;
 /**
  * @author marko
  */
-public class LocalClassStatement extends Statement<LocalClassStatement> 
+public class LocalClassStatement extends StatementImpl<LocalClassStatement> 
              implements DeclarationContainer<LocalClassStatement,Element> {
 
 	public LocalClassStatement() {

@@ -24,7 +24,7 @@ public class DefaultLabel extends SwitchLabel<DefaultLabel> {
   }
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		return Valid.create();
 	}
 }

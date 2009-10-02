@@ -1,11 +1,11 @@
 package chameleon.support.statement;
 
-import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 
 /**
  * @author Marko van Dooren
  */
-public abstract class JumpStatement<E extends JumpStatement> extends Statement<E> {
+public abstract class JumpStatement<E extends JumpStatement> extends StatementImpl<E> {
   
   public JumpStatement(String label) {
 	 setLabel(label);

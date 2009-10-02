@@ -91,7 +91,7 @@ private OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference> _parame
 	}
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
 		if(name() == null) {
 			result = result.and(new BasicProblem(this, "The signature has no name."));

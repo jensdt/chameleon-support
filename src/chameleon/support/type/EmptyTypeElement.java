@@ -9,6 +9,8 @@ import chameleon.core.element.Element;
 import chameleon.core.member.Member;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeElementImpl;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
 
@@ -27,6 +29,11 @@ public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
 
 	public List<Element> children() {
 		return new ArrayList<Element>();
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return Valid.create();
 	}
 
 }

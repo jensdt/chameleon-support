@@ -103,7 +103,7 @@ public class EmptyArrayIndex extends ArrayIndex<EmptyArrayIndex>{
 	}
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		return Valid.create();
 	}
 	

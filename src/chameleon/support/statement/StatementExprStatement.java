@@ -3,6 +3,7 @@ package chameleon.support.statement;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
 
@@ -11,7 +12,7 @@ import chameleon.core.statement.Statement;
  */
 public abstract class StatementExprStatement<E extends StatementExprStatement> extends StatementContainingStatement<E> {
   
-  public StatementExprStatement(Statement statement, Expression expression) {
+  public StatementExprStatement(Statement<E, Element> statement, Expression expression) {
     super(statement);
     setExpression(expression);
   }
@@ -22,7 +23,7 @@ public abstract class StatementExprStatement<E extends StatementExprStatement> e
 	private SingleAssociation<StatementExprStatement,Expression> _expression = new SingleAssociation<StatementExprStatement,Expression>(this);
 
   
-  public Expression<? extends Expression> getExpression() {
+  public Expression<? extends Expression> expression() {
     return _expression.getOtherEnd();
   }
   

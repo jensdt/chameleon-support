@@ -16,6 +16,8 @@ import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.Statement;
 import chameleon.core.type.Type;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.FormalParameter;
 import chameleon.core.variable.Variable;
 import chameleon.core.variable.VariableContainer;
@@ -68,7 +70,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
 //  }
 
   public CatchClause clone() {
-    return new CatchClause((FormalParameter)getExceptionParameter().clone(), getStatement().clone());
+    return new CatchClause((FormalParameter)getExceptionParameter().clone(), statement().clone());
   }
 
   /**
@@ -97,7 +99,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
    @*/
   public List children() {
     List result = Util.createNonNullList(getExceptionParameter());
-    Util.addNonNull(getStatement(), result);
+    Util.addNonNull(statement(), result);
     return result;
   }
   
@@ -126,6 +128,11 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
 
 	public NamespaceElement variableScopeElement() {
 		return this;
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(getExceptionParameter(), "Exception parameter is missing", Valid.create());
 	}
 
 }

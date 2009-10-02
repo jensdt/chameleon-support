@@ -54,7 +54,7 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 	}
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		return Valid.create();
 	}
 

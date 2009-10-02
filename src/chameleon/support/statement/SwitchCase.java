@@ -13,7 +13,10 @@ import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 import chameleon.core.statement.StatementListContainer;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * @author Marko van Dooren
@@ -45,7 +48,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
     _statements.add(statement.parentLink());
   }
 
-  public List<Statement> getStatements() {
+  public List<Statement> statements() {
     return _statements.getOtherEnds();
   }
 
@@ -75,7 +78,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
       public void visit(Statement element) {
         result.addStatement(element.clone());
       }
-    }.applyTo(getStatements());
+    }.applyTo(statements());
     result.setLabel(getLabel().clone());
     return result;
   }
@@ -92,7 +95,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
         public void unvisit(Object element, Object undo) {
           //NOP
         }
-      }.applyTo(getStatements());
+      }.applyTo(statements());
       return cel;
     }
     catch (LookupException e) {
@@ -116,7 +119,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
         public void unvisit(Object element, Object undo) {
           //NOP
         }
-      }.applyTo(getStatements());
+      }.applyTo(statements());
       return cel;
     }
     catch (LookupException e) {
@@ -129,7 +132,7 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
   }
 
   public int getIndexOf(Statement statement) {
-    return getStatements().indexOf(statement) + 1;
+    return statements().indexOf(statement) + 1;
   }
 
  /*@
@@ -139,18 +142,23 @@ public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement>
    @ post \result.containsAll(getLabels());
    @*/
   public List<Element> children() {
-    List result = getStatements();
+    List result = statements();
     result.add(getLabel());
     return result;
   }
   
 	public List<Statement> statementsAfter(Statement statement) {
-		List<Statement> statements = getStatements(); 
+		List<Statement> statements = statements(); 
 		int index = statements.indexOf(statement);
 		// returns a view on a clone of _statements (getStatements() clones the list).
 		// the view depends on the local variable, but since no other references exist
 		// this is not a problem.
 		return statements.subList(index, statements.size());
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(getLabel(), "The label is missing", Valid.create());
 	}
 
 }

@@ -125,7 +125,7 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
    * an actual combination of mixins.
    */
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		return Valid.create();
 	}
 

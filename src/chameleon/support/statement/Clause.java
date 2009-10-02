@@ -2,11 +2,13 @@ package chameleon.support.statement;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 
 /**
  * @author Marko van Dooren
@@ -30,22 +32,22 @@ public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E,Tr
     _statement.connectTo(null);
   }
 
-  public Statement getStatement() {
+  public Statement statement() {
     return _statement.getOtherEnd();
   }
 
   public CheckedExceptionList getCEL() throws LookupException {
     CheckedExceptionList result = new CheckedExceptionList();
-    if(getStatement() != null) {
-      result.absorb(getStatement().getCEL());
+    if(statement() != null) {
+      result.absorb(statement().getCEL());
     }
     return result;
   }
 
   public CheckedExceptionList getAbsCEL() throws LookupException {
     CheckedExceptionList result = new CheckedExceptionList();
-    if(getStatement() != null) {
-      result.absorb(getStatement().getAbsCEL());
+    if(statement() != null) {
+      result.absorb(statement().getAbsCEL());
     }
     return result;
   }

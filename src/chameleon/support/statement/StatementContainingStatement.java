@@ -2,14 +2,18 @@ package chameleon.support.statement;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * @author Marko van Dooren
  */
-public abstract class StatementContainingStatement<E extends StatementContainingStatement> extends Statement<E> {
+public abstract class StatementContainingStatement<E extends StatementContainingStatement> extends StatementImpl<E> {
   
-  public StatementContainingStatement(Statement statement) {
+  public StatementContainingStatement(Statement<E, Element> statement) {
     setStatement(statement);
   }
 
@@ -17,10 +21,10 @@ public abstract class StatementContainingStatement<E extends StatementContaining
 	 * STATEMENT
 	 */
   
-	private SingleAssociation<StatementContainingStatement,Statement> _statement = new SingleAssociation<StatementContainingStatement,Statement>(this);
+	private SingleAssociation<StatementContainingStatement,StatementImpl> _statement = new SingleAssociation<StatementContainingStatement,StatementImpl>(this);
 
   
-  public void setStatement(Statement statement) {
+  public void setStatement(Statement<E, Element> statement) {
     _statement.connectTo(statement.parentLink());
   }
   
@@ -28,7 +32,12 @@ public abstract class StatementContainingStatement<E extends StatementContaining
     _statement.connectTo(null);
   }
   
-  public Statement getStatement() {
+  public Statement<E, Element> getStatement() {
     return _statement.getOtherEnd();
+  }
+  
+  @Override
+  public VerificationResult verifySelf() {
+		return checkNull(getStatement(), "Statement is missing", Valid.create());
   }
 }

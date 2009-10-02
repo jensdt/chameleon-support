@@ -93,7 +93,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
   }
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
 		try {
 			Assignable var = getVariable();

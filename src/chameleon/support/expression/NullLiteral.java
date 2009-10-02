@@ -36,7 +36,7 @@ public class NullLiteral extends Literal<NullLiteral> {
   }
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		return Valid.create();
 	}
 

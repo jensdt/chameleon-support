@@ -7,6 +7,8 @@ import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.validation.BasicProblem;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
@@ -60,4 +62,15 @@ public class SwitchStatement extends ExpressionContainingStatement<SwitchStateme
     result.addAll(getSwitchCases());
     return result;
   }
+  
+  @Override
+  public VerificationResult verifySelf() {
+  	VerificationResult result = super.verifySelf();
+  	List<DefaultLabel> cases = descendants(DefaultLabel.class);
+  	if(cases.size() > 1) {
+  		result = result.and(new BasicProblem(this,"A switch statement can contain only one default label."));
+  	}
+  	return result;
+  }
+
 }

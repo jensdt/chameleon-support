@@ -43,8 +43,8 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
   }
   
 	@Override
-	public VerificationResult verifyThis() {
-		VerificationResult result = super.verifyThis();
+	public VerificationResult verifySelf() {
+		VerificationResult result = super.verifySelf();
     if(getTypeReference() == null) {
     	result = result.and(new BasicProblem(this,"The type is missing."));
     }

@@ -15,13 +15,13 @@ import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.modifier.Modifier;
-import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.core.variable.Variable;
 import chameleon.support.statement.ForInit;
 
-public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,Element>, ForInit<LocalVariableDeclarator, Element> {
+public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,Element>, ForInit<LocalVariableDeclarator, Element> {
 
 	
 	public LocalVariableDeclarator() {
@@ -40,7 +40,6 @@ public class LocalVariableDeclarator extends  Statement<LocalVariableDeclarator>
 		setTypeReference(tref);
 	}
 
-	@Override
 	public List<Element> children() {
 			List<Element> result = new ArrayList<Element>();
 			result.addAll(variableDeclarations());

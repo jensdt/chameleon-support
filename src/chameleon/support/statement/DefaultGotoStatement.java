@@ -12,7 +12,6 @@ public class DefaultGotoStatement extends GotoStatement<DefaultGotoStatement> {
 		return new DefaultGotoStatement();
 	}
 
-	@Override
 	public List<Element> children() {
 		return new ArrayList<Element>();
 	}

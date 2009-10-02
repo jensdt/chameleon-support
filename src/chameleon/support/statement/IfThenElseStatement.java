@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 import chameleon.util.Util;
 
 /**
@@ -23,7 +25,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * IF STATEMENT
 	 */
-	private SingleAssociation<IfThenElseStatement,Statement> _ifStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
+	private SingleAssociation<IfThenElseStatement,StatementImpl> _ifStatement = new SingleAssociation<IfThenElseStatement,StatementImpl>(this);
 
 
   public void setIfStatement(Statement statement) {
@@ -37,7 +39,7 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * ELSE STATEMENT
 	 */
-	private SingleAssociation<IfThenElseStatement,Statement> _elseStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
+	private SingleAssociation<IfThenElseStatement,StatementImpl> _elseStatement = new SingleAssociation<IfThenElseStatement,StatementImpl>(this);
 
   public void setElseStatement(Statement statement) {
     if (statement != null) {

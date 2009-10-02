@@ -2,14 +2,17 @@ package chameleon.support.statement;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.statement.Statement;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 public abstract class IterationStatementWithExpression<E extends IterationStatementWithExpression> extends IterationStatement<E> {
 	
 	
 	
-	public IterationStatementWithExpression(Statement statement, Expression condition) {
+	public IterationStatementWithExpression(Statement<E, Element> statement, Expression condition) {
 		super(statement);
 		setCondition(condition);
 	}
@@ -33,6 +36,11 @@ public abstract class IterationStatementWithExpression<E extends IterationStatem
     }
   }
 
+	@Override
+	public VerificationResult verifySelf() {
+		VerificationResult result = checkNull(condition(), "Condition is missing", super.verifySelf());
+		return result;
+	}
 
 
 }

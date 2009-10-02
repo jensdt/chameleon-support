@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.element.Element;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 public class LabeledGotoStatement extends GotoStatement<LabeledGotoStatement>{
 
@@ -31,8 +33,12 @@ public class LabeledGotoStatement extends GotoStatement<LabeledGotoStatement>{
 		return new LabeledGotoStatement(getLabel());
 	}
 
-	@Override
 	public List<Element> children() {
 		return new ArrayList<Element>();
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(getLabel(), "Missing label", Valid.create());
 	}
 }

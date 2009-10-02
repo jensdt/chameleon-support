@@ -33,8 +33,8 @@ public abstract class TernaryExpression extends BinaryExpression {
   }
 
 	@Override
-	public VerificationResult verifyThis() {
-		VerificationResult result = super.verifyThis();
+	public VerificationResult verifySelf() {
+		VerificationResult result = super.verifySelf();
     if(getThird() == null) {
     	result = result.and(new BasicProblem(this,"The expression has no third expression."));
     }

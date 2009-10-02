@@ -8,7 +8,7 @@ import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.method.exception.TypeExceptionDeclaration;
 import chameleon.core.statement.CheckedExceptionList;
-import chameleon.core.statement.ExceptionPair;
+import chameleon.core.statement.ExceptionTuple;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
@@ -49,12 +49,12 @@ public class ThrowStatement extends ExpressionContainingStatement<ThrowStatement
 	    Type type = getExpression().getType();
 	    TypeReference tr = new TypeReference(null, type.getFullyQualifiedName());
 	    TypeExceptionDeclaration ted = new TypeExceptionDeclaration(tr);
-	    cel.add(new ExceptionPair(type, ted, this));
+	    cel.add(new ExceptionTuple(type, ted, this));
 	    return cel;
 	  }
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		try {
 		  Expression expr = getExpression();
 			if(expr != null && language(ObjectOrientedLanguage.class).isException(expr.getType())) {

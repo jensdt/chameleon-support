@@ -47,7 +47,7 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 	}
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
 		if(getName() == null) {
 			result = result.and(new BasicProblem(this, "The method has no name"));

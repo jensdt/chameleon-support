@@ -2,10 +2,15 @@ package chameleon.support.statement;
 
 import java.util.List;
 
+import chameleon.core.element.Element;
 import chameleon.core.statement.Statement;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
+ * A class of finally clauses for a try statement.
+ * 
  * @author Marko van Dooren
  */
 public class FinallyClause extends Clause<FinallyClause> {
@@ -19,7 +24,7 @@ public class FinallyClause extends Clause<FinallyClause> {
    * @return
    */
   public FinallyClause clone() {
-    return new FinallyClause(getStatement().clone());
+    return new FinallyClause(statement().clone());
   }
 
  /*@
@@ -28,7 +33,13 @@ public class FinallyClause extends Clause<FinallyClause> {
    @ post getExpression() != null ==> \result.contains(getExpression());
    @ post \result.size() == 1;
    @*/
-  public List children() {
-    return Util.createNonNullList(getStatement());
+  public List<Element> children() {
+    return Util.createNonNullList(statement());
   }
+
+
+	@Override
+	public VerificationResult verifySelf() {
+		return Valid.create();
+	}
 }

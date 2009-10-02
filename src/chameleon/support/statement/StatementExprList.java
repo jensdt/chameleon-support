@@ -8,12 +8,15 @@ import org.rejuse.java.collections.RobustVisitor;
 import org.rejuse.java.collections.Visitor;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.element.Element;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.statement.Statement;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * A list of statement expressions as used in the initialization clause of a 
@@ -39,7 +42,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
     _statementExpressions.remove(statement.parentLink());
   }
 
-  public List<StatementExpression> getStatements() {
+  public List<StatementExpression> statements() {
     return _statementExpressions.getOtherEnds();
   }
 
@@ -48,11 +51,11 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
    */
   public StatementExprList clone() {
     final StatementExprList result = new StatementExprList();
-    new Visitor() {
-      public void visit(Object element) {
-        result.addStatement((StatementExpression)((StatementExpression)element).clone());
+    new Visitor<StatementExpression>() {
+      public void visit(StatementExpression element) {
+        result.addStatement(element.clone());
       }
-    }.applyTo(getStatements());
+    }.applyTo(statements());
     return result;
   }
 
@@ -68,7 +71,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
         public void unvisit(Object element, Object undo) {
           //NOP
         }
-      }.applyTo(getStatements());
+      }.applyTo(statements());
       return cel;
     }
     catch (LookupException e) {
@@ -93,7 +96,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
         public void unvisit(Object element, Object undo) {
           //NOP
         }
-      }.applyTo(getStatements());
+      }.applyTo(statements());
       return cel;
     }
     catch (LookupException e) {
@@ -107,11 +110,11 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
   }
 
   public int getIndexOf(Statement statement) {
-    return getStatements().indexOf(statement) + 1;
+    return statements().indexOf(statement) + 1;
   }
 
   public int getNbStatements() {
-    return getStatements().size();
+    return statements().size();
   }
 
  /*@
@@ -120,7 +123,7 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
    @ post \result.equals(getStatements());
    @*/
   public List<StatementExpression> children() {
-    return getStatements();
+    return statements();
   }
 
 	public List<? extends Declaration> declarations() throws LookupException {
@@ -129,6 +132,11 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return new ArrayList<D>();
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return Valid.create();
 	}
 
 }

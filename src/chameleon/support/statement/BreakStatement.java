@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.element.Element;
+import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 
 /**
@@ -28,8 +29,9 @@ public class BreakStatement extends JumpStatement<BreakStatement> {
   }
 
 	@Override
-	public VerificationResult verifyThis() {
-		compile
+	public VerificationResult verifySelf() {
+		BreakableStatement ancestor = nearestAncestor(BreakableStatement.class);
+		return checkNull(ancestor, "The break statement is not nested in a breakable statement", Valid.create());
 	}
 
 }

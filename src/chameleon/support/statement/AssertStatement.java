@@ -52,8 +52,8 @@ public class AssertStatement extends ExpressionContainingStatement<AssertStateme
   }
   
   @Override
-  public VerificationResult verifyThis() {
-  	VerificationResult result = super.verifyThis();
+  public VerificationResult verifySelf() {
+  	VerificationResult result = super.verifySelf();
   	Expression expr = getExpression();
   	try {
   	  if(expr != null && ! expr.getType().subTypeOf(language(ObjectOrientedLanguage.class).booleanType())) {

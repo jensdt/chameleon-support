@@ -7,6 +7,8 @@ import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 
 /**
  * @author Marko van Dooren
@@ -44,5 +46,10 @@ public class CaseLabel extends SwitchLabel<CaseLabel> {
   public List<Element> children() {
     return new ArrayList<Element>();
   }
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(getExpression(), "The case label has no expression", Valid.create());
+	}
 
 }

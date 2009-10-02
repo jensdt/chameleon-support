@@ -1,12 +1,11 @@
 package chameleon.support.type;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.member.Member;
 import chameleon.core.statement.Block;
@@ -14,6 +13,8 @@ import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeElementImpl;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.util.Util;
 
 /**
@@ -42,7 +43,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
   }
 
   public Block getBlock() {
-    return (Block)_blockLink.getOtherEnd();
+    return _blockLink.getOtherEnd();
   }
 
 
@@ -56,7 +57,9 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
    * @return
    */
   public StaticInitializer clone() {
-    return new StaticInitializer(getBlock().clone());
+  	Block block = getBlock();
+  	Block clone = (block == null ? null : block.clone());
+    return new StaticInitializer(clone);
   }
 
  /*@
@@ -65,7 +68,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
    @ post getBlock() != null ==> \result.contains(getBlock());
    @ post \result.size() == 1;
    @*/
-  public List children() {
+  public List<Element> children() {
     return Util.createNonNullList(getBlock());
   }
 
@@ -87,37 +90,6 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
     return getBlock().getAbsCEL();
   }
 
- /*@
-   @ also public behavior
-   @
-   @ // A block does not introduce any methods.
-   @ post \result.isEmpty();
-   @*/
-  public List getIntroducedMethods() {
-	  return new ArrayList();
-  }
-
- /*@
-   @ also public behavior
-   @
-   @ // A block does not introduce any variables.
-   @ post \result.isEmpty();
-   @*/
-  public Set getIntroducedVariables() {
-	  return new HashSet();
-  }
-
-  public List getIntroducedIntroducingMembers(){
-	return new ArrayList();
-}
-
-// /*@
-//   @ post \result instanceof EmptyDomain;
-//   @*/
-//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
-//	  return new EmptyDomain();
-//  }
-
   /**
    * A static initializer does not add members to a type.
    */
@@ -125,8 +97,9 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
     return new ArrayList<Member>();
   }
 
-
-
-
+	@Override
+	public VerificationResult verifySelf() {
+		return Valid.create();
+	}
 
 }

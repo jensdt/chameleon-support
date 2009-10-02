@@ -28,12 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chameleon.core.element.Element;
-import chameleon.core.statement.Statement;
+import chameleon.core.statement.StatementImpl;
 
 /**
  * @author Marko van Dooren
  */
-public class EmptyStatement extends Statement<EmptyStatement> {
+public class EmptyStatement extends StatementImpl<EmptyStatement> {
 	
 	public EmptyStatement() {
 		

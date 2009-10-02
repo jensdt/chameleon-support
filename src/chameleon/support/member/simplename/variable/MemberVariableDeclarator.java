@@ -111,7 +111,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	}
 
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
 		if(typeReference() == null) {
 			result = result.and(new BasicProblem(this, "The variable declaration has no type"));

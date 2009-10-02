@@ -54,7 +54,7 @@ public abstract class ExprTypeRefContainingExpression<E extends ExprTypeRefConta
   }
   
 	@Override
-	public VerificationResult verifyThis() {
+	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
     if(getTypeReference() == null) {
     	result = result.and(new BasicProblem(this,"The type is missing."));
