@@ -14,6 +14,8 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.SelectorWithoutOrder;
 import chameleon.core.reference.CrossReference;
 import chameleon.core.reference.SpecificReference;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
 
 public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<EnumLabel, SwitchCase, Variable>{
@@ -65,6 +67,11 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 				return _signature;
 			}
 		},Variable.class);
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(name(), "The enum has no name", Valid.create());
 	}
 	
 }

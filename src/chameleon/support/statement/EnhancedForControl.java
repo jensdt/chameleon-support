@@ -11,6 +11,8 @@ import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElement;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.support.variable.LocalVariable;
 import chameleon.support.variable.LocalVariableDeclarator;
 import chameleon.util.Util;
@@ -79,6 +81,13 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return selector.selection(declarations());
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		VerificationResult result = checkNull(variableDeclarator(), "An enhanced for control must declare a variable", Valid.create());
+		result = checkNull(collection(), "An enhanced for control must indicate from which collection the variables must come.", result);
+		return result;
 	}
 
 }

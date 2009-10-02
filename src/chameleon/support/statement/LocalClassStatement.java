@@ -17,6 +17,8 @@ import chameleon.core.statement.StatementImpl;
 import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
 import chameleon.core.type.Type;
+import chameleon.core.validation.Valid;
+import chameleon.core.validation.VerificationResult;
 import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
 
@@ -108,5 +110,10 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
       result.add(element);
     }
     return result;
+	}
+
+	@Override
+	public VerificationResult verifySelf() {
+		return checkNull(getType(), "The type declaration statement does not declare a type.", Valid.create());
 	}
 }

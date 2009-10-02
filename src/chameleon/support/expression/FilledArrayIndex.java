@@ -55,6 +55,7 @@ public class FilledArrayIndex extends ArrayIndex<FilledArrayIndex> {
 
 	@Override
 	public VerificationResult verifySelf() {
+		//FIXME: create CLikeLanguage with intType()?
 		return Valid.create();
 	}
 
