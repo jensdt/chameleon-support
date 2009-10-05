@@ -5,6 +5,7 @@ import org.rejuse.property.PropertySet;
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierImpl;
+import chameleon.core.property.ChameleonProperty;
 
 /**
  * A class of modifiers marking a method as being a constructor.
@@ -31,7 +32,7 @@ public class Constructor extends ModifierImpl<Constructor,Element> {
 	   @
 	   @ post \result.contains(language().CONSTRUCTOR);
 	   @*/
-    public PropertySet<Element> impliedProperties() {
+    public PropertySet<Element,ChameleonProperty> impliedProperties() {
       return createSet(language(ObjectOrientedLanguage.class).CONSTRUCTOR);
     }
 

@@ -5,6 +5,7 @@ import org.rejuse.property.PropertyUniverse;
 
 import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.property.ChameleonProperty;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.ScopeProperty;
@@ -14,10 +15,10 @@ public class PrivateProperty extends ScopeProperty {
 	
 	public final static String ID = "accessibility.private";
 	
-	public PrivateProperty(PropertyUniverse<Element> universe, PropertyMutex<Element> family) {
+	public PrivateProperty(PropertyUniverse<ChameleonProperty> universe, PropertyMutex<ChameleonProperty> family) {
 		this(ID, universe, family);
   }
-	public PrivateProperty(String name, PropertyUniverse<Element> universe, PropertyMutex<Element> family) {
+	public PrivateProperty(String name, PropertyUniverse<ChameleonProperty> universe, PropertyMutex<ChameleonProperty> family) {
 		super(name, universe, family);
 	}
 

@@ -5,6 +5,7 @@ import org.rejuse.property.PropertySet;
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierImpl;
+import chameleon.core.property.ChameleonProperty;
 
 public class Interface extends ModifierImpl<Interface, Element> {
 	
@@ -20,7 +21,7 @@ public class Interface extends ModifierImpl<Interface, Element> {
 		/**
 		 * An interface is abstract, thus not defined.
 		 */
-    public PropertySet<Element> impliedProperties() {
+    public PropertySet<Element,ChameleonProperty> impliedProperties() {
       return createSet(language(ObjectOrientedLanguage.class).DEFINED.inverse());
     }
 }

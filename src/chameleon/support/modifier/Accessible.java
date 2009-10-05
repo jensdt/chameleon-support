@@ -4,9 +4,10 @@ import org.rejuse.property.PropertyUniverse;
 import org.rejuse.property.StaticProperty;
 
 import chameleon.core.element.Element;
+import chameleon.core.property.ChameleonProperty;
 import chameleon.core.scope.Scope;
 
-public class Accessible extends StaticProperty<Element>{
+public class Accessible extends StaticProperty<Element,ChameleonProperty>{
 
 	
 	public Accessible(String name, PropertyUniverse universe) {

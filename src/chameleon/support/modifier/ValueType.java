@@ -5,7 +5,7 @@ import org.rejuse.property.PropertySet;
 import chameleon.core.element.Element;
 import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierImpl;
-import chameleon.core.validation.VerificationResult;
+import chameleon.core.property.ChameleonProperty;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class ValueType extends ModifierImpl<ValueType, Element> {
 		return new ValueType();
 	}
 
-  public PropertySet<Element> impliedProperties() {
+  public PropertySet<Element,ChameleonProperty> impliedProperties() {
     return createSet(language(ObjectOrientedLanguage.class).VALUE_TYPE);
   }
 

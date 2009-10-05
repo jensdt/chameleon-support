@@ -8,6 +8,7 @@ import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElement;
 import chameleon.core.namespace.NamespaceScope;
+import chameleon.core.property.ChameleonProperty;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.ScopeProperty;
 import chameleon.core.type.Type;
@@ -17,11 +18,11 @@ public class ProtectedProperty extends ScopeProperty {
 	
 	public final static String ID = "accessibility.protected";
 	
-	public ProtectedProperty(PropertyUniverse<Element> universe, PropertyMutex<Element> family) {
+	public ProtectedProperty(PropertyUniverse<ChameleonProperty> universe, PropertyMutex<ChameleonProperty> family) {
 		super(ID, universe, family);
 	}
 
-	public ProtectedProperty(String name, PropertyUniverse<Element> universe, PropertyMutex<Element> family) {
+	public ProtectedProperty(String name, PropertyUniverse<ChameleonProperty> universe, PropertyMutex<ChameleonProperty> family) {
 		super(name, universe, family);
 	}
 
