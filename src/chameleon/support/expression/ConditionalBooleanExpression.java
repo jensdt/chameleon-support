@@ -34,14 +34,6 @@ public abstract class ConditionalBooleanExpression extends BinaryExpression {
     return language(ObjectOrientedLanguage.class).booleanType(); 
   }
   
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    if(!(target instanceof ConditionalBooleanExpression)) {
-      return false;
-    }
-    ConditionalBooleanExpression other = (ConditionalBooleanExpression)target;
-    return getFirst().compatibleWith(other.getFirst()) && (getSecond().compatibleWith(other.getSecond()));
-  }
-  
   public Set<Type> getDirectExceptions() throws LookupException {
     return new HashSet<Type>();
   }

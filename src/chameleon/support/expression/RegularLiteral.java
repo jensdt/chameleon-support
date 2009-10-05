@@ -14,13 +14,6 @@ public class RegularLiteral extends LiteralWithTypeReference<RegularLiteral> {
     setTypeReference(type);
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof RegularLiteral) && 
-           (getValue().equals(((RegularLiteral)target).getValue())) &&
-    	   (getType().equals(((RegularLiteral)target).getType()));
-    
-  }
-
   public RegularLiteral clone() {
     return new RegularLiteral((TypeReference)getTypeReference().clone(), getValue());
   }

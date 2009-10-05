@@ -24,12 +24,6 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
     return language(ObjectOrientedLanguage.class).booleanType();
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof InstanceofExpression) &&
-           ((InstanceofExpression)target).getType().equals(getType()) &&
-           getExpression().compatibleWith(((InstanceofExpression)target).getExpression());
-  }
-
   public InstanceofExpression clone() {
     return new InstanceofExpression(getExpression().clone(), (TypeReference)getTypeReference().clone());
   }
@@ -38,7 +32,4 @@ public class InstanceofExpression extends ExprTypeRefContainingExpression<Instan
     return new HashSet<Type>();
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
-//    return getTypeReference().getType().getTypeAccessibilityDomain().intersect(getExpression().getAccessibilityDomain());
-//  }
 }

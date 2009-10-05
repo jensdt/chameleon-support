@@ -29,10 +29,6 @@ public class ThisLiteral extends LiteralWithTypeReference<ThisLiteral> {
     }
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof ThisLiteral) && ((ThisLiteral)target).getType().assignableTo(getType());
-  }
-
   public ThisLiteral clone() {
     ThisLiteral result = new ThisLiteral();
     TypeReference tref = getTypeReference();

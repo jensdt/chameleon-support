@@ -72,12 +72,6 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
     return getVariable().getType();
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof AssignmentExpression) &&
-           ((Expression)getVariable()).compatibleWith((Expression)((AssignmentExpression)target).getVariable()) &&
-           getValue().compatibleWith(((AssignmentExpression)target).getValue());
-  }
-
   public AssignmentExpression clone() {
     return new AssignmentExpression(getVariable().clone(), ((Expression<? extends Expression>)getValue()).clone());
   }

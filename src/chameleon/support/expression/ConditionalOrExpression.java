@@ -42,10 +42,6 @@ public class ConditionalOrExpression extends ConditionalBooleanExpression {
     super(first, second);
   }
   
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof ConditionalOrExpression) && super.superOf(target);
-  }
-  
   public ConditionalOrExpression clone() {
     Expression first = getFirst().clone();
     Expression second = getSecond().clone();

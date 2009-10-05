@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import chameleon.core.element.ChameleonProgrammerException;
+import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
@@ -64,19 +65,12 @@ public class ConditionalExpression extends TernaryExpression {
     }
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return (target instanceof ConditionalExpression) &&
-           (getCondition().compatibleWith(((ConditionalExpression)target).getCondition())) &&
-           (getFirst().compatibleWith(((ConditionalExpression)target).getFirst())) &&
-           (getSecond().compatibleWith(((ConditionalExpression)target).getSecond()));
-  }
-
   public ConditionalExpression clone() {
     return new ConditionalExpression(getCondition().clone(), getFirst().clone(), getSecond().clone());
   }
 
-  public List children() {
-    List result = Util.createNonNullList(getCondition());
+  public List<Element> children() {
+    List<Element> result = Util.createNonNullList(getCondition());
     Util.addNonNull(getFirst(), result);
     Util.addNonNull(getSecond(), result);
     return result;
@@ -86,12 +80,4 @@ public class ConditionalExpression extends TernaryExpression {
     return new HashSet();
   }
 
-//  public AccessibilityDomain getAccessibilityDomain() throws LookupException {
-//    return getCondition().getAccessibilityDomain().intersect(
-//             getFirst().getAccessibilityDomain().intersect(
-//                 getSecond().getAccessibilityDomain())
-//           ); 
-//  }
-
-  
 }

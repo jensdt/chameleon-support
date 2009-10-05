@@ -28,10 +28,6 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
 	    return nearestAncestor(Type.class).getDirectSuperTypes().get(0).lexicalLookupStrategy().lookUp(selector());
   }
   
-  public boolean superOf(InvocationTarget target) {
-    return false;
-  }
-
   protected SuperConstructorDelegation cloneInvocation(InvocationTarget target) {
     return new SuperConstructorDelegation();
   }

@@ -34,18 +34,6 @@ public class ClassCastExpression extends ExprTypeRefContainingExpression<ClassCa
     return result;
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    if(!(target instanceof ClassCastExpression)) {
-      return false;
-    }
-    ClassCastExpression cce = (ClassCastExpression)target;
-    return cce.getType().equals(getType()) && getExpression().compatibleWith(cce.getExpression());
-  }
-  
-  public boolean subOf(InvocationTarget target) throws LookupException {
-    return target.compatibleWith(getExpression());
-  }
-
   public ClassCastExpression clone() {
     return new ClassCastExpression((TypeReference)getTypeReference().clone(), getExpression().clone());
   }

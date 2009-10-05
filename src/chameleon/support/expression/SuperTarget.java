@@ -55,18 +55,6 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
   	return Util.createNonNullList(getTarget());
   }
 
-  public boolean compatibleWith(InvocationTarget target) throws LookupException {
-    return superOf(target) || target.subOf(this);
-  }
-
-  public boolean subOf(InvocationTarget target) throws LookupException {
-    return false;
-  }
-
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return target instanceof SuperTarget;
-  }
-
   public SuperTarget clone() {
     SuperTarget result = new SuperTarget();
     if(getTarget() != null) {

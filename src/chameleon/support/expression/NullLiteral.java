@@ -23,10 +23,6 @@ public class NullLiteral extends Literal<NullLiteral> {
 	  return language(ObjectOrientedLanguage.class).getNullType();
   }
 
-  public boolean superOf(InvocationTarget target) throws LookupException {
-    return target instanceof NullLiteral;
-  }
-
   public NullLiteral clone() {
     return new NullLiteral();
   }

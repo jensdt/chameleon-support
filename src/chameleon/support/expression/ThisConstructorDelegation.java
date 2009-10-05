@@ -27,10 +27,6 @@ public class ThisConstructorDelegation extends ConstructorDelegation<ThisConstru
 	   return nearestAncestor(Type.class).lexicalLookupStrategy().lookUp(selector());
   }
 
-  public boolean superOf(InvocationTarget target) {
-    return false;
-  }
-
   protected ThisConstructorDelegation cloneInvocation(InvocationTarget target) {
     return new ThisConstructorDelegation();
   }
