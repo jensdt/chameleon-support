@@ -2,13 +2,13 @@ package chameleon.support.expression;
 
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.Literal;
-import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
 import chameleon.core.type.Type;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.language.ObjectOrientedLanguage;
 
 /**
  * @author Marko van Dooren

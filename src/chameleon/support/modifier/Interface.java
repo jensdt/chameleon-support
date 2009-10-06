@@ -3,9 +3,9 @@ package chameleon.support.modifier;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
-import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.modifier.ModifierImpl;
 import chameleon.core.property.ChameleonProperty;
+import chameleon.oo.language.ObjectOrientedLanguage;
 
 public class Interface extends ModifierImpl<Interface, Element> {
 	

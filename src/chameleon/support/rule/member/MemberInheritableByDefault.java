@@ -3,10 +3,10 @@ package chameleon.support.rule.member;
 import org.rejuse.property.PropertySet;
 
 import chameleon.core.element.Element;
-import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.member.Member;
 import chameleon.core.property.ChameleonProperty;
 import chameleon.core.property.PropertyRule;
+import chameleon.oo.language.ObjectOrientedLanguage;
 
 public class MemberInheritableByDefault extends PropertyRule {
 

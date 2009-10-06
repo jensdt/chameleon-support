@@ -4,10 +4,10 @@ import java.util.List;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.language.ObjectOrientedLanguage;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
+import chameleon.oo.language.ObjectOrientedLanguage;
 import chameleon.support.member.simplename.method.NormalMethod;
 
 /**
