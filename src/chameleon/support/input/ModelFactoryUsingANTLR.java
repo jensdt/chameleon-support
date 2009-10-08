@@ -31,6 +31,7 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 
 	public void initializeBase(Collection<File> base) throws IOException, ParseException {
 		addToModel(base);
+		initializePredefinedElements();
 	}
 	
 	protected abstract void initializePredefinedElements();
