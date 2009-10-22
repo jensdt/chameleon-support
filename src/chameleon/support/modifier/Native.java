@@ -31,7 +31,7 @@ public class Native extends ModifierImpl<Native, Element> {
    @ post \result.size() == 2;
    @*/
   public PropertySet<Element,ChameleonProperty> impliedProperties() {
-    return createSet(language(ObjectOrientedLanguage.class).DEFINED);
+    return createSet(language(ObjectOrientedLanguage.class).NATIVE);
   }
 
 }

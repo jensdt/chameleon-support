@@ -20,7 +20,6 @@ import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.language.Language;
-import chameleon.core.member.Member;
 import chameleon.core.namespace.Namespace;
 import chameleon.input.ModelFactory;
 import chameleon.input.ParseException;

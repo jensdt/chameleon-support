@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.rejuse.io.DirectoryScanner;
 
+import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespace.NamespaceOrTypeReference;
 import chameleon.core.type.Type;
@@ -70,13 +71,14 @@ public class ArgumentParser {
 	   * The first argument is structured as follows:
 	   * outputDir?
 	   * inputDir+
+	   * @throws LookupException 
 	   * @packageName : recursive
 	   * #packageName : direct
 	   * %packageName : 
 	   * 
 	   * The extension argument is e.g. ".java"
 	   */
-  public Arguments parse(String[] args, String extension) throws ParseException, MalformedURLException, FileNotFoundException, IOException, Exception {
+  public Arguments parse(String[] args, String extension) throws ParseException, MalformedURLException, FileNotFoundException, IOException, LookupException {
     int low = (getOutput() ? 1 : 0);
    // ArrayList al = new ArrayList();
     Set files = new HashSet();
