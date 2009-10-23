@@ -2,13 +2,12 @@ package chameleon.support.expression;
 
 import org.rejuse.association.SingleAssociation;
 
-import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 
-public abstract class TernaryExpression extends BinaryExpression {
+public abstract class TernaryExpression<E extends TernaryExpression> extends BinaryExpression<E> {
 
 	public TernaryExpression(Expression first, Expression second, Expression third) {
 		super(first,second);

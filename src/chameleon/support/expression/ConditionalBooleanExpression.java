@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import chameleon.core.element.Element;
-import chameleon.core.expression.BinaryExpression;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
@@ -20,7 +19,7 @@ import chameleon.oo.language.ObjectOrientedLanguage;
 /**
  * @author Marko van Dooren
  */
-public abstract class ConditionalBooleanExpression extends BinaryExpression {
+public abstract class ConditionalBooleanExpression<E extends ConditionalBooleanExpression> extends BinaryExpression<E> {
 
   /**
    * @param first

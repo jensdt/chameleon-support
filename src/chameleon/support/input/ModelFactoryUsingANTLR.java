@@ -85,21 +85,21 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 	    // message will be printed if the file doesn't exist
 	    // LOGGER.debug("Adding " + absolutePath + "...");
 	
-			lexAndParse(fileInputStream, fileName, new CompilationUnit());
+			parse(fileInputStream, fileName, new CompilationUnit());
 	}
 
 	public void addToModel(String source, CompilationUnit cu) throws ParseException {
 	    String name = "document";
 	    InputStream inputStream = new StringBufferInputStream(source);
 	    try {
-				lexAndParse(inputStream, name, cu);
+				parse(inputStream, name, cu);
 			} catch (IOException e) {
 				// cannot happen if we work with a String
 				throw new ChameleonProgrammerException("IOException while parsing a String.", e);
 			}
 	}
 
-	private void lexAndParse(InputStream inputStream, String fileName, CompilationUnit cu) throws IOException, ParseException {
+	private void parse(InputStream inputStream, String fileName, CompilationUnit cu) throws IOException, ParseException {
 		try {
 			ChameleonParser parser = getParser(inputStream, fileName);
 			cu.disconnectChildren();

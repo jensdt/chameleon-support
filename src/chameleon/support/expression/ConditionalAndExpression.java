@@ -11,7 +11,7 @@ import chameleon.core.validation.VerificationResult;
 /**
  * @author Marko van Dooren
  */
-public class ConditionalAndExpression extends ConditionalBooleanExpression {
+public class ConditionalAndExpression extends ConditionalBooleanExpression<ConditionalAndExpression> {
 
   /**
    * @param first

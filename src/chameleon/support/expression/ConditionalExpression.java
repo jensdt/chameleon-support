@@ -15,7 +15,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class ConditionalExpression extends TernaryExpression {
+public class ConditionalExpression extends TernaryExpression<ConditionalExpression> {
 
   /**
    * @param first
