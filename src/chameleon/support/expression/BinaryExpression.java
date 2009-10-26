@@ -11,36 +11,19 @@ import chameleon.core.validation.VerificationResult;
 /**
  * @author Marko van Dooren
  */
-public abstract class BinaryExpression<E extends BinaryExpression> extends Expression<E> {
+public abstract class BinaryExpression<E extends BinaryExpression> extends ExpressionContainingExpression<E> {
   
   public BinaryExpression(Expression first, Expression second) {
-    setFirst(first);
+    super(first);
     setSecond(second);
   }
-
-	/**
-	 * FIRST
-	 */
   
-	private SingleAssociation<BinaryExpression,Expression> _first = new SingleAssociation<BinaryExpression,Expression>(this);
-
-  /**
-   * Return the first expression
-   */
-  public Expression<? extends Expression> getFirst() {
-    return _first.getOtherEnd();
+  public Expression getFirst() {
+  	return getExpression();
   }
-
-  /**
-   * Set the first expression
-   */
- /*@
-   @ public behavior
-   @
-   @ post getFirst().equals(first); 
-   @*/
-  public void setFirst(Expression expression) {
-    _first.connectTo(expression.parentLink());
+  
+  public void setExpression(Expression expr) {
+  	setExpression(expr);
   }
 
 	/**
