@@ -66,7 +66,7 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
     }
   }
 
-  public StatementExprList getUpdate() {
+  public StatementExprList update() {
     return _update.getOtherEnd();
   }
 
@@ -80,8 +80,8 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
       init = ((ForInit<? extends ForInit, ? extends Element>)getForInit()).clone();
     }
     StatementExprList update = null;
-    if(getUpdate() != null) {
-      update = getUpdate().clone();
+    if(update() != null) {
+      update = update().clone();
     }
     return new SimpleForControl(init, cond, update);
   }
@@ -89,7 +89,7 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
 	public List<? extends Element> children() {
 		List<Element> result = new ArrayList<Element>();
 		Util.addNonNull(condition(), result);
-		Util.addNonNull(getUpdate(), result);
+		Util.addNonNull(update(), result);
 		Util.addNonNull(getForInit(), result);
 		return result;
 	}
