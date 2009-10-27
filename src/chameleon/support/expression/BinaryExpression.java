@@ -22,7 +22,7 @@ public abstract class BinaryExpression<E extends BinaryExpression> extends Expre
   	return getExpression();
   }
   
-  public void setExpression(Expression expr) {
+  public void setFirst(Expression expr) {
   	setExpression(expr);
   }
 
