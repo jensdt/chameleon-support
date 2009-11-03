@@ -24,6 +24,7 @@ import chameleon.core.variable.MemberVariable;
 import chameleon.core.variable.RegularMemberVariable;
 import chameleon.support.variable.VariableDeclaration;
 import chameleon.support.variable.VariableDeclarator;
+import chameleon.util.Util;
 
 public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Element> implements TypeElement<MemberVariableDeclarator, Element>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Element> {
 
@@ -36,9 +37,9 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	}
 	
 	public List<Element> children() {
-		List<Element> result = new ArrayList<Element>();
+		List<Element> result = super.children();
 		result.addAll(variableDeclarations());
-		result.add(typeReference());
+		Util.addNonNull(typeReference(),result);
 		return result;
 	}
 	
@@ -73,6 +74,9 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 		MemberVariableDeclarator result = new MemberVariableDeclarator(typeReference().clone());
 		for(VariableDeclaration<MemberVariable> declaration: variableDeclarations()) {
 			result.add(declaration.clone());
+		}
+		for(Modifier mod: modifiers()) {
+			result.addModifier(mod.clone());
 		}
 		return result;
 	}

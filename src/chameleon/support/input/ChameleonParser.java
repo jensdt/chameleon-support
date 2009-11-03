@@ -66,6 +66,12 @@ public abstract class ChameleonParser<L extends Language> extends Parser {
 	         }
 	   }
 	   
+	   /**
+	    * Add locations to the given element
+	    * @param element
+	    * @param first
+	    * @param second
+	    */
 	   public void setLocation(Element element, ParserRuleReturnScope first, ParserRuleReturnScope second) {
 	     Token end = first.stop;
 	     if(second != null) {

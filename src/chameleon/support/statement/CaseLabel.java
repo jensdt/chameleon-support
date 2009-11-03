@@ -9,6 +9,7 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren
@@ -44,7 +45,7 @@ public class CaseLabel extends SwitchLabel<CaseLabel> {
   }
 
   public List<Element> children() {
-    return new ArrayList<Element>();
+    return Util.createNonNullList(getExpression());
   }
 
 	@Override

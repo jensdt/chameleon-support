@@ -22,6 +22,7 @@ import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
 import chameleon.support.statement.ForInit;
+import chameleon.util.Util;
 
 public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,Element>, ForInit<LocalVariableDeclarator, Element> {
 
@@ -45,7 +46,8 @@ public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarat
 	public List<Element> children() {
 			List<Element> result = new ArrayList<Element>();
 			result.addAll(variableDeclarations());
-			result.add(typeReference());
+			Util.addNonNull(typeReference(), result);
+			result.addAll(modifiers());
 			return result;
 	}
 
@@ -54,6 +56,9 @@ public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarat
 		LocalVariableDeclarator result = new LocalVariableDeclarator(typeReference().clone());
 		for(VariableDeclaration<LocalVariable> declaration: variableDeclarations()) {
 			result.add(declaration.clone());
+		}
+		for(Modifier mod: modifiers()) {
+			result.addModifier(mod.clone());
 		}
 		return result;
 	}

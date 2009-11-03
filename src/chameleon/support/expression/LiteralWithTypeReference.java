@@ -1,7 +1,11 @@
 package chameleon.support.expression;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.element.Element;
 import chameleon.core.expression.Literal;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.type.Type;
@@ -9,6 +13,7 @@ import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.util.Util;
 
 /**
  * @author Marko van Dooren
@@ -23,6 +28,13 @@ public abstract class LiteralWithTypeReference<E extends LiteralWithTypeReferenc
     super(value);
     setTypeReference(ref);
   }
+  
+  public List<Element> children() {
+  	List<Element> result = super.children();
+  	Util.addNonNull(getTypeReference(), result);
+  	return result;
+  }
+
 
 	/**
 	 * TARGET
