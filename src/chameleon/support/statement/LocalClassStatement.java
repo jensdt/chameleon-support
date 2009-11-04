@@ -99,7 +99,7 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
   	return language().lookupFactory().createLexicalLookupStrategy(language().lookupFactory().createTargetLookupStrategy(this), this);
   }
   
-  public LookupStrategy linearContext() {
+  public LookupStrategy linearLookupStrategy() {
   	return lexicalLookupStrategy(getType());
   }
 

@@ -205,7 +205,7 @@ public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarat
 	public int numberOfVariableDeclarations() {
 		return _declarations.size();
 	}
-	public LookupStrategy linearContext() throws LookupException {
+	public LookupStrategy linearLookupStrategy() throws LookupException {
 		return variableDeclarations().get(numberOfVariableDeclarations()-1).linearContext();
 	}
 
