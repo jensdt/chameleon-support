@@ -93,7 +93,7 @@ public abstract class ChameleonParser<L extends Language> extends Parser {
 	     }
 	   }
 
-	   public void setAllPosition(Element element, Token token) {
+	   public void setAllLocation(Element element, Token token) {
 	     if(token != null) {
 	       setLocation(element, (CommonToken)token, (CommonToken)token, "__ALL");
 	     }
