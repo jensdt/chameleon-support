@@ -135,22 +135,21 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 		    SourceManager manager = language().connector(SourceManager.class);
 		    String text = manager.text(element);
 		    Element newElement = parse(element, text);
-		    // Use raw type here, we can't really type check this.
-		    Association childLink = element.parentLink().getOtherRelation();
-		    childLink.replace(element.parentLink(), newElement.parentLink());
-		    done = true;
+		    if(newElement != null) {
+		      // Use raw type here, we can't really type check this.
+		      Association childLink = element.parentLink().getOtherRelation();
+		      childLink.replace(element.parentLink(), newElement.parentLink());
+		      done = true;
+		    }
 			} catch(ParseException exc) {
-				element = element.parent();
-				if(element == null) {
-					throw exc;
-				}
 			} catch (NoLocationException e) {
-				Element<?,?> old = element;
-				element = element.parent();
-				if(element == null) {
-					throw new ParseException(old.nearestAncestor(CompilationUnit.class));
-				}
 			}
+			Element<?,?> old = element;
+			element = element.parent();
+			if(element == null) {
+				throw new ParseException(old.nearestAncestor(CompilationUnit.class));
+			}
+
 		}
 	}
 	
