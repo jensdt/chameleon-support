@@ -39,31 +39,42 @@ public abstract class ChameleonParser<L extends Language> extends Parser {
 	   }
 
 	   public void setLocation(Element element, Token start, Token stop) {
-	     List<InputProcessor> processors = language().processors(InputProcessor.class);
 	     CommonToken begin = (CommonToken)start;
 	     CommonToken end = (CommonToken)stop;
 	         if(begin != null && end != null) {
 	         	int offset = begin.getStartIndex();
 	         	int length = end.getStopIndex() - offset;
-	         	for(InputProcessor processor: processors) {
+	         	for(InputProcessor processor: inputProcessors()) {
 	         		//processor.setLocation(element, new Position2D(begin.getLine(), begin.getCharPositionInLine()), new Position2D(end.getLine(), end.getCharPositionInLine()));
 	         		processor.setLocation(element, offset, length, getCompilationUnit());
 	         	}
 	         }
 	   }
 
+		public List<InputProcessor> inputProcessors() {
+			return language().processors(InputProcessor.class);
+		}
+
 	   public void setLocation(Element element, Token start, Token stop, String tagType) {
-	     List<InputProcessor> processors = language().processors(InputProcessor.class);
+	     List<InputProcessor> processors = inputProcessors();
 	     CommonToken begin = (CommonToken)start;
 	     CommonToken end = (CommonToken)stop;
 	         if(begin != null && end != null) {
-	         	int offset = begin.getStartIndex();
-	         	int length = end.getStopIndex() - offset;
+	         	int offset = offset(begin);
+	         	int length = length(begin,end);
 	         	for(InputProcessor processor: processors) {
 	         		//processor.setLocation(element, new Position2D(begin.getLine(), begin.getCharPositionInLine()), new Position2D(end.getLine(), end.getCharPositionInLine()));
 	         		processor.setLocation(element, offset, length, getCompilationUnit(), tagType);
 	         	}
 	         }
+	   }
+	   
+	   public int offset(CommonToken token) {
+	  	 return token.getStartIndex();
+	   }
+	   
+	   public int length(CommonToken start, CommonToken stop) {
+	  	 return stop.getStopIndex() - offset(start);
 	   }
 	   
 	   /**
@@ -129,5 +140,15 @@ public abstract class ChameleonParser<L extends Language> extends Parser {
 	     _cu = compilationUnit;
 	   }
 	   
-
+	   @Override
+	   public void displayRecognitionError(String[] tokenNames, RecognitionException exc) {
+	   	 CommonToken token = (CommonToken) exc.token;
+	   	 int offset = offset(token);
+	   	 int length = length(token,token);
+	   	 // Message construction copied from the super method. It is not available as a separate inspector.
+	   	 String message = getErrorMessage(exc, tokenNames);
+       for(InputProcessor processor: inputProcessors()) {
+      	 processor.markParseError(offset, length, message, getCompilationUnit());
+       }
+	   }
 }
