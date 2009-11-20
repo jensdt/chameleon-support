@@ -22,6 +22,7 @@ import chameleon.core.element.Element;
 import chameleon.core.language.Language;
 import chameleon.core.namespace.Namespace;
 import chameleon.input.ModelFactory;
+import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
 import chameleon.input.SourceManager;
 import chameleon.tool.ConnectorImpl;
@@ -142,6 +143,12 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 				element = element.parent();
 				if(element == null) {
 					throw exc;
+				}
+			} catch (NoLocationException e) {
+				Element<?,?> old = element;
+				element = element.parent();
+				if(element == null) {
+					throw new ParseException(old.nearestAncestor(CompilationUnit.class));
 				}
 			}
 		}
