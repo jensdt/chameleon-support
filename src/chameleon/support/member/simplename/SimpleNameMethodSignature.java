@@ -43,20 +43,23 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
 //* FORMAL PARAMETERS *
 //*********************/
 //
-public List<TypeReference> typeReferences() {
- return _parameters.getOtherEnds();
-}
+  public List<TypeReference> typeReferences() {
+    return _parameters.getOtherEnds();
+  }
 
+  public void add(TypeReference arg) {
+   _parameters.add(arg.parentLink());
+  }
 
-public void add(TypeReference arg) {
- _parameters.add(arg.parentLink());
-}
+  public void remove(TypeReference arg) {
+    _parameters.remove(arg.parentLink());
+   }
 
-public int getNbTypeReferences() {
- return _parameters.size();
-}
+  public int getNbTypeReferences() {
+   return _parameters.size();
+  }  
 
-private OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference> _parameters = new OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference>(this);
+  private OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference> _parameters = new OrderedMultiAssociation<SimpleNameMethodSignature,TypeReference>(this);
 
   
   @Override
