@@ -9,14 +9,14 @@ import chameleon.core.property.ChameleonProperty;
 import chameleon.core.property.PropertyRule;
 import chameleon.oo.language.ObjectOrientedLanguage;
 
-public class MemberOverridableByDefault extends PropertyRule {
+public class MemberOverridableByDefault extends PropertyRule<Member> {
 
-	public PropertySet<Element,ChameleonProperty> suggestedProperties(Element element) {
+	public MemberOverridableByDefault() {
+		super(Member.class);
+	}
+
+	public PropertySet<Element,ChameleonProperty> suggestedProperties(Member element) {
 		return createSet(language(ObjectOrientedLanguage.class).OVERRIDABLE);
 	}
 	
-	public boolean appliesTo(Element element) {
-		return element instanceof Member;
-	}
-
 }
