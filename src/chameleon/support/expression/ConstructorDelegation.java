@@ -29,7 +29,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
   protected class NamelessConstructorSelector extends
       DeclarationSelector<NormalMethod> {
     @Override
-    public NormalMethod filter(Declaration declaration)
+    public NormalMethod filter(NormalMethod declaration)
         throws LookupException {
       NormalMethod result = null;
       NormalMethod decl = (NormalMethod) declaration;

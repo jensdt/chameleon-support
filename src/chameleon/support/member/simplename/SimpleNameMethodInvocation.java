@@ -50,7 +50,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
   	
   	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
     
-    public D filter(Declaration declaration) throws LookupException {
+    public D filter(D declaration) throws LookupException {
       D result = null;
       D decl = (D)declaration;
       SimpleNameMethodSignature sig =((SimpleNameMethodSignature)decl.signature());
