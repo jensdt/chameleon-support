@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
-import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.Signature;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NonConstructorInvocation;
 import chameleon.core.lookup.DeclarationSelector;
@@ -50,17 +50,21 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
   	
   	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
     
-    public D filter(D declaration) throws LookupException {
-      D result = null;
-      D decl = (D)declaration;
-      SimpleNameMethodSignature sig =((SimpleNameMethodSignature)decl.signature());
-      if((_nameHash == sig.nameHash()) && sig.name().equals(name())) {
+    public boolean selectedRegardlessOfSignature(D declaration) throws LookupException {
+      return declaration.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) != Ternary.TRUE;
+    }
+    
+    public boolean selected(Signature signature) throws LookupException {
+      boolean result = false;
+      if(signature instanceof SimpleNameMethodSignature) {
+        SimpleNameMethodSignature sig = (SimpleNameMethodSignature)signature;
+        if((_nameHash == sig.nameHash()) && sig.name().equals(name())) {
         List<Type> actuals = getActualParameterTypes();
-        List<Type> formals = ((MethodHeader)decl.header()).getParameterTypes();
-        if((decl.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) != Ternary.TRUE) &&
-        	 new MoreSpecificTypesOrder().contains(actuals,formals)) {
-           result = decl;
+        List<Type> formals = sig.parameterTypes();
+        if(new MoreSpecificTypesOrder().contains(actuals,formals)) {
+           result = true;
         }
+      }
       }
       return result;
     }

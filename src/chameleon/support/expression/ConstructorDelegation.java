@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
-import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.Signature;
 import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.method.MethodSignature;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.core.type.Type;
 import chameleon.oo.language.ObjectOrientedLanguage;
@@ -29,15 +30,19 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
   protected class NamelessConstructorSelector extends
       DeclarationSelector<NormalMethod> {
     @Override
-    public NormalMethod filter(NormalMethod declaration)
+    public boolean selectedRegardlessOfSignature(NormalMethod declaration)
         throws LookupException {
-      NormalMethod result = null;
-      NormalMethod decl = (NormalMethod) declaration;
-      if(decl.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) == Ternary.TRUE) {
+    	return declaration.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) == Ternary.TRUE;
+    }
+    
+    public boolean selected(Signature signature) throws LookupException {
+      boolean result = false;
+      if(signature instanceof MethodSignature) {
+      	MethodSignature sig = (MethodSignature)signature;
         List<Type> actuals = getActualParameterTypes();
-        List<Type> formals = decl.header().getParameterTypes();
+        List<Type> formals = sig.parameterTypes();
         if (new MoreSpecificTypesOrder().contains(actuals, formals)) {
-          result = decl;
+          result = true;
         }
       }
       return result;
