@@ -56,9 +56,9 @@ public class ExpressionTest extends ModelTest {
   }
 
   public void setLogLevels() {
-  	Logger.getRootLogger().setLevel(Level.FATAL);
+  	//Logger.getRootLogger().setLevel(Level.FATAL);
   	getLogger().setLevel(Level.INFO);
-		Logger.getLogger("chameleon.test.expression").setLevel(Level.FATAL);
+		//Logger.getLogger("chameleon.test.expression").setLevel(Level.FATAL);
   }
 
   @Test

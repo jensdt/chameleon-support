@@ -3,10 +3,10 @@ package chameleon.support.expression;
 import java.util.ArrayList;
 import java.util.List;
 
-import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.exception.ChameleonProgrammerException;
 
 /**
  * @author Tim Laeremans

@@ -8,7 +8,6 @@ import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.declaration.SimpleNameSignature;
-import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
@@ -21,6 +20,7 @@ import chameleon.core.type.TypeReference;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
+import chameleon.exception.ChameleonProgrammerException;
 import chameleon.support.statement.ForInit;
 import chameleon.util.Util;
 

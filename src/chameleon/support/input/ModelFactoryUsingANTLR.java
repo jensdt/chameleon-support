@@ -17,10 +17,10 @@ import org.rejuse.association.Association;
 import org.rejuse.io.DirectoryScanner;
 
 import chameleon.core.compilationunit.CompilationUnit;
-import chameleon.core.element.ChameleonProgrammerException;
 import chameleon.core.element.Element;
 import chameleon.core.language.Language;
 import chameleon.core.namespace.Namespace;
+import chameleon.exception.ChameleonProgrammerException;
 import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
