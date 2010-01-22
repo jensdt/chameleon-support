@@ -102,5 +102,23 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
 		return result;
 	}
 
+  @Override
+  public String toString() {
+  	StringBuffer result = new StringBuffer();
+  	result.append(name());
+  	result.append("(");
+  	List<TypeReference> types = typeReferences();
+  	int size = types.size();
+		if(size > 0) {
+  		result.append(types.get(0).getName());
+  	}
+  	for(int i = 1; i < size; i++) {
+  		result.append(",");
+  		result.append(types.get(i).getName());
+  	}
+  	return result.toString();
+  }
+
+
 
 }
