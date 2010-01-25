@@ -12,6 +12,7 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.member.Member;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.type.Type;
 import chameleon.core.type.TypeElement;
@@ -88,7 +89,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 		}
 		return result;
 	}
-
+	
 	/**
 	 * TYPE
 	 */
