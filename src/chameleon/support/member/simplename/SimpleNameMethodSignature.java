@@ -71,7 +71,8 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
   	return result;
   }
 
-	public boolean sameAs(Signature other) throws LookupException {
+  @Override
+	public boolean uniSameAs(Element other) throws LookupException {
 		boolean result = false;
 		if(other instanceof SimpleNameMethodSignature) {
 			SimpleNameMethodSignature sig = (SimpleNameMethodSignature) other;
