@@ -1,11 +1,16 @@
 package chameleon.support.member.simplename;
 
+import java.util.List;
+
+import chameleon.core.declaration.Signature;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.namespace.NamespaceElement;
+import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.FormalParameter;
+import chameleon.exception.ChameleonProgrammerException;
 
 public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends NamespaceElement, S extends SimpleNameMethodSignature> extends MethodHeader<E, P, S>{
 
@@ -45,6 +50,31 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 			result = result.and(new BasicProblem(this, "The method has no name"));
 		}
 		return result;
+	}
+
+	@Override
+	public E createFromSignature(Signature signature) {
+		if(signature instanceof SimpleNameMethodSignature) {
+			SimpleNameMethodSignature sig = (SimpleNameMethodSignature) signature;
+			E result;
+			List<TypeReference> typeReferences = sig.typeReferences();
+			List<FormalParameter> params = formalParameters();
+			int size = params.size();
+			if(typeReferences.size() != size) {
+				throw new ChameleonProgrammerException();
+			} else {
+				// clone and copy parameter types
+				result = clone();
+				result.setName(sig.name());
+				params = result.formalParameters();
+				for(int i=0; i <size; i++) {
+					params.get(i).setTypeReference(typeReferences.get(i).clone());
+				}
+			}
+			return result;
+		} else {
+  		throw new ChameleonProgrammerException("Setting wrong type of signature. Provided: "+(signature == null ? null :signature.getClass().getName())+" Expected SimpleNameSignature");
+		}
 	}
 
 }
