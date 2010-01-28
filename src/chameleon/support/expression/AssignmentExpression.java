@@ -26,7 +26,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
    * @param first
    * @param second
    */
-  public AssignmentExpression(Assignable var, Expression value) {
+  public AssignmentExpression(Expression var, Expression value) {
     
 	  setVariable(var);
     setValue(value);
@@ -35,14 +35,14 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
 	/**
 	 * VARIABLE
 	 */
-	private SingleAssociation<AssignmentExpression,Assignable> _variable = new SingleAssociation<AssignmentExpression,Assignable>(this);
+	private SingleAssociation<AssignmentExpression,Expression> _variable = new SingleAssociation<AssignmentExpression,Expression>(this);
 
 
-  public Assignable getVariable() {
+  public Expression getVariable() {
     return _variable.getOtherEnd();
   }
 
-  public void setVariable(Assignable var) {
+  public void setVariable(Expression var) {
   	if(var != null) {
       _variable.connectTo(var.parentLink());
   	}
@@ -90,7 +90,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
 	public VerificationResult verifySelf() {
 		VerificationResult result = Valid.create();
 		try {
-			Assignable var = getVariable();
+			Expression var = getVariable();
 			if(var == null) {
 				result = result.and(new BasicProblem(this, "The assignment has no variable at the left-hand side"));
 			}
