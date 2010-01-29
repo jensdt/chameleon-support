@@ -117,6 +117,7 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
   		result.append(",");
   		result.append(types.get(i).getName());
   	}
+  	result.append(")");
   	return result.toString();
   }
 

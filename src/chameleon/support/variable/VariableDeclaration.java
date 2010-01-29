@@ -95,6 +95,7 @@ public class VariableDeclaration<V extends Variable> extends NamespaceElementImp
 		Expression initClone = (init == null ? null : init.clone());
 		V result = parent().createVariable(signature().clone(),initClone);
   	result.setUniParent(parent());
+  	result.setOrigin(this);
   	transform(result);
   	return result;
   }
