@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.rejuse.association.SingleAssociation;
 
+import chameleon.core.declaration.TargetDeclaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
@@ -13,8 +14,6 @@ import chameleon.core.expression.NamedTarget;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.namespace.NamespaceElementImpl;
-import chameleon.core.scope.Scope;
-import chameleon.core.scope.UniversalScope;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.type.Type;
 import chameleon.core.validation.Valid;
@@ -91,20 +90,16 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
     return new CheckedExceptionList();
   }
 
-  public Scope getAccessibilityDomain() throws LookupException {
-    return new UniversalScope();
-  }
-
-  private Type getType() throws LookupException {
+  public TargetDeclaration getTargetDeclaration() throws LookupException {
     if(getTarget() != null) {
-      return (Type)((NamedTarget)getTarget()).getElement();
+      return ((NamedTarget)getTarget()).getElement();
     } else {
       return nearestAncestor(Type.class);
     }
   }
 
   public LookupStrategy targetContext() throws LookupException {
-    return getType().targetContext();
+    return getTargetDeclaration().targetContext();
   }
 
   /**

@@ -23,7 +23,7 @@ import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
 
 /**
- * @author marko
+ * @author Marko van Dooren
  */
 public class LocalClassStatement extends StatementImpl<LocalClassStatement> 
              implements DeclarationContainer<LocalClassStatement,Element> {
@@ -42,7 +42,7 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
 	private SingleAssociation<LocalClassStatement,Type> _type = new SingleAssociation<LocalClassStatement,Type>(this);
 
 	public void setType(Type type) {
-    _type.connectTo(type.parentLink());
+		setAsParent(_type, type);
   }
 
   public Type getType() {
