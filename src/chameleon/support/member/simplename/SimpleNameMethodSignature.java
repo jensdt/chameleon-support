@@ -15,6 +15,7 @@ import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.util.Util;
 
 public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodSignature, NamespaceElement>{
 
@@ -121,6 +122,19 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
   	return result.toString();
   }
 
+	@Override
+	public Signature lastSignature() {
+		return this;
+	}
 
+	@Override
+	public List<Signature> signatures() {
+		return Util.createSingletonList((Signature)this);
+	}
+
+	@Override
+	public int length() {
+		return 1;
+	}
 
 }
