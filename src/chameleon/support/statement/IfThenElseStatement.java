@@ -30,11 +30,11 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * IF STATEMENT
 	 */
-	private SingleAssociation<IfThenElseStatement,StatementImpl> _ifStatement = new SingleAssociation<IfThenElseStatement,StatementImpl>(this);
+	private SingleAssociation<IfThenElseStatement,Statement> _ifStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
 
 
   public void setIfStatement(Statement statement) {
-    _ifStatement.connectTo(statement.parentLink());
+  	setAsParent(_ifStatement, statement);
   }
 
   public Statement getIfStatement() {
@@ -44,15 +44,10 @@ public class IfThenElseStatement extends ExpressionContainingStatement<IfThenEls
 	/**
 	 * ELSE STATEMENT
 	 */
-	private SingleAssociation<IfThenElseStatement,StatementImpl> _elseStatement = new SingleAssociation<IfThenElseStatement,StatementImpl>(this);
+	private SingleAssociation<IfThenElseStatement,Statement> _elseStatement = new SingleAssociation<IfThenElseStatement,Statement>(this);
 
   public void setElseStatement(Statement statement) {
-    if (statement != null) {
-      _elseStatement.connectTo(statement.parentLink());
-    }
-    else {
-      _elseStatement.connectTo(null);
-    }
+    setAsParent(_elseStatement, statement);
   }
 
   public Statement getElseStatement() {
