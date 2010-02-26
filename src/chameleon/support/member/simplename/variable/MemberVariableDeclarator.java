@@ -65,7 +65,7 @@ public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDecl
 	public MemberVariable createVariable(SimpleNameSignature signature, Expression expression) {
 		MemberVariable result = new RegularMemberVariable(signature, typeReference().clone(),expression);
 		for(Modifier mod: modifiers()) {
-			result.addModifier(mod);
+			result.addModifier(mod.clone());
 		}
 		return result;
 	}
