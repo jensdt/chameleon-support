@@ -67,10 +67,15 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     public Class<NormalMethod> selectedClass() {
       return NormalMethod.class;
     }
+
+		@Override
+		public String selectionName() {
+			return nearestAncestor(Type.class).signature().name();
+		}
   }
   
   @Override
-  public DeclarationSelector<NormalMethod> selector() {
+  public DeclarationSelector<NormalMethod> createSelector() {
     return new NamelessConstructorSelector();
   }
 

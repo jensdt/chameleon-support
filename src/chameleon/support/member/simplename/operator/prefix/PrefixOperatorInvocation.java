@@ -23,7 +23,7 @@ public class PrefixOperatorInvocation extends SimpleNameMethodInvocation<PrefixO
   }
 
   @Override
-  public DeclarationSelector<PrefixOperator> selector() {
+  public DeclarationSelector<PrefixOperator> createSelector() {
     return new SimpleNameMethodSelector() {
       @Override
       public Class<PrefixOperator> selectedClass() {

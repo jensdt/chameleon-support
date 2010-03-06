@@ -29,7 +29,7 @@ public class InfixOperatorInvocation extends SimpleNameMethodInvocation<InfixOpe
   }
 
   @Override
-  public DeclarationSelector<InfixOperator> selector() {
+  public DeclarationSelector<InfixOperator> createSelector() {
     return new SimpleNameMethodSelector() {
       @Override
       public Class<InfixOperator> selectedClass() {

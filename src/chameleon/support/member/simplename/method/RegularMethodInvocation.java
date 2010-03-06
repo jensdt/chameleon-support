@@ -14,6 +14,17 @@ public class RegularMethodInvocation<E extends RegularMethodInvocation> extends 
   public RegularMethodInvocation(String name, InvocationTarget target) {
     super(target, name);
   }
+  
+  @Override
+  protected DeclarationSelector<NormalMethod> createSelector() {
+  	return new SimpleNameMethodSelector() {
+      @Override
+      public Class<NormalMethod> selectedClass() {
+        return NormalMethod.class;
+      }
+
+    };
+  }
 
   /********
    * MISC *
@@ -23,15 +34,5 @@ public class RegularMethodInvocation<E extends RegularMethodInvocation> extends 
     return (E) new RegularMethodInvocation(name(), target);
   }
 
-  @Override
-  public DeclarationSelector<NormalMethod> selector() {
-    return new SimpleNameMethodSelector() {
-        @Override
-        public Class<NormalMethod> selectedClass() {
-          return NormalMethod.class;
-        }
-
-      };
-  }
 
 }

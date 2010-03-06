@@ -31,7 +31,7 @@ public class PostfixOperatorInvocation extends SimpleNameMethodInvocation<Postfi
   }
   
   @Override
-  public DeclarationSelector<PostfixOperator> selector() {
+  public DeclarationSelector<PostfixOperator> createSelector() {
     return new SimpleNameMethodSelector() {
       @Override
       public Class<PostfixOperator> selectedClass() {

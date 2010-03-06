@@ -23,6 +23,8 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
     setName(name);
   }
   
+  
+  
   /********
    * NAME *
    ********/
@@ -68,6 +70,11 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
   		}
   		return result;
     }
+  	
+  	@Override
+  	public String selectionName() {
+  		return name();
+  	}
     
   	@Override
     public boolean selectedBasedOnName(Signature signature) throws LookupException {
