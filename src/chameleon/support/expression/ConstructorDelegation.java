@@ -30,12 +30,13 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
   protected class NamelessConstructorSelector extends
       DeclarationSelector<NormalMethod> {
     @Override
-    public boolean selectedRegardlessOfSignature(NormalMethod declaration)
+    public boolean selectedRegardlessOfName(NormalMethod declaration)
         throws LookupException {
     	return declaration.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) == Ternary.TRUE;
     }
     
-    public boolean selected(Signature signature) throws LookupException {
+    @Override
+    public boolean selectedBasedOnName(Signature signature) throws LookupException {
       boolean result = false;
       if(signature instanceof MethodSignature) {
       	MethodSignature sig = (MethodSignature)signature;

@@ -48,25 +48,35 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
 
   public abstract class SimpleNameMethodSelector extends DeclarationSelector<D> {
   	
-  	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
+//  	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
     
-    public boolean selectedRegardlessOfSignature(D declaration) throws LookupException {
-      return declaration.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) != Ternary.TRUE;
+  	@Override
+    public boolean selectedRegardlessOfName(D declaration) throws LookupException {
+  		boolean result = declaration.is(language(ObjectOrientedLanguage.class).CONSTRUCTOR) != Ternary.TRUE;
+  		if(result) {
+  			Signature signature = declaration.signature();
+  			if(signature instanceof SimpleNameMethodSignature) {
+  				SimpleNameMethodSignature sig = (SimpleNameMethodSignature)signature;
+  				if(sig.nbTypeReferences() == nbActualParameters()) {
+  					List<Type> actuals = getActualParameterTypes();
+  					List<Type> formals = sig.parameterTypes();
+  					result = new MoreSpecificTypesOrder().contains(actuals,formals);
+  				} else {
+  					result = false;
+  				}
+  			}
+  		}
+  		return result;
     }
     
-    public boolean selected(Signature signature) throws LookupException {
-      boolean result = false;
-      if(signature instanceof SimpleNameMethodSignature) {
-        SimpleNameMethodSignature sig = (SimpleNameMethodSignature)signature;
-        if((_nameHash == sig.nameHash()) && sig.name().equals(name())) {
-        List<Type> actuals = getActualParameterTypes();
-        List<Type> formals = sig.parameterTypes();
-        if(new MoreSpecificTypesOrder().contains(actuals,formals)) {
-           result = true;
-        }
-      }
-      }
-      return result;
+  	@Override
+    public boolean selectedBasedOnName(Signature signature) throws LookupException {
+  		boolean result = false;
+  		if(signature instanceof SimpleNameMethodSignature) {
+  			SimpleNameMethodSignature sig = (SimpleNameMethodSignature)signature;
+  			result = sig.name().equals(name()); // (_nameHash == sig.nameHash()) && 
+  		}
+  		return result;
     }
 
     @Override

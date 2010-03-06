@@ -2,6 +2,7 @@ package chameleon.support.member.simplename;
 
 import java.util.List;
 
+import chameleon.core.Config;
 import chameleon.core.declaration.Signature;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.namespace.NamespaceElement;
@@ -33,14 +34,33 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 		return (E) new SimpleNameMethodHeader(getName());
 	}
 
+	private SimpleNameMethodSignature _signatureCache;
+	
 	@Override
 	public S signature() {
-		SimpleNameMethodSignature result = new SimpleNameMethodSignature(getName());
-		result.setUniParent(parent());
-		for(FormalParameter param: formalParameters()) {
-			result.add(param.getTypeReference().clone());
+		SimpleNameMethodSignature result;
+		boolean cacheSignatures = Config.cacheSignatures();
+		if(cacheSignatures) {
+		  result = _signatureCache;
+		} else {
+			result = null;
+		}
+		if(result == null) {
+			result = new SimpleNameMethodSignature(getName());
+			result.setUniParent(parent());
+			for(FormalParameter param: formalParameters()) {
+				result.add(param.getTypeReference().clone());
+			}
+			if(cacheSignatures) {
+				_signatureCache = result;
+			}
 		}
 		return (S) result;
+	}
+
+	@Override
+	public void flushLocalCache() {
+		_signatureCache = null;
 	}
 
 	@Override

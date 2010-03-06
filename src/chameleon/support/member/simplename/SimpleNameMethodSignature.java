@@ -56,7 +56,7 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
     _parameterTypes.remove(arg.parentLink());
    }
 
-  public int getNbTypeReferences() {
+  public int nbTypeReferences() {
    return _parameterTypes.size();
   }  
 
@@ -126,7 +126,7 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
 	public Signature lastSignature() {
 		return this;
 	}
-
+	
 	@Override
 	public List<Signature> signatures() {
 		return Util.createSingletonList((Signature)this);
