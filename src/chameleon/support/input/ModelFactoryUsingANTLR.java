@@ -67,7 +67,7 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 	public void addToModel(Collection<File> files) throws IOException, ParseException {
 	  int count = 0;
 	  for (File file : files) {
-	    System.out.println(++count + " Parsing "+ file.getAbsolutePath());
+	    //System.out.println(++count + " Parsing "+ file.getAbsolutePath());
 	  	addToModel(file);
 	  }
 	

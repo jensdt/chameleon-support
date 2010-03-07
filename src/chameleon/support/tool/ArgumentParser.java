@@ -89,7 +89,7 @@ public class ArgumentParser {
     		files.addAll(new DirectoryScanner().scan(args[i],extension,true));
       }
     }
-    System.out.println("Parsing "+files.size() +" files.");
+    //System.out.println("Parsing "+files.size() +" files.");
     _factory.addToModel(files);
     Namespace mm = _factory.language().defaultNamespace();
     Set<Type> types = new HashSet<Type>();
