@@ -64,18 +64,18 @@ public class ExpressionTest extends ModelTest {
   @Test
   public void testExpressionTypes() throws Exception {
     Collection<Type> types = typeProvider().elements(language());
-    getLogger().info("Starting to test "+types.size() + " types.");
+//    getLogger().info("Starting to test "+types.size() + " types.");
     Iterator<Type> iter = types.iterator();
-    long startTime = System.currentTimeMillis();
+    long startTime = System.nanoTime();
     int count = 1;
     while (iter.hasNext()) {
       Type type = iter.next();
-      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
+//      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
       processType(type);
       count++;
     }
-    long endTime = System.currentTimeMillis();
-    System.out.println("Testing took "+(endTime-startTime)+" milliseconds.");
+    long endTime = System.nanoTime();
+    System.out.println("Testing took "+(endTime-startTime)/1000000+" milliseconds.");
   }
 
   private int _count = 0;
@@ -88,14 +88,14 @@ public class ExpressionTest extends ModelTest {
       List<Expression> exprs = type.descendants(Expression.class);
       for(Expression expression : exprs) {
       	Syntax syntax = language().connector(Syntax.class);
-      	if(syntax != null) {
-          getExpressionLogger().info(_count + " Testing: "+syntax.toCode(expression));
-      	} else {
-      		getExpressionLogger().info(_count + " Add a Syntax connector to the language for printing the code of the expression being tested.");
-      	}
+//      	if(syntax != null) {
+//          getExpressionLogger().info(_count + " Testing: "+syntax.toCode(expression));
+//      	} else {
+//      		getExpressionLogger().info(_count + " Add a Syntax connector to the language for printing the code of the expression being tested.");
+//      	}
         Type expressionType = expression.getType();
 				assertTrue(expressionType != null);
-        getExpressionLogger().info(_count + "        : "+expressionType.getFullyQualifiedName());
+//        getExpressionLogger().info(_count + "        : "+expressionType.getFullyQualifiedName());
       }
     }
     catch (Exception e) {
