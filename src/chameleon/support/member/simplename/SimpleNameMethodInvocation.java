@@ -62,7 +62,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
   				if(sig.nbTypeReferences() == nbActualParameters()) {
   					List<Type> actuals = getActualParameterTypes();
   					List<Type> formals = sig.parameterTypes();
-  					result = new MoreSpecificTypesOrder().contains(actuals,formals);
+  					result = MoreSpecificTypesOrder.create().contains(actuals,formals);
   				} else {
   					result = false;
   				}
@@ -92,7 +92,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         @Override
         public boolean contains(D first, D second)
             throws LookupException {
-          return new MoreSpecificTypesOrder().contains(((MethodHeader) first.header()).getParameterTypes(), ((MethodHeader) second.header()).getParameterTypes());
+          return MoreSpecificTypesOrder.create().contains(((MethodHeader) first.header()).getParameterTypes(), ((MethodHeader) second.header()).getParameterTypes());
         }
       };
     }

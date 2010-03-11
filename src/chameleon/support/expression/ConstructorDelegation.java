@@ -42,7 +42,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
       	MethodSignature sig = (MethodSignature)signature;
         List<Type> actuals = getActualParameterTypes();
         List<Type> formals = sig.parameterTypes();
-        if (new MoreSpecificTypesOrder().contains(actuals, formals)) {
+        if (MoreSpecificTypesOrder.create().contains(actuals, formals)) {
           result = true;
         }
       }
@@ -57,7 +57,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
         @Override
         public boolean contains(NormalMethod first, NormalMethod second)
             throws LookupException {
-          return new MoreSpecificTypesOrder().contains(first.header()
+          return MoreSpecificTypesOrder.create().contains(first.header()
               .getParameterTypes(), second.header().getParameterTypes());
         }
       };
