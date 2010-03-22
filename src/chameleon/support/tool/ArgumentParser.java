@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.rejuse.io.DirectoryScanner;
 
+import chameleon.core.language.Language;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespace.NamespaceOrTypeReference;
@@ -17,6 +18,7 @@ import chameleon.core.type.Type;
 import chameleon.core.type.TypeReference;
 import chameleon.input.ModelFactory;
 import chameleon.input.ParseException;
+import chameleon.oo.language.ObjectOrientedLanguage;
 
 /**
  * @author Tim Laeremans
@@ -91,7 +93,7 @@ public class ArgumentParser {
     }
     //System.out.println("Parsing "+files.size() +" files.");
     _factory.addToModel(files);
-    Namespace mm = _factory.language().defaultNamespace();
+    Namespace mm = language().defaultNamespace();
     Set<Type> types = new HashSet<Type>();
     
     for(int i = low; i < args.length;i++) {
@@ -112,8 +114,7 @@ public class ArgumentParser {
     }
     for(int i = low; i < args.length;i++) {
       if(args[i].startsWith("$")) {
-      	TypeReference ref= new TypeReference(args[i].substring(1));
-      	ref.setUniParent(mm);
+      	TypeReference ref= ((ObjectOrientedLanguage)language()).createTypeReferenceInDefaultNamespace(args[i].substring(1));
         types.add(ref.getType());
       }
     }
@@ -134,6 +135,10 @@ public class ArgumentParser {
     	return new Arguments(null, mm, files, types, arguments);
     }
   }
+
+		private Language language() {
+			return _factory.language();
+		}
   
 //  static class OutputParserFactory implements ILinkageFactory{
 //

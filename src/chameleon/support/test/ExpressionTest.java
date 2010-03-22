@@ -70,7 +70,7 @@ public class ExpressionTest extends ModelTest {
     int count = 1;
     while (iter.hasNext()) {
       Type type = iter.next();
-//      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
+      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
       processType(type);
       count++;
     }
