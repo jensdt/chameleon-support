@@ -112,11 +112,11 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
   	List<TypeReference> types = typeReferences();
   	int size = types.size();
 		if(size > 0) {
-  		result.append(types.get(0).signature().toString());
+  		result.append(types.get(0).toString());
   	}
   	for(int i = 1; i < size; i++) {
   		result.append(",");
-  		result.append(types.get(i).signature().toString());
+  		result.append(types.get(i).toString());
   	}
   	result.append(")");
   	return result.toString();
