@@ -23,10 +23,6 @@ public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
 		return new ArrayList<Member>();
 	}
 
-	public Type getNearestType() {
-		return parent().getNearestType();
-	}
-
 	public List<Element> children() {
 		return new ArrayList<Element>();
 	}

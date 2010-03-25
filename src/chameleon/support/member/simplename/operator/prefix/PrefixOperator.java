@@ -17,7 +17,7 @@ public class PrefixOperator<E extends PrefixOperator<E,H,S>, H extends SimpleNam
   }
 
   protected E cloneThis() {
-    return (E) new PrefixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
+    return (E) new PrefixOperator(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 
 }

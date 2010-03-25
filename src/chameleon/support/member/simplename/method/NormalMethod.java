@@ -23,7 +23,7 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
   }  
 
   protected E cloneThis() {
-    return (E) new NormalMethod(header().clone(), (TypeReference)getReturnTypeReference().clone());
+    return (E) new NormalMethod(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 	
 //	   private Reference<RegularMethod,ConstructorDelegation> _invokingConstructor = new Reference<RegularMethod,ConstructorDelegation>(this);

@@ -16,7 +16,7 @@ public class InfixOperator <E extends InfixOperator<E,H,S>, H extends SimpleName
   }
 
   protected E cloneThis() {
-    return (E) new InfixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
+    return (E) new InfixOperator(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 
   public boolean sameKind(Method other) {

@@ -21,7 +21,7 @@ public class ConversionOperator<E extends ConversionOperator<E,H,S>, H extends S
 	}
 
 	  protected E cloneThis() {
-	    return (E) new ConversionOperator((TypeReference)getReturnTypeReference().clone());
+	    return (E) new ConversionOperator((TypeReference)returnTypeReference().clone());
 	  }
 
 }

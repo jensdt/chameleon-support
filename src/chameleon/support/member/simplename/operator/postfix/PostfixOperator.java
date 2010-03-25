@@ -20,7 +20,7 @@ public class PostfixOperator<E extends PostfixOperator<E,H,S>, H extends SimpleN
 	  }  
 
   protected E cloneThis() {
-    return (E) new PostfixOperator(header().clone(), (TypeReference)getReturnTypeReference().clone());
+    return (E) new PostfixOperator(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 
 }
