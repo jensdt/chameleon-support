@@ -58,7 +58,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
         public boolean contains(NormalMethod first, NormalMethod second)
             throws LookupException {
           return MoreSpecificTypesOrder.create().contains(first.header()
-              .getParameterTypes(), second.header().getParameterTypes());
+              .formalParameterTypes(), second.header().formalParameterTypes());
         }
       };
     }

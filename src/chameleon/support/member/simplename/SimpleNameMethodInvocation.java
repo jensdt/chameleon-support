@@ -92,7 +92,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
         @Override
         public boolean contains(D first, D second)
             throws LookupException {
-          return MoreSpecificTypesOrder.create().contains(((MethodHeader) first.header()).getParameterTypes(), ((MethodHeader) second.header()).getParameterTypes());
+          return MoreSpecificTypesOrder.create().contains(((MethodHeader) first.header()).formalParameterTypes(), ((MethodHeader) second.header()).formalParameterTypes());
         }
       };
     }
