@@ -64,7 +64,7 @@ public class ExpressionTest extends ModelTest {
   @Test
   public void testExpressionTypes() throws Exception {
     Collection<Type> types = typeProvider().elements(language());
-//    getLogger().info("Starting to test "+types.size() + " types.");
+    getLogger().info("Starting to test "+types.size() + " types.");
     Iterator<Type> iter = types.iterator();
     long startTime = System.nanoTime();
     int count = 1;
