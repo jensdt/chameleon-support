@@ -74,10 +74,6 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
 		}
 	}
 
-	public Type getTopLevelType() {
-		return null;
-	}
-
 	public LookupStrategyFactory getContextFactory() {
 		return language().lookupFactory();
 	}
@@ -104,12 +100,9 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
   }
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
-    List<D> result = new ArrayList<D>();
-    D element = selector.selection(getType());
-    if(element != null) {
-      result.add(element);
-    }
-    return result;
+    List<Declaration> result = new ArrayList<Declaration>();
+    result.add(getType());
+    return selector.selection(result);
 	}
 
 	@Override

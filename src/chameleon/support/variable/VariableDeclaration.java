@@ -118,12 +118,9 @@ public class VariableDeclaration<V extends Variable> extends NamespaceElementImp
 	}
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
-		List<D> result = new ArrayList<D>();
-		D element = selector.selection(variable());
-		if(element != null) {
-		  result.add(element);
-		}
-		return result;
+    List<Declaration> result = new ArrayList<Declaration>();
+    result.add(variable());
+    return selector.selection(result);
 	}
 
 	@Override

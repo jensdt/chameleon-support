@@ -31,6 +31,7 @@ public class RegularMethodInvocation<E extends RegularMethodInvocation> extends 
    ********/
   
   protected E cloneInvocation(InvocationTarget target) {
+  	//target is already cloned.
     return (E) new RegularMethodInvocation(name(), target);
   }
 
