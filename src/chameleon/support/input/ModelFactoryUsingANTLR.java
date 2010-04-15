@@ -84,7 +84,7 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 	    
 	    // This message is printed here because we don't want that this
 	    // message will be printed if the file doesn't exist
-	    // LOGGER.debug("Adding " + absolutePath + "...");
+	    //LOGGER.debug("Adding " + absolutePath + "...");
 	
 			parse(fileInputStream, fileName, new CompilationUnit());
 	}
