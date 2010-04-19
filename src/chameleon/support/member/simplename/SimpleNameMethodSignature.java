@@ -137,4 +137,9 @@ public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodS
 		return 1;
 	}
 
+	@Override
+	public int nbFormalParameters() {
+		return _parameterTypes.size();
+	}
+
 }
