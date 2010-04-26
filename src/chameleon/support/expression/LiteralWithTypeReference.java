@@ -8,11 +8,11 @@ import org.rejuse.association.SingleAssociation;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Literal;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeReference;
 import chameleon.util.Util;
 
 /**

@@ -12,10 +12,10 @@ import chameleon.core.scope.Scope;
 import chameleon.core.statement.Statement;
 import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeReference;
 import chameleon.core.variable.RegularVariable;
 import chameleon.core.variable.VariableContainer;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeReference;
 
 /**
  * @author Marko van Dooren

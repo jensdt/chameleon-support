@@ -2,7 +2,7 @@ package chameleon.support.expression;
 
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.type.TypeReference;
+import chameleon.oo.type.TypeReference;
 
 /**
  * @author Marko van Dooren

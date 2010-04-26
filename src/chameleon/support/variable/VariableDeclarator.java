@@ -7,9 +7,9 @@ import chameleon.core.declaration.SimpleNameSignature;
 import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.modifier.Modifier;
-import chameleon.core.type.TypeReference;
 import chameleon.core.variable.MemberVariable;
 import chameleon.core.variable.Variable;
+import chameleon.oo.type.TypeReference;
 
 public interface VariableDeclarator<E extends VariableDeclarator, V extends Variable, P extends Element> extends Element<E,P> , DeclarationContainer<E, P> {
 

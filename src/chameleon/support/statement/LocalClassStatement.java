@@ -16,9 +16,9 @@ import chameleon.core.scope.Scope;
 import chameleon.core.statement.StatementImpl;
 import chameleon.core.statement.StatementListContainer;
 import chameleon.core.statement.StatementListScope;
-import chameleon.core.type.Type;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.type.Type;
 import chameleon.support.property.accessibility.HierarchyScope;
 import chameleon.util.Util;
 

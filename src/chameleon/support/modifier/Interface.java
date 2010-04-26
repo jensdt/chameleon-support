@@ -22,6 +22,6 @@ public class Interface extends ModifierImpl<Interface, Element> {
 		 * An interface is abstract, thus not defined.
 		 */
     public PropertySet<Element,ChameleonProperty> impliedProperties() {
-      return createSet(language(ObjectOrientedLanguage.class).DEFINED.inverse());
+      return createSet(language(ObjectOrientedLanguage.class).INTERFACE);
     }
 }

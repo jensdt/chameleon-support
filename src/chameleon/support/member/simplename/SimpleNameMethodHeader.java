@@ -6,12 +6,12 @@ import chameleon.core.Config;
 import chameleon.core.declaration.Signature;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.namespace.NamespaceElement;
-import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.FormalParameter;
 import chameleon.exception.ChameleonProgrammerException;
+import chameleon.oo.type.TypeReference;
 
 public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends NamespaceElement, S extends SimpleNameMethodSignature> extends MethodHeader<E, P, S>{
 

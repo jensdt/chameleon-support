@@ -10,11 +10,11 @@ import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.namespace.NamespaceElement;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeReference;
 import chameleon.core.validation.BasicProblem;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeReference;
 import chameleon.util.Util;
 
 public class SimpleNameMethodSignature extends MethodSignature<SimpleNameMethodSignature, NamespaceElement>{

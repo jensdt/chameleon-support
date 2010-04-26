@@ -12,8 +12,8 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import chameleon.core.expression.Expression;
-import chameleon.core.type.Type;
 import chameleon.input.ParseException;
+import chameleon.oo.type.Type;
 import chameleon.output.Syntax;
 import chameleon.test.ModelTest;
 import chameleon.test.provider.ElementProvider;

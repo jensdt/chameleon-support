@@ -5,7 +5,7 @@ import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.method.RegularMethod;
-import chameleon.core.type.TypeReference;
+import chameleon.oo.type.TypeReference;
 
 /**
  * @author Marko van Dooren

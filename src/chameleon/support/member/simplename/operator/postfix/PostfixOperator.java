@@ -1,7 +1,7 @@
 package chameleon.support.member.simplename.operator.postfix;
 
 import chameleon.core.method.Method;
-import chameleon.core.type.TypeReference;
+import chameleon.oo.type.TypeReference;
 import chameleon.support.member.simplename.SimpleNameMethodHeader;
 import chameleon.support.member.simplename.SimpleNameMethodSignature;
 import chameleon.support.member.simplename.operator.Operator;

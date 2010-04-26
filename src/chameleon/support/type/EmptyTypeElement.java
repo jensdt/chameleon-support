@@ -7,10 +7,10 @@ import java.util.Set;
 
 import chameleon.core.element.Element;
 import chameleon.core.member.Member;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeElementImpl;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeElementImpl;
 
 public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
 

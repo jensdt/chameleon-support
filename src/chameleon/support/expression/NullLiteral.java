@@ -5,10 +5,10 @@ import chameleon.core.expression.Literal;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.Scope;
 import chameleon.core.scope.UniversalScope;
-import chameleon.core.type.Type;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.oo.language.ObjectOrientedLanguage;
+import chameleon.oo.type.Type;
 
 /**
  * @author Marko van Dooren

@@ -8,7 +8,7 @@ import java.util.List;
 
 import chameleon.core.lookup.LookupException;
 import chameleon.core.relation.WeakPartialOrder;
-import chameleon.core.type.Type;
+import chameleon.oo.type.Type;
 
 public class MoreSpecificTypesOrder extends WeakPartialOrder<List<Type>> {
 	

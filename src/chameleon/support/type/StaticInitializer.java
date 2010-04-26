@@ -11,10 +11,10 @@ import chameleon.core.member.Member;
 import chameleon.core.statement.Block;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.statement.ExceptionSource;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeElementImpl;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeElementImpl;
 import chameleon.util.Util;
 
 /**

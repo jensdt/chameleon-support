@@ -10,10 +10,10 @@ import chameleon.core.element.Element;
 import chameleon.core.expression.Expression;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.type.Type;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
+import chameleon.oo.type.Type;
 import chameleon.util.Util;
 
 public class SimpleForControl extends ForControl<SimpleForControl> {

@@ -15,12 +15,12 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.modifier.Modifier;
 import chameleon.core.statement.StatementImpl;
-import chameleon.core.type.Type;
-import chameleon.core.type.TypeReference;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
 import chameleon.exception.ChameleonProgrammerException;
+import chameleon.oo.type.Type;
+import chameleon.oo.type.TypeReference;
 import chameleon.support.statement.ForInit;
 import chameleon.util.Util;
 

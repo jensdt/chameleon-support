@@ -4,7 +4,7 @@ import chameleon.core.element.Element;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.scope.LexicalScope;
 import chameleon.core.scope.Scope;
-import chameleon.core.type.Type;
+import chameleon.oo.type.Type;
 
 /**
  * @author Marko van Dooren

@@ -12,7 +12,7 @@ import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.method.Method;
 import chameleon.core.namespace.Namespace;
 import chameleon.core.namespacepart.NamespacePart;
-import chameleon.core.type.Type;
+import chameleon.oo.type.Type;
 
 /**
  * @author Tim Laeremans
