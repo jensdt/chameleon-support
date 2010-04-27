@@ -18,6 +18,7 @@ import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.oo.type.Type;
+import chameleon.oo.type.inheritance.InheritanceRelation;
 import chameleon.util.Util;
 
 /**
@@ -94,7 +95,10 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
     if(getTarget() != null) {
       return ((NamedTarget)getTarget()).getElement();
     } else {
-      return nearestAncestor(Type.class);
+      Type outer = nearestAncestor(Type.class);
+      List<InheritanceRelation> inh = outer.inheritanceRelations();
+      Type result = inh.get(0).superClass();
+			return result;
     }
   }
 

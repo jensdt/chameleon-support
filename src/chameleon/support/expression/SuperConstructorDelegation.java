@@ -35,7 +35,7 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   public <X extends Declaration> X getElement(DeclarationSelector<X> selector) throws LookupException {
   	X result = null;
   	Type parent = nearestAncestor(Type.class);
-  	List<Type> types = parent.directSuperTypes();
+  	List<Type> types = parent.getDirectSuperTypes();
   	for(Type type: types) {
   		result = type.targetContext().lookUp(selector);
   		if(result != null) {
