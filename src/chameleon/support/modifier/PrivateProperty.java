@@ -24,7 +24,7 @@ public class PrivateProperty extends ScopeProperty {
 
 	public Scope scope(Element element) throws LookupException {
 		try {
-			return new LexicalScope(((Type)element.nearestAncestor(Type.class)).getTopLevelType());
+			return new LexicalScope(((Type)element.farthestAncestor(Type.class)));
 		} catch (ClassCastException exc) {
 			throw new LookupException("Private property does not support elements that are no TypeDescendant.");
 		}
