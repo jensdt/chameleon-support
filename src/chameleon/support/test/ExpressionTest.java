@@ -99,6 +99,7 @@ public class ExpressionTest extends ModelTest {
       }
     }
     catch (Exception e) {
+    	e.printStackTrace();
       throw e; 
     }
     
