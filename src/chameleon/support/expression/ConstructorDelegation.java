@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
+import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.Signature;
 import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.TwoPhaseDeclarationSelector;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.relation.WeakPartialOrder;
 import chameleon.oo.language.ObjectOrientedLanguage;
@@ -28,7 +30,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
   }
 
   protected class NamelessConstructorSelector extends
-      DeclarationSelector<NormalMethod> {
+      TwoPhaseDeclarationSelector<NormalMethod> {
     @Override
     public boolean selectedRegardlessOfName(NormalMethod declaration)
         throws LookupException {
@@ -69,7 +71,7 @@ public abstract class ConstructorDelegation<E extends ConstructorDelegation>
     }
 
 		@Override
-		public String selectionName() {
+		public String selectionName(DeclarationContainer<?,?> container) {
 			return nearestAncestor(Type.class).signature().name();
 		}
   }

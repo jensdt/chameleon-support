@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.rejuse.logic.ternary.Ternary;
 
+import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.Signature;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NonConstructorInvocation;
-import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
+import chameleon.core.lookup.TwoPhaseDeclarationSelector;
 import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.relation.WeakPartialOrder;
@@ -48,7 +49,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
 //  }
 
 
-  public abstract class SimpleNameMethodSelector extends DeclarationSelector<D> {
+  public abstract class SimpleNameMethodSelector extends TwoPhaseDeclarationSelector<D> {
   	
 //  	private int _nameHash = SimpleNameMethodInvocation.this._methodName.hashCode();
     
@@ -72,7 +73,7 @@ public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvoc
     }
   	
   	@Override
-  	public String selectionName() {
+  	public String selectionName(DeclarationContainer container) {
   		return name();
   	}
     

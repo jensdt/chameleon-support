@@ -3,6 +3,7 @@ package chameleon.support.expression;
 import java.util.List;
 
 import chameleon.core.declaration.Declaration;
+import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.DeclarationSelector;
 import chameleon.core.lookup.LookupException;
@@ -45,4 +46,17 @@ public class SuperConstructorDelegation extends ConstructorDelegation<SuperConst
   	return result;
   }
 
+	@Override
+	public DeclarationSelector<NormalMethod> createSelector() {
+		return new SuperConstructorDelegatorSelector();
+	}
+
+  protected class SuperConstructorDelegatorSelector extends NamelessConstructorSelector {
+
+		@Override
+		public String selectionName(DeclarationContainer<?,?> container) {
+			return container.nearestAncestor(Type.class).signature().name();
+		}
+		
+  }
 }
