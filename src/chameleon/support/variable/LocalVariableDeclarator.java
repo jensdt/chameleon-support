@@ -18,6 +18,8 @@ import chameleon.core.statement.StatementImpl;
 import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.Variable;
+import chameleon.core.variable.VariableDeclaration;
+import chameleon.core.variable.VariableDeclarator;
 import chameleon.exception.ChameleonProgrammerException;
 import chameleon.oo.type.Type;
 import chameleon.oo.type.TypeReference;

@@ -19,12 +19,12 @@ import chameleon.core.validation.Valid;
 import chameleon.core.validation.VerificationResult;
 import chameleon.core.variable.MemberVariable;
 import chameleon.core.variable.RegularMemberVariable;
+import chameleon.core.variable.VariableDeclaration;
+import chameleon.core.variable.VariableDeclarator;
 import chameleon.oo.type.Type;
 import chameleon.oo.type.TypeElement;
 import chameleon.oo.type.TypeElementImpl;
 import chameleon.oo.type.TypeReference;
-import chameleon.support.variable.VariableDeclaration;
-import chameleon.support.variable.VariableDeclarator;
 import chameleon.util.Util;
 
 public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Element> implements TypeElement<MemberVariableDeclarator, Element>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Element> {
