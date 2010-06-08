@@ -58,35 +58,25 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 	 * @throws RecognitionException 
 	 */
 	public void addToModel(File file) throws IOException, ParseException {
-	    Language lang = language();
-	    final Namespace defaultPackage = lang.defaultNamespace();
-	    addFileToGraph(file, lang);
+    // The file name is used in the lexers and parser to
+    // give more informative error messages
+    String fileName = file.getName();
+
+    // The constructor throws an FileNotFoundException if for some
+    // reason the file can't be read.
+    InputStream fileInputStream = new FileInputStream(file);
+    
+		parse(fileInputStream, fileName, new CompilationUnit());
 	
 	}
 
 	public void addToModel(Collection<File> files) throws IOException, ParseException {
-	  int count = 0;
+//	  int count = 0;
 	  for (File file : files) {
 //	    System.out.println(++count + " Parsing "+ file.getAbsolutePath());
 	  	addToModel(file);
 	  }
 	
-	}
-
-	private void addFileToGraph(File file, Language language) throws IOException, ParseException {
-	    // The file name is used in the lexers and parser to
-	    // give more informative error messages
-	    String fileName = file.getName();
-	
-	    // The constructor throws an FileNotFoundException if for some
-	    // reason the file can't be read.
-	    InputStream fileInputStream = new FileInputStream(file);
-	    
-	    // This message is printed here because we don't want that this
-	    // message will be printed if the file doesn't exist
-	    //LOGGER.debug("Adding " + absolutePath + "...");
-	
-			parse(fileInputStream, fileName, new CompilationUnit());
 	}
 
 	public void addToModel(String source, CompilationUnit cu) throws ParseException {
