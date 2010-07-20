@@ -100,7 +100,7 @@ public class AssignmentExpression extends Expression<AssignmentExpression> {
 			}
 			Type varType = var.getType();
 			Type exprType = value.getType();
-			if(! exprType.assignableTo(varType)) {
+			if(! exprType.subTypeOf(varType)) {
 				result = result.and(new InvalidType(this, varType, exprType));
 			}
 		}
