@@ -52,6 +52,10 @@ public abstract class ExpressionContainingStatement<E extends ExpressionContaini
   }
 
   @Override
+  /**
+   * The default behavior is to report a problem if the expression is missing. Subclasses
+   * are allowed to change that behavior.
+   */
   public VerificationResult verifySelf() {
   	VerificationResult result = Valid.create();
   	if(getExpression() == null) {
