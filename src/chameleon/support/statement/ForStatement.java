@@ -60,6 +60,11 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
 	public ForStatement clone() {
 		return new ForStatement(forControl().clone(), getStatement().clone());
 	}
+	
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
+
 
 	public List<? extends Variable> declarations() throws LookupException {
 		return forControl().declarations();

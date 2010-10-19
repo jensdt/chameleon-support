@@ -125,6 +125,9 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
   public List<StatementExpression> children() {
     return statements();
   }
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
 
 	public List<? extends Declaration> declarations() throws LookupException {
 		return new ArrayList<Declaration>();

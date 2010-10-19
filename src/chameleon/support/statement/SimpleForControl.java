@@ -112,6 +112,11 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
       _expression.connectTo(null);
     }
   }
+  
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
+
 
 	public List<? extends Variable> declarations() throws LookupException {
 		ForInit init = getForInit();

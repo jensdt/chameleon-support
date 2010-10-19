@@ -90,4 +90,8 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 		return result;
 	}
 
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
+
 }
