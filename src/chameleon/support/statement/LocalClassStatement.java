@@ -77,11 +77,6 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
 	public LookupStrategyFactory getContextFactory() {
 		return language().lookupFactory();
 	}
-	
-	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
-		return declarations();
-	}
-
   public List<Declaration> declarations() {
     List<Declaration> result = new ArrayList<Declaration>();
     result.add(getType());
