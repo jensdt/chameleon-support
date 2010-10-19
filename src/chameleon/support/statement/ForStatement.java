@@ -64,6 +64,10 @@ public class ForStatement extends IterationStatement<ForStatement> implements De
 	public List<? extends Variable> declarations() throws LookupException {
 		return forControl().declarations();
 	}
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return forControl().locallyDeclaredDeclarations();
+	}
+
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
 		return selector.selection(declarations());

@@ -75,6 +75,10 @@ public class EnhancedForControl extends ForControl<EnhancedForControl> {
 		return parent();
 	}
 
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
+
 	public List<LocalVariable> declarations() throws LookupException {
 		return variableDeclarator().variables();
 	}

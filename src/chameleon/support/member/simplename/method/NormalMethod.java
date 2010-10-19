@@ -15,9 +15,11 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
 
   public NormalMethod(H header, TypeReference returnType) {
     super(header, returnType);
+    if(name().equals("canReach")) {
+    	System.out.println("Hmmmmm");
+    }
   }
-
-
+  
   public boolean sameKind(Method other) {
   	return(other instanceof NormalMethod);
   }  

@@ -135,4 +135,8 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
 		return checkNull(getExceptionParameter(), "Exception parameter is missing", Valid.create());
 	}
 
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
+	}
+
 }

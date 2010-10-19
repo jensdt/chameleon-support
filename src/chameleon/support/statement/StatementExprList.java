@@ -126,8 +126,13 @@ public class StatementExprList extends NamespaceElementImpl<StatementExprList,Si
     return statements();
   }
 
+  //FIXME why is this a declaration container anyway?
 	public List<? extends Declaration> declarations() throws LookupException {
 		return new ArrayList<Declaration>();
+	}
+	
+	public List<? extends Declaration> locallyDeclaredDeclarations() throws LookupException {
+		return declarations();
 	}
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
