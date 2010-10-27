@@ -1,11 +1,13 @@
 package chameleon.support.member.simplename.method;
 
 
+import chameleon.core.element.Element;
 import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.method.RegularMethod;
 import chameleon.oo.type.TypeReference;
+import chameleon.util.CreationStackTrace;
 
 
 /**
@@ -22,7 +24,7 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
   	return(other instanceof NormalMethod);
   }  
 
-  protected E cloneThis() {
+	protected E cloneThis() {
     return (E) new NormalMethod(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 	

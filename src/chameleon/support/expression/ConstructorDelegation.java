@@ -22,7 +22,7 @@ import chameleon.support.member.simplename.method.NormalMethod;
  * @author Marko van Dooren
  */
 
-public abstract class ConstructorDelegation<E extends ConstructorDelegation>
+public abstract class ConstructorDelegation<E extends ConstructorDelegation<E>>
     extends Invocation<E, NormalMethod> {
 
   public ConstructorDelegation(InvocationTarget target) {

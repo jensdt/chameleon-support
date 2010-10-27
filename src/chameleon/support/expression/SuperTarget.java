@@ -63,26 +63,6 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
     return result;
   }
 
-  public void prefix(InvocationTarget target) {
-    // Do nothing.
-  }
-
-  public void substituteParameter(String name, Expression expr) throws LookupException {
-    // Do nothing.
-  }
-
-  public void prefixRecursive(InvocationTarget target) throws LookupException {
-    prefix(target);
-  }
-
-  public Set<Type> getDirectExceptions() throws LookupException {
-    return new HashSet<Type>();
-  }
-
-  public Set<Type> getExceptions() throws LookupException {
-    return new HashSet<Type>();
-  }
-
   public CheckedExceptionList getCEL() {
     return new CheckedExceptionList();
   }

@@ -17,7 +17,7 @@ import chameleon.oo.language.ObjectOrientedLanguage;
 import chameleon.oo.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;
 
-public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvocation, D extends Method> extends NonConstructorInvocation<I,D> {
+public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvocation<I,D>, D extends Method> extends NonConstructorInvocation<I,D> {
 
   public SimpleNameMethodInvocation(InvocationTarget target, String name) {
     super(target);
