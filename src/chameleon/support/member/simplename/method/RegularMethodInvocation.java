@@ -3,6 +3,7 @@ package chameleon.support.member.simplename.method;
 
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.lookup.DeclarationSelector;
+import chameleon.core.lookup.LookupException;
 import chameleon.support.member.simplename.SimpleNameMethodInvocation;
 
 
@@ -16,7 +17,7 @@ public class RegularMethodInvocation<E extends RegularMethodInvocation<E>> exten
   }
   
   @Override
-  protected DeclarationSelector<NormalMethod> createSelector() {
+  protected DeclarationSelector<NormalMethod> createSelector() throws LookupException {
   	return new SimpleNameMethodSelector() {
       @Override
       public Class<NormalMethod> selectedClass() {

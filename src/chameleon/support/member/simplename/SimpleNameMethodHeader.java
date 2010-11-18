@@ -46,7 +46,15 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 			result = null;
 		}
 		if(result == null) {
-			result = new SimpleNameMethodSignature(getName());
+			result = new SimpleNameMethodSignature(getName()) {
+
+				@Override
+				public void setName(String name) {
+					super.setName(name);
+					SimpleNameMethodHeader.this.setName(name);
+				}
+				
+			};
 			result.setUniParent(parent());
 			for(FormalParameter param: formalParameters()) {
 				result.add(param.getTypeReference().clone());

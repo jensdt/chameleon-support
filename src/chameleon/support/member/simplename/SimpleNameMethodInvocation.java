@@ -6,8 +6,8 @@ import org.rejuse.logic.ternary.Ternary;
 
 import chameleon.core.declaration.DeclarationContainer;
 import chameleon.core.declaration.Signature;
+import chameleon.core.expression.Invocation;
 import chameleon.core.expression.InvocationTarget;
-import chameleon.core.expression.NonConstructorInvocation;
 import chameleon.core.lookup.LookupException;
 import chameleon.core.lookup.TwoPhaseDeclarationSelector;
 import chameleon.core.method.Method;
@@ -17,14 +17,32 @@ import chameleon.oo.language.ObjectOrientedLanguage;
 import chameleon.oo.type.Type;
 import chameleon.support.member.MoreSpecificTypesOrder;
 
-public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvocation<I,D>, D extends Method> extends NonConstructorInvocation<I,D> {
+public abstract class SimpleNameMethodInvocation<I extends SimpleNameMethodInvocation<I,D>, D extends Method> extends Invocation<I,D> {
 
   public SimpleNameMethodInvocation(InvocationTarget target, String name) {
     super(target);
     setName(name);
   }
   
-  
+  protected Type actualType() throws LookupException {
+    try {
+			Method method = getMethod();
+			if (method != null) {
+			  return method.returnType();
+			}
+			else {
+			  getMethod();
+			  throw new LookupException("Could not find method of constructor invocation", this);
+			}
+		} catch (LookupException e) {
+//			e.printStackTrace();
+//			getMethod();
+			throw e;
+		}
+  }
+
+
+
   
   /********
    * NAME *
