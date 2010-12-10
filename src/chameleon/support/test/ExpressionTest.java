@@ -14,7 +14,7 @@ import org.junit.Test;
 import chameleon.core.expression.Expression;
 import chameleon.input.ParseException;
 import chameleon.oo.type.Type;
-import chameleon.output.Syntax;
+import chameleon.plugin.output.Syntax;
 import chameleon.test.ModelTest;
 import chameleon.test.provider.ElementProvider;
 import chameleon.test.provider.ModelProvider;
@@ -87,7 +87,7 @@ public class ExpressionTest extends ModelTest {
     try {
       List<Expression> exprs = type.descendants(Expression.class);
       for(Expression expression : exprs) {
-      	Syntax syntax = language().connector(Syntax.class);
+      	Syntax syntax = language().plugin(Syntax.class);
 //      	if(syntax != null) {
 //          getExpressionLogger().info(_count + " Testing: "+syntax.toCode(expression));
 //      	} else {

@@ -25,9 +25,9 @@ import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
 import chameleon.input.SourceManager;
-import chameleon.tool.ConnectorImpl;
+import chameleon.plugin.PluginImpl;
 
-public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements ModelFactory {
+public abstract class ModelFactoryUsingANTLR extends PluginImpl implements ModelFactory {
 
 	public void initializeBase(Collection<File> base) throws IOException, ParseException {
 		addToModel(base);
@@ -122,7 +122,7 @@ public abstract class ModelFactoryUsingANTLR extends ConnectorImpl implements Mo
 		boolean done = false;
 		while((element != null) && (! done)){
 			try {
-		    SourceManager manager = language().connector(SourceManager.class);
+		    SourceManager manager = language().plugin(SourceManager.class);
 		    String text = manager.text(element);
 		    Element newElement = parse(element, text);
 		    if(newElement != null) {
