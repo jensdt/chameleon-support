@@ -1,10 +1,10 @@
 package chameleon.support.member.simplename.method;
 
 
+import chameleon.core.declaration.DeclarationWithParametersHeader;
+import chameleon.core.declaration.DeclarationWithParametersSignature;
 import chameleon.core.element.Element;
 import chameleon.core.method.Method;
-import chameleon.core.method.MethodHeader;
-import chameleon.core.method.MethodSignature;
 import chameleon.core.method.RegularMethod;
 import chameleon.oo.type.TypeReference;
 import chameleon.util.CreationStackTrace;
@@ -13,7 +13,7 @@ import chameleon.util.CreationStackTrace;
 /**
  * @author Marko van Dooren
  */
-public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends MethodHeader<H, E, S>, S extends MethodSignature> extends RegularMethod<E,H,S,NormalMethod>  {
+public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends DeclarationWithParametersHeader<H, E, S>, S extends DeclarationWithParametersSignature> extends RegularMethod<E,H,S,NormalMethod>  {
 
   public NormalMethod(H header, TypeReference returnType) {
     super(header, returnType);
