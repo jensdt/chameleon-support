@@ -1,14 +1,11 @@
 package chameleon.support.expression;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.rejuse.association.SingleAssociation;
 
 import chameleon.core.declaration.TargetDeclaration;
 import chameleon.core.element.Element;
-import chameleon.core.expression.Expression;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NamedTarget;
 import chameleon.core.lookup.LookupException;
@@ -77,7 +74,7 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
     } else {
       Type outer = nearestAncestor(Type.class);
       List<InheritanceRelation> inh = outer.inheritanceRelations();
-      Type result = inh.get(0).superClass();
+      Type result = (Type) inh.get(0).superElement();
 			return result;
     }
   }

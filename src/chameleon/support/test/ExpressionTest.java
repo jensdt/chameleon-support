@@ -1,23 +1,30 @@
 package chameleon.support.test;
 
-import static org.junit.Assert.assertTrue;
+import static junit.framework.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import chameleon.core.expression.Expression;
+import chameleon.core.lookup.LookupException;
 import chameleon.input.ParseException;
 import chameleon.oo.type.Type;
 import chameleon.plugin.output.Syntax;
 import chameleon.test.ModelTest;
 import chameleon.test.provider.ElementProvider;
 import chameleon.test.provider.ModelProvider;
+import chameleon.util.concurrent.CallableFactory;
+import chameleon.util.concurrent.FixedThreadCallableExecutor;
+import chameleon.util.concurrent.QueuePollingCallableFactory;
+import chameleon.util.concurrent.SafeAction;
+import chameleon.util.concurrent.UnsafeAction;
 
 /**
  * @author Marko van Dooren
@@ -60,31 +67,112 @@ public class ExpressionTest extends ModelTest {
   	getLogger().setLevel(Level.INFO);
 		//Logger.getLogger("chameleon.test.expression").setLevel(Level.FATAL);
   }
+  
+  public int nbThreads() {
+	return Runtime.getRuntime().availableProcessors();
+  }
 
+  
+//  @Test
+//  public void testExpressionTypes() throws Exception {
+//	  Collection<Type> types = typeProvider().elements(language());
+//	  final BlockingQueue<Type> typeQueue = new ArrayBlockingQueue<Type>(types.size(), true, types);
+//	  RunnableFactory factory = new QueuePollingRunnableFactory(new SafeAction<Type>() {
+//		public void actuallyPerform(Type type) throws LookupException {
+//			  getLogger().info("Actually Testing "+type.getFullyQualifiedName());
+//  			  processType(type);
+//		} 
+//	},typeQueue);
+//	new UnsafeFixedThreadExecutor<LookupException>(factory,LookupException.class).run();
+//  }
+  
   @Test
   public void testExpressionTypes() throws Exception {
-    Collection<Type> types = typeProvider().elements(language());
-    getLogger().info("Starting to test "+types.size() + " types.");
-    Iterator<Type> iter = types.iterator();
-    long startTime = System.nanoTime();
-    int count = 1;
-    while (iter.hasNext()) {
-      Type type = iter.next();
-      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
-      processType(type);
-      count++;
-    }
-    long endTime = System.nanoTime();
-    System.out.println("Testing took "+(endTime-startTime)/1000000+" milliseconds.");
+	  Collection<Type> types = typeProvider().elements(language());
+	  final BlockingQueue<Type> typeQueue = new ArrayBlockingQueue<Type>(types.size(), true, types);
+	  UnsafeAction<Type,LookupException> unsafeAction = new UnsafeAction<Type,LookupException>() {
+		public void actuallyPerform(Type type) throws LookupException {
+//			  getLogger().info("Actually Testing "+type.getFullyQualifiedName());
+  			  processType(type);
+		} 
+	};
+	CallableFactory factory = new QueuePollingCallableFactory<Type,LookupException>(unsafeAction,typeQueue);
+	new FixedThreadCallableExecutor<LookupException>(factory).run();
   }
+  
+  
+
+//  @Test
+//  public void testExpressionTypes() throws Exception {
+//	  Collection<Type> types = typeProvider().elements(language());
+//	  int size = types.size();
+//	final BlockingQueue<Type> typeQueue = new ArrayBlockingQueue<Type>(size, true, types);
+//	  int nbThreads = nbThreads();
+//	ExecutorService executor = Executors.newFixedThreadPool(nbThreads);
+//	  getLogger().info("Starting to test "+size + " types.");
+////    Iterator<Type> iter = types.iterator();
+//    long startTime = System.nanoTime();
+//    int count = 1;
+//    try {
+//      for(int i= 0; i< nbThreads;i++) {
+//  	  executor.execute(new Runnable() {
+//  		@Override
+//  		public void run() {
+//  		      try {
+//  		    	  boolean ongoing = true;
+//  		    	  while(ongoing) {
+//  		    		  Type type = typeQueue.poll();
+//  		    		  if(type != null) {
+//  		    			  getLogger().info("Actually Testing "+type.getFullyQualifiedName());
+//  		    			  processType(type);
+//  		    		  } else {
+//  		    			  ongoing = false;
+//  		    		  }
+//  		    	  }
+//  			} catch (Exception e) {
+//  				throw new MyError(e);
+//  			}
+//  		}
+//  	});
+//    	
+//    }
+////    while (iter.hasNext()) {
+////      final Type type = iter.next();
+////      getLogger().info(count+" Testing "+type.getFullyQualifiedName());
+////      count++;
+////    }
+//    executor.shutdown();
+//    executor.awaitTermination(100, TimeUnit.HOURS);
+//    } catch(MyError err) {
+//    	err.reraise();
+//    }
+//    long endTime = System.nanoTime();
+//    System.out.println("Testing took "+(endTime-startTime)/1000000+" milliseconds.");
+//  }
+//  
+//  private class MyError extends Error {
+//	  public Exception exception() {
+//		  return _exception;
+//	  }
+//	  
+//	  private Exception _exception;
+//	  
+//	  public MyError(Exception e) {
+//		  _exception = e;
+//	  }
+//	  
+//	  public void reraise() throws Exception {
+//		  throw _exception;
+//	  }
+//  }
 
   private int _count = 0;
   
-  public void processType(Type type) throws Exception {
+  public void processType(Type type) throws LookupException {
     _count++;
     Expression expr = null;
     Object o = null;
-    try {
+//    try {
       List<Expression> exprs = type.descendants(Expression.class);
       for(Expression expression : exprs) {
       	Syntax syntax = language().plugin(Syntax.class);
@@ -97,12 +185,11 @@ public class ExpressionTest extends ModelTest {
 				assertTrue(expressionType != null);
 //        getExpressionLogger().info(_count + "        : "+expressionType.getFullyQualifiedName());
       }
-    }
-    catch (Exception e) {
-    	e.printStackTrace();
-      throw e; 
-    }
-    
+//    }
+//    catch (RuntimeException e) {
+//      e.printStackTrace();
+//      throw e; 
+//    }
   }
   
 }

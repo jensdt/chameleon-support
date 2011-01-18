@@ -37,7 +37,7 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 	private SimpleNameMethodSignature _signatureCache;
 	
 	@Override
-	public S signature() {
+	public synchronized S signature() {
 		SimpleNameMethodSignature result;
 		boolean cacheSignatures = Config.cacheSignatures();
 		if(cacheSignatures) {
@@ -67,7 +67,7 @@ public class SimpleNameMethodHeader<E extends SimpleNameMethodHeader, P extends 
 	}
 
 	@Override
-	public void flushLocalCache() {
+	public synchronized void flushLocalCache() {
 		_signatureCache = null;
 	}
 

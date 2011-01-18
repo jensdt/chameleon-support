@@ -11,15 +11,19 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.antlr.runtime.RecognitionException;
 import org.rejuse.association.Association;
 import org.rejuse.io.DirectoryScanner;
 
+import antlr.TokenStreamException;
 import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.element.Element;
-import chameleon.core.language.Language;
-import chameleon.core.namespace.Namespace;
 import chameleon.exception.ChameleonProgrammerException;
 import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
@@ -71,13 +75,61 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 	}
 
 	public void addToModel(Collection<File> files) throws IOException, ParseException {
-//	  int count = 0;
-	  for (File file : files) {
-//	    System.out.println(++count + " Parsing "+ file.getAbsolutePath());
-	  	addToModel(file);
-	  }
-	
+		int availableProcessors = Runtime.getRuntime().availableProcessors();
+		ExecutorService executor = Executors.newFixedThreadPool(availableProcessors);
+		final BlockingQueue<File> fileQueue = new ArrayBlockingQueue<File>(files.size(), true, files);
+		try {
+		for(int i=0; i < availableProcessors; i++) {
+			executor.execute(new Runnable() {
+				@Override
+				public void run() {
+					boolean ongoing = true;
+					while(ongoing) {
+						File file = fileQueue.poll();
+						if(file != null) {
+							try {
+								addToModel(file);
+							} catch (IOException e) {
+								throw new ChameleonProgrammerException(e); 
+							} catch (ParseException e) {
+								throw new ChameleonProgrammerException(e); 
+							}
+						} else {
+							ongoing = false;
+						}
+					}
+				}
+			});
+		}
+		} catch(ChameleonProgrammerException exc) {
+			Throwable cause = exc.getCause();
+			if(cause instanceof IOException) {
+				throw (IOException)cause;
+			} else if(cause instanceof ParseException) {
+				throw (ParseException) cause;
+			}
+			else {
+				throw exc;
+			}
+		}
+		executor.shutdown();
+		try {
+			executor.awaitTermination(100, TimeUnit.HOURS);
+		} catch (InterruptedException e) {
+			throw new ChameleonProgrammerException();
+		}
 	}
+	
+	
+//  // Single threaded
+//	public void addToModel(Collection<File> files) throws IOException, ParseException {
+////	  int count = 0;
+//	  for (File file : files) {
+////	    System.out.println(++count + " Parsing "+ file.getAbsolutePath());
+//	  	addToModel(file);
+//	  }
+//	
+//	}
 
 	public void addToModel(String source, CompilationUnit cu) throws ParseException {
 	    String name = "document";
