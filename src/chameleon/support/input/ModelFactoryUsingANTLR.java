@@ -15,7 +15,6 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.antlr.runtime.RecognitionException;
 import org.rejuse.association.Association;
@@ -24,13 +23,12 @@ import org.rejuse.io.DirectoryScanner;
 import antlr.TokenStreamException;
 import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.element.Element;
-import chameleon.core.lookup.LookupException;
 import chameleon.exception.ChameleonProgrammerException;
 import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
 import chameleon.input.SourceManager;
-import chameleon.oo.type.Type;
+import chameleon.plugin.Plugin;
 import chameleon.plugin.PluginImpl;
 import chameleon.util.concurrent.CallableFactory;
 import chameleon.util.concurrent.FixedThreadCallableExecutor;
@@ -44,6 +42,8 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 		initializePredefinedElements();
 	}
 	
+    public abstract ModelFactoryUsingANTLR clone();
+
 	protected abstract void initializePredefinedElements();
 
 	/**
