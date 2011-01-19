@@ -24,12 +24,18 @@ import org.rejuse.io.DirectoryScanner;
 import antlr.TokenStreamException;
 import chameleon.core.compilationunit.CompilationUnit;
 import chameleon.core.element.Element;
+import chameleon.core.lookup.LookupException;
 import chameleon.exception.ChameleonProgrammerException;
 import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
 import chameleon.input.SourceManager;
+import chameleon.oo.type.Type;
 import chameleon.plugin.PluginImpl;
+import chameleon.util.concurrent.CallableFactory;
+import chameleon.util.concurrent.FixedThreadCallableExecutor;
+import chameleon.util.concurrent.QueuePollingCallableFactory;
+import chameleon.util.concurrent.UnsafeAction;
 
 public abstract class ModelFactoryUsingANTLR extends PluginImpl implements ModelFactory {
 
@@ -78,46 +84,67 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 		int availableProcessors = Runtime.getRuntime().availableProcessors();
 		ExecutorService executor = Executors.newFixedThreadPool(availableProcessors);
 		final BlockingQueue<File> fileQueue = new ArrayBlockingQueue<File>(files.size(), true, files);
-		try {
-		for(int i=0; i < availableProcessors; i++) {
-			executor.execute(new Runnable() {
-				@Override
-				public void run() {
-					boolean ongoing = true;
-					while(ongoing) {
-						File file = fileQueue.poll();
-						if(file != null) {
-							try {
-								addToModel(file);
-							} catch (IOException e) {
-								throw new ChameleonProgrammerException(e); 
-							} catch (ParseException e) {
-								throw new ChameleonProgrammerException(e); 
-							}
-						} else {
-							ongoing = false;
-						}
-					}
-				}
-			});
-		}
-		} catch(ChameleonProgrammerException exc) {
-			Throwable cause = exc.getCause();
-			if(cause instanceof IOException) {
-				throw (IOException)cause;
-			} else if(cause instanceof ParseException) {
-				throw (ParseException) cause;
-			}
-			else {
-				throw exc;
-			}
-		}
-		executor.shutdown();
-		try {
-			executor.awaitTermination(100, TimeUnit.HOURS);
-		} catch (InterruptedException e) {
-			throw new ChameleonProgrammerException();
-		}
+
+	  UnsafeAction<File,Exception> unsafeAction = new UnsafeAction<File,Exception>() {
+		public void actuallyPerform(File file) throws IOException, ParseException {
+  			  addToModel(file);
+		} 
+	};
+	CallableFactory factory = new QueuePollingCallableFactory<File,Exception>(unsafeAction,fileQueue);
+	try {
+		new FixedThreadCallableExecutor<Exception>(factory).run();
+	} catch (IOException e) {
+		throw e;
+	} catch (ParseException e) {
+		throw e;
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+//
+//		
+//		
+//		
+//		try {
+//		for(int i=0; i < availableProcessors; i++) {
+//			executor.execute(new Runnable() {
+//				@Override
+//				public void run() {
+//					boolean ongoing = true;
+//					while(ongoing) {
+//						File file = fileQueue.poll();
+//						if(file != null) {
+//							try {
+//								addToModel(file);
+//							} catch (IOException e) {
+//								throw new ChameleonProgrammerException(e); 
+//							} catch (ParseException e) {
+//								throw new ChameleonProgrammerException(e); 
+//							}
+//						} else {
+//							ongoing = false;
+//						}
+//					}
+//				}
+//			});
+//		}
+//		} catch(ChameleonProgrammerException exc) {
+//			Throwable cause = exc.getCause();
+//			if(cause instanceof IOException) {
+//				throw (IOException)cause;
+//			} else if(cause instanceof ParseException) {
+//				throw (ParseException) cause;
+//			}
+//			else {
+//				throw exc;
+//			}
+//		}
+//		executor.shutdown();
+//		try {
+//			executor.awaitTermination(100, TimeUnit.HOURS);
+//		} catch (InterruptedException e) {
+//			throw new ChameleonProgrammerException();
+//		}
 	}
 	
 	

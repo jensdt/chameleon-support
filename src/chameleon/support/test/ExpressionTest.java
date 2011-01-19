@@ -5,8 +5,8 @@ import static junit.framework.Assert.assertTrue;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -23,7 +23,6 @@ import chameleon.test.provider.ModelProvider;
 import chameleon.util.concurrent.CallableFactory;
 import chameleon.util.concurrent.FixedThreadCallableExecutor;
 import chameleon.util.concurrent.QueuePollingCallableFactory;
-import chameleon.util.concurrent.SafeAction;
 import chameleon.util.concurrent.UnsafeAction;
 
 /**
@@ -73,6 +72,18 @@ public class ExpressionTest extends ModelTest {
   }
 
   
+  @Test
+  public void testExpressionTypes() throws Exception {
+	long startTime = System.nanoTime();
+  	Collection<Type> types = typeProvider().elements(language());
+  	for(Type type:types) {
+  		processType(type);
+  	}
+	long endTime = System.nanoTime();
+	System.out.println("Testing took "+(endTime-startTime)/1000000+" milliseconds.");
+  }
+
+  
 //  @Test
 //  public void testExpressionTypes() throws Exception {
 //	  Collection<Type> types = typeProvider().elements(language());
@@ -86,19 +97,22 @@ public class ExpressionTest extends ModelTest {
 //	new UnsafeFixedThreadExecutor<LookupException>(factory,LookupException.class).run();
 //  }
   
-  @Test
-  public void testExpressionTypes() throws Exception {
-	  Collection<Type> types = typeProvider().elements(language());
-	  final BlockingQueue<Type> typeQueue = new ArrayBlockingQueue<Type>(types.size(), true, types);
-	  UnsafeAction<Type,LookupException> unsafeAction = new UnsafeAction<Type,LookupException>() {
-		public void actuallyPerform(Type type) throws LookupException {
-//			  getLogger().info("Actually Testing "+type.getFullyQualifiedName());
-  			  processType(type);
-		} 
-	};
-	CallableFactory factory = new QueuePollingCallableFactory<Type,LookupException>(unsafeAction,typeQueue);
-	new FixedThreadCallableExecutor<LookupException>(factory).run();
-  }
+//  @Test
+//  public void testExpressionTypes() throws Exception {
+//  	long startTime = System.nanoTime();
+//  	Collection<Type> types = typeProvider().elements(language());
+//  	final Queue<Type> typeQueue = new ConcurrentLinkedQueue(types);
+//
+//  	UnsafeAction<Type,LookupException> unsafeAction = new UnsafeAction<Type,LookupException>() {
+//  		public void actuallyPerform(Type type) throws LookupException {
+//  			processType(type);
+//  		} 
+//  	};
+//  	CallableFactory factory = new QueuePollingCallableFactory<Type,LookupException>(unsafeAction,typeQueue);
+//  	new FixedThreadCallableExecutor<LookupException>(factory).run();
+//  	long endTime = System.nanoTime();
+//  	System.out.println("Testing took "+(endTime-startTime)/1000000+" milliseconds.");
+//  }
   
   
 
