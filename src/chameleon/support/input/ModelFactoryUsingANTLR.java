@@ -28,7 +28,6 @@ import chameleon.input.ModelFactory;
 import chameleon.input.NoLocationException;
 import chameleon.input.ParseException;
 import chameleon.input.SourceManager;
-import chameleon.plugin.Plugin;
 import chameleon.plugin.PluginImpl;
 import chameleon.util.concurrent.CallableFactory;
 import chameleon.util.concurrent.FixedThreadCallableExecutor;
