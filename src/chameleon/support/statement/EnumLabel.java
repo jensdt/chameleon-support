@@ -21,8 +21,7 @@ import chameleon.core.variable.Variable;
 public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<EnumLabel, SwitchCase, Variable>{
 
 	public EnumLabel(String name) {
-		_name = name;
-		_signature = new SimpleNameSignature(_name);
+		_signature = new SimpleNameSignature(name);
 	}
 	
 	@Override
@@ -35,15 +34,12 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	}
 	
 	public String name() {
-		return _name;
+		return _signature.name();
 	}
 	
 	public void setName(String name) {
-		_name = name;
 		_signature.setName(name);
 	}
-	
-	private String _name;
 	
 	private SimpleNameSignature _signature;
 	
@@ -62,11 +58,11 @@ public class EnumLabel extends SwitchLabel<EnumLabel> implements CrossReference<
 	}
 
 	public DeclarationSelector<Variable> selector() {
-		return new SelectorWithoutOrder<Variable>(new SelectorWithoutOrder.SignatureSelector() {
+		return new SelectorWithoutOrder<Variable>(Variable.class) {
 			public Signature signature() {
 				return _signature;
 			}
-		},Variable.class);
+		};
 	}
 
 	@Override

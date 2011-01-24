@@ -1,11 +1,18 @@
 package chameleon.support.member.simplename.method;
 
 
+import org.rejuse.logic.ternary.Ternary;
+
 import chameleon.core.element.Element;
+import chameleon.core.lookup.LookupException;
+import chameleon.core.member.HidesRelation;
+import chameleon.core.member.Member;
 import chameleon.core.method.Method;
 import chameleon.core.method.MethodHeader;
 import chameleon.core.method.MethodSignature;
 import chameleon.core.method.RegularMethod;
+import chameleon.core.variable.RegularMemberVariable;
+import chameleon.oo.language.ObjectOrientedLanguage;
 import chameleon.oo.type.TypeReference;
 import chameleon.util.CreationStackTrace;
 
@@ -44,6 +51,19 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
 //	   public ConstructorDelegation getInvokingConstructor(){
 //	   	return (ConstructorDelegation)_invokingConstructor.getOtherEnd();
 //	   } 
+
+  public HidesRelation<? extends Member> hidesSelector() {
+		return _hidesSelector;
+  }
+  
+  private static HidesRelation<NormalMethod> _hidesSelector = new HidesRelation<NormalMethod>(NormalMethod.class) {
+		
+		public boolean containsBasedOnRest(NormalMethod first, NormalMethod second) throws LookupException {
+			boolean result = (first.is(((ObjectOrientedLanguage)first.language(ObjectOrientedLanguage.class)).CLASS) == Ternary.TRUE) && 
+      first.signature().sameParameterBoundsAs(second.signature());
+			return result;
+		}
+	};
 
 }
 
