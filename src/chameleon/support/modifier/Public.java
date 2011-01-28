@@ -31,6 +31,10 @@ public class Public extends ModifierImpl<Public, Element> {
 	}
 
   public PropertySet<Element,ChameleonProperty> impliedProperties() {
-	  return createSet(language().property(PublicProperty.ID));
+  	try {
+	    return createSet(language().property(PublicProperty.ID));
+  	}catch(NullPointerException exc) {
+  		return createSet(language().property(PublicProperty.ID));
+  	}
   }
 }
