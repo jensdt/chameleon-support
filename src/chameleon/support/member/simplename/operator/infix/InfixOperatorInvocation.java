@@ -21,7 +21,7 @@ public class InfixOperatorInvocation extends SimpleNameMethodInvocation<InfixOpe
   }
 
   public InfixOperator getInfixOperator() throws LookupException {
-    return (InfixOperator)getMethod();
+    return (InfixOperator)getElement();
   }
 
   protected InfixOperatorInvocation cloneInvocation(InvocationTarget target) {
