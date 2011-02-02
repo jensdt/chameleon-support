@@ -7,7 +7,7 @@ import chameleon.core.lookup.LookupException;
 import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.variable.Variable;
 
-public abstract class ForControl<E extends ForControl> extends NamespaceElementImpl<E, ForStatement> implements DeclarationContainer<E, ForStatement>{
+public abstract class ForControl<E extends ForControl> extends NamespaceElementImpl<E> implements DeclarationContainer<E>{
 	
 	public abstract List<? extends Variable> declarations() throws LookupException;
 	

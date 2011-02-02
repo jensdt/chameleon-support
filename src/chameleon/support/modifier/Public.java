@@ -11,7 +11,7 @@ import chameleon.core.property.ChameleonProperty;
 /**
  * @author Marko van Dooren
  */
-public class Public extends ModifierImpl<Public, Element> {
+public class Public extends ModifierImpl<Public> {
 
   public Public() {
     

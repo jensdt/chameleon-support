@@ -11,7 +11,7 @@ public abstract class IterationStatement<E extends IterationStatement> extends S
   /**
    * @param expression
    */
-  public IterationStatement(Statement<E, Element> statement) {
+  public IterationStatement(Statement<E> statement) {
     super(statement);
   }
 

@@ -27,7 +27,7 @@ import chameleon.oo.type.TypeElementImpl;
 import chameleon.oo.type.TypeReference;
 import chameleon.util.Util;
 
-public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator,Element> implements TypeElement<MemberVariableDeclarator, Element>, VariableDeclarator<MemberVariableDeclarator,MemberVariable,Element> {
+public class MemberVariableDeclarator extends TypeElementImpl<MemberVariableDeclarator> implements TypeElement<MemberVariableDeclarator>, VariableDeclarator<MemberVariableDeclarator,MemberVariable> {
 
 	public MemberVariableDeclarator() {
 		

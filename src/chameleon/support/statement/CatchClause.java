@@ -26,7 +26,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class CatchClause extends Clause<CatchClause> implements VariableContainer<CatchClause,TryStatement> {
+public class CatchClause extends Clause<CatchClause> implements VariableContainer<CatchClause> {
   
   public CatchClause(FormalParameter exc, Statement statement) {
     super(statement);
@@ -78,7 +78,7 @@ public class CatchClause extends Clause<CatchClause> implements VariableContaine
    */
   public boolean isValid() {
     try {
-      CheckedExceptionList cel = parent().getStatement().getCEL();
+      CheckedExceptionList cel = nearestAncestor(TryStatement.class).getStatement().getCEL();
       Collection checkedExceptionTypes = cel.getExceptions();
       return new UnsafePredicate<Element,LookupException>() {
         public boolean eval(Element o) throws LookupException {

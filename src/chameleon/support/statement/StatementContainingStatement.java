@@ -13,7 +13,7 @@ import chameleon.core.validation.VerificationResult;
  */
 public abstract class StatementContainingStatement<E extends StatementContainingStatement> extends StatementImpl<E> {
   
-  public StatementContainingStatement(Statement<E, Element> statement) {
+  public StatementContainingStatement(Statement<E> statement) {
     setStatement(statement);
   }
 
@@ -24,7 +24,7 @@ public abstract class StatementContainingStatement<E extends StatementContaining
 	private SingleAssociation<StatementContainingStatement,StatementImpl> _statement = new SingleAssociation<StatementContainingStatement,StatementImpl>(this);
 
   
-  public void setStatement(Statement<E, Element> statement) {
+  public void setStatement(Statement<E> statement) {
     _statement.connectTo(statement.parentLink());
   }
   
@@ -32,7 +32,7 @@ public abstract class StatementContainingStatement<E extends StatementContaining
     _statement.connectTo(null);
   }
   
-  public Statement<E, Element> getStatement() {
+  public Statement<E> getStatement() {
     return _statement.getOtherEnd();
   }
   

@@ -21,7 +21,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> implements InvocationTarget<SuperTarget,Element> {
+public class SuperTarget extends NamespaceElementImpl<SuperTarget> implements InvocationTarget<SuperTarget> {
 
   public SuperTarget() {
 	}
@@ -35,7 +35,7 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget,Element> imple
 	 */
 	private SingleAssociation<InvocationTarget,InvocationTarget> _target = new SingleAssociation<InvocationTarget,InvocationTarget>(this);
 
-  public InvocationTarget<?,?> getTarget() {
+  public InvocationTarget<?> getTarget() {
     return _target.getOtherEnd();
   }
 

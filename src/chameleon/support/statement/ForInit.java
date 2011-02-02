@@ -8,7 +8,7 @@ import chameleon.core.statement.ExceptionSource;
  * @author Marko van Dooren
  */
 
-public interface ForInit<E extends ForInit, P extends Element> extends ExceptionSource<E,P>, DeclarationContainer<E,P> {
+public interface ForInit<E extends ForInit> extends ExceptionSource<E>, DeclarationContainer<E> {
 
 //	public Reference parentLink();
 

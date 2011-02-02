@@ -8,7 +8,7 @@ import chameleon.core.namespace.NamespaceElementImpl;
  * @author Marko van Dooren
  */
 
-public abstract class SwitchLabel<E extends SwitchLabel> extends NamespaceElementImpl<E,SwitchCase> {
+public abstract class SwitchLabel<E extends SwitchLabel> extends NamespaceElementImpl<E> {
 
   public SwitchLabel() {
 	}

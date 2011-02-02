@@ -26,7 +26,7 @@ import chameleon.oo.type.TypeReference;
 import chameleon.support.statement.ForInit;
 import chameleon.util.Util;
 
-public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable,Element>, ForInit<LocalVariableDeclarator, Element> {
+public class LocalVariableDeclarator extends StatementImpl<LocalVariableDeclarator> implements VariableDeclarator<LocalVariableDeclarator,LocalVariable>, ForInit<LocalVariableDeclarator> {
 
 	
 	public LocalVariableDeclarator() {

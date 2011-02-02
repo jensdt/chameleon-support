@@ -21,7 +21,7 @@ import chameleon.core.validation.VerificationResult;
 /**
  * @author Marko van Dooren
  */
-public class SwitchCase extends NamespaceElementImpl<SwitchCase,SwitchStatement> implements StatementListContainer<SwitchCase,SwitchStatement>, ExceptionSource<SwitchCase,SwitchStatement> {
+public class SwitchCase extends NamespaceElementImpl<SwitchCase> implements StatementListContainer<SwitchCase>, ExceptionSource<SwitchCase> {
 
   public SwitchCase() {
 	}

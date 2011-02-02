@@ -12,7 +12,7 @@ import chameleon.core.statement.Statement;
  */
 public abstract class StatementExprStatement<E extends StatementExprStatement> extends StatementContainingStatement<E> {
   
-  public StatementExprStatement(Statement<E, Element> statement, Expression expression) {
+  public StatementExprStatement(Statement<E> statement, Expression expression) {
     super(statement);
     setExpression(expression);
   }

@@ -13,7 +13,7 @@ import chameleon.core.statement.StatementImpl;
 /**
  * @author Marko van Dooren
  */
-public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E,TryStatement> implements ExceptionSource<E,TryStatement> {
+public abstract class Clause<E extends Clause> extends NamespaceElementImpl<E> implements ExceptionSource<E> {
 
   public Clause(Statement statement) {
     setStatement(statement);

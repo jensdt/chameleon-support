@@ -77,7 +77,7 @@ public class SimpleForControl extends ForControl<SimpleForControl> {
     }
     ForInit init = null;
     if(getForInit() != null) {
-      init = ((ForInit<? extends ForInit, ? extends Element>)getForInit()).clone();
+      init = ((ForInit<? extends ForInit>)getForInit()).clone();
     }
     StatementExprList update = null;
     if(update() != null) {

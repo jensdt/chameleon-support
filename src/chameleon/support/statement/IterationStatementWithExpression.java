@@ -12,7 +12,7 @@ public abstract class IterationStatementWithExpression<E extends IterationStatem
 	
 	
 	
-	public IterationStatementWithExpression(Statement<E, Element> statement, Expression condition) {
+	public IterationStatementWithExpression(Statement<E> statement, Expression condition) {
 		super(statement);
 		setCondition(condition);
 	}

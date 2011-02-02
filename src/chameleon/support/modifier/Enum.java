@@ -7,7 +7,7 @@ import chameleon.core.modifier.ModifierImpl;
 import chameleon.core.property.ChameleonProperty;
 import chameleon.oo.language.ObjectOrientedLanguage;
 
-public class Enum extends ModifierImpl<Enum, Element> {
+public class Enum extends ModifierImpl<Enum> {
 	
 	  public Enum() {
 		  

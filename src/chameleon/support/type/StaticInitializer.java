@@ -20,7 +20,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> implements ExceptionSource<StaticInitializer,Type> {
+public class StaticInitializer extends TypeElementImpl<StaticInitializer> implements ExceptionSource<StaticInitializer> {
 
   public StaticInitializer(Block block) {
       setBlock(block);
@@ -31,7 +31,7 @@ public class StaticInitializer extends TypeElementImpl<StaticInitializer,Type> i
   }
 
   public Type getType() {
-  	return parent();
+  	return nearestAncestor(Type.class);
   }
 
   /*********

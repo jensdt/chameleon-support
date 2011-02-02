@@ -24,7 +24,7 @@ import chameleon.core.validation.VerificationResult;
  * 
  * @author Marko van Dooren
  */
-public class StatementExprList extends NamespaceElementImpl<StatementExprList,SimpleForControl> implements ForInit<StatementExprList,SimpleForControl>, ExceptionSource<StatementExprList,SimpleForControl> {
+public class StatementExprList extends NamespaceElementImpl<StatementExprList> implements ForInit<StatementExprList>, ExceptionSource<StatementExprList> {
 
 	public StatementExprList() {
 	}

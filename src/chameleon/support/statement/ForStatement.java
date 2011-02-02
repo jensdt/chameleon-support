@@ -19,7 +19,7 @@ import chameleon.util.Util;
 /**
  * @author Marko van Dooren
  */
-public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement, Element> {
+public class ForStatement extends IterationStatement<ForStatement> implements DeclarationContainer<ForStatement> {
 
 	@SuppressWarnings("unchecked")
 	public LookupStrategy lexicalLookupStrategy(Element element) throws LookupException {

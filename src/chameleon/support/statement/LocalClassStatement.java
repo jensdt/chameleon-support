@@ -26,7 +26,7 @@ import chameleon.util.Util;
  * @author Marko van Dooren
  */
 public class LocalClassStatement extends StatementImpl<LocalClassStatement> 
-             implements DeclarationContainer<LocalClassStatement,Element> {
+             implements DeclarationContainer<LocalClassStatement> {
 
 	public LocalClassStatement() {
 	}

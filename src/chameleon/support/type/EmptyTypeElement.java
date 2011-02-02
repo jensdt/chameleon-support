@@ -12,7 +12,7 @@ import chameleon.core.validation.VerificationResult;
 import chameleon.oo.type.Type;
 import chameleon.oo.type.TypeElementImpl;
 
-public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement,Type> {
+public class EmptyTypeElement extends TypeElementImpl<EmptyTypeElement> {
 
 	@Override
 	public EmptyTypeElement clone() {

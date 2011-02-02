@@ -20,7 +20,7 @@ import chameleon.oo.type.TypeReference;
 /**
  * @author Marko van Dooren
  */
-public class LocalVariable extends RegularVariable<LocalVariable,VariableContainer,LocalVariable> {
+public class LocalVariable extends RegularVariable<LocalVariable,LocalVariable> {
 
   public LocalVariable(SimpleNameSignature sig, TypeReference type, Expression init) {
     super(sig, type, init);
