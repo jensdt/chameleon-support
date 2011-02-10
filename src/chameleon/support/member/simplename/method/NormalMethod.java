@@ -49,7 +49,7 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
 //	   	return (ConstructorDelegation)_invokingConstructor.getOtherEnd();
 //	   } 
 
-  public HidesRelation<? extends Member> hidesSelector() {
+  public HidesRelation<? extends Member> hidesRelation() {
 		return _hidesSelector;
   }
   
