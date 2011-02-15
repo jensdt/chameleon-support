@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.rejuse.association.SingleAssociation;
 
-import quicktime.std.image.NearestPointInfo;
+
 
 import chameleon.core.declaration.Declaration;
 import chameleon.core.element.Element;
