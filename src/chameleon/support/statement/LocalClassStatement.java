@@ -105,9 +105,7 @@ public class LocalClassStatement extends StatementImpl<LocalClassStatement>
   }
 
 	public <D extends Declaration> List<D> declarations(DeclarationSelector<D> selector) throws LookupException {
-    List<Declaration> result = new ArrayList<Declaration>();
-    result.add(getType());
-    return selector.selection(result);
+		return selector.selection(declarations());
 	}
 
 	@Override
