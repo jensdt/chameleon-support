@@ -70,7 +70,7 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
     // The file name is used in the lexers and parser to
     // give more informative error messages
     String fileName = file.getName();
-
+    System.out.println(fileName);
     // The constructor throws an FileNotFoundException if for some
     // reason the file can't be read.
     InputStream fileInputStream = new FileInputStream(file);
