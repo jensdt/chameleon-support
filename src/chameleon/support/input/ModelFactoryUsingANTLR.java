@@ -38,6 +38,9 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 
 	public void initializeBase(Collection<File> base) throws IOException, ParseException {
 		addToModel(base);
+		if(language().defaultNamespace().getSubNamespaces().isEmpty()) {
+			addToModel(base);
+		}
 		initializePredefinedElements();
 	}
 	
@@ -86,7 +89,18 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 
 	  UnsafeAction<File,Exception> unsafeAction = new UnsafeAction<File,Exception>() {
 		public void actuallyPerform(File file) throws IOException, ParseException {
+			try{
   			  addToModel(file);
+			} // The try-catch construction is for debugging purposes.
+			catch (Error e) {
+				throw e;
+			} catch (RuntimeException e) {
+				throw e;
+			} catch (IOException e) {
+				throw e;
+			} catch (ParseException e) {
+				throw e;
+			}
 		} 
 	};
 	CallableFactory factory = new QueuePollingCallableFactory<File,Exception>(unsafeAction,fileQueue);
