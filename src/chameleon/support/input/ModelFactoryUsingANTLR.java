@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -89,31 +90,27 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
 
 	  UnsafeAction<File,Exception> unsafeAction = new UnsafeAction<File,Exception>() {
 		public void actuallyPerform(File file) throws IOException, ParseException {
-			try{
   			  addToModel(file);
-			} // The try-catch construction is for debugging purposes.
-			catch (Error e) {
-				throw e;
-			} catch (RuntimeException e) {
-				throw e;
-			} catch (IOException e) {
-				throw e;
-			} catch (ParseException e) {
-				throw e;
-			}
 		} 
-	};
-	CallableFactory factory = new QueuePollingCallableFactory<File,Exception>(unsafeAction,fileQueue);
-	try {
-		new FixedThreadCallableExecutor<Exception>(factory).run();
-	} catch (IOException e) {
-		throw e;
-	} catch (ParseException e) {
-		throw e;
-	}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
+	  };
+	  CallableFactory factory = new QueuePollingCallableFactory<File,Exception>(unsafeAction,fileQueue);
+	  try {
+	  	new FixedThreadCallableExecutor<Exception>(factory).run();
+	  } catch (IOException e) {
+	  	throw e;
+	  } catch (ParseException e) {
+	  	throw e;
+	  } catch (ExecutionException e) {
+	  	Throwable cause = e.getCause();
+			cause.printStackTrace();
+	  	if(cause instanceof IOException) {
+	  		throw (IOException)cause;
+	  	} else if(cause instanceof ParseException) {
+	  		throw (ParseException)cause;
+	  	} 
+	  } catch (Exception e) {
+	  	e.printStackTrace();
+	  }
 //
 //		
 //		
