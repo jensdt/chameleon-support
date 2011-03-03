@@ -90,7 +90,7 @@ public class ExpressionTest extends ModelTest {
 	  CallableFactory factory = new QueuePollingCallableFactory(new UnsafeAction<Type,LookupException>() {
 	  	public void actuallyPerform(Type type) throws LookupException {
 	  		String fullyQualifiedName = type.getFullyQualifiedName();
-	  		getLogger().info("Actually Testing "+fullyQualifiedName);
+//	  		getLogger().info("Actually Testing "+fullyQualifiedName);
 	  		processType(type);
 	  	} 
 	  },typeQueue);
