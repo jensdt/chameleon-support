@@ -56,7 +56,7 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
   private static HidesRelation<NormalMethod> _hidesSelector = new HidesRelation<NormalMethod>(NormalMethod.class) {
 		
 		public boolean containsBasedOnRest(NormalMethod first, NormalMethod second) throws LookupException {
-			boolean result = (first.is(((ObjectOrientedLanguage)first.language(ObjectOrientedLanguage.class)).CLASS) == Ternary.TRUE) && 
+			boolean result = (first.is(((ObjectOrientedLanguage)first.language(ObjectOrientedLanguage.class)).INSTANCE) == Ternary.TRUE) && 
       first.signature().sameParameterBoundsAs(second.signature());
 			return result;
 		}
