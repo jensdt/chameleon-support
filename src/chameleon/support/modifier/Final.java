@@ -29,7 +29,7 @@ public class Final extends ModifierImpl<Final> {
    @ post \result.size() == 2;
    @*/
   public PropertySet<Element,ChameleonProperty> impliedProperties() {
-    return createSet(language(ObjectOrientedLanguage.class).OVERRIDABLE.inverse(),language(ObjectOrientedLanguage.class).DEFINED);
+    return createSet(language(ObjectOrientedLanguage.class).REFINABLE.inverse(),language(ObjectOrientedLanguage.class).DEFINED);
   }
 
 }
