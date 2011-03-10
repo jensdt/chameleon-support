@@ -8,8 +8,8 @@ import chameleon.core.declaration.TargetDeclaration;
 import chameleon.core.element.Element;
 import chameleon.core.expression.InvocationTarget;
 import chameleon.core.expression.NamedTarget;
+import chameleon.core.lookup.LocalLookupStrategy;
 import chameleon.core.lookup.LookupException;
-import chameleon.core.lookup.LookupStrategy;
 import chameleon.core.namespace.NamespaceElementImpl;
 import chameleon.core.statement.CheckedExceptionList;
 import chameleon.core.validation.Valid;
@@ -79,7 +79,7 @@ public class SuperTarget extends NamespaceElementImpl<SuperTarget> implements In
     }
   }
 
-  public LookupStrategy targetContext() throws LookupException {
+  public LocalLookupStrategy targetContext() throws LookupException {
     return getTargetDeclaration().targetContext();
   }
 
