@@ -1,8 +1,6 @@
 package chameleon.support.member.simplename.method;
 
 
-import org.rejuse.logic.ternary.Ternary;
-
 import chameleon.core.declaration.DeclarationWithParametersHeader;
 import chameleon.core.declaration.DeclarationWithParametersSignature;
 import chameleon.core.lookup.LookupException;
@@ -11,6 +9,7 @@ import chameleon.core.member.Member;
 import chameleon.core.method.Method;
 import chameleon.core.method.RegularMethod;
 import chameleon.oo.language.ObjectOrientedLanguage;
+import chameleon.oo.type.Type;
 import chameleon.oo.type.TypeReference;
 
 
@@ -56,8 +55,9 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
   private static HidesRelation<NormalMethod> _hidesSelector = new HidesRelation<NormalMethod>(NormalMethod.class) {
 		
 		public boolean containsBasedOnRest(NormalMethod first, NormalMethod second) throws LookupException {
-			boolean result = (first.is(((ObjectOrientedLanguage)first.language(ObjectOrientedLanguage.class)).INSTANCE) == Ternary.TRUE) && 
-      first.signature().sameParameterBoundsAs(second.signature());
+			boolean result = first.isTrue(((ObjectOrientedLanguage)first.language(ObjectOrientedLanguage.class)).INSTANCE) 
+			              && first.signature().sameParameterBoundsAs(second.signature()) 
+			              && ((Type)first.nearestAncestor(Type.class)).subTypeOf((Type)second.nearestAncestor(Type.class));
 			return result;
 		}
 	};
