@@ -30,24 +30,6 @@ public class NormalMethod<E extends RegularMethod<E,H,S,NormalMethod>, H extends
     return (E) new NormalMethod(header().clone(), (TypeReference)returnTypeReference().clone());
   }
 	
-//	   private Reference<RegularMethod,ConstructorDelegation> _invokingConstructor = new Reference<RegularMethod,ConstructorDelegation>(this);
-//
-//	   //STUDENTSCREWUP
-//	   
-//	   /**
-//	    * In C# a constructor can be specified to be executed before
-//	    * the statements in this constructor are executed, this can
-//	    * be done by the keyword "this" or "base" followed by the 
-//	    * necessary parameterlist
-//	    */
-//	   public void setInvokingConstructor(ConstructorDelegation literal){
-//	   	_invokingConstructor.connectTo(literal.getParentLink());
-//	   }
-//	   
-//	   public ConstructorDelegation getInvokingConstructor(){
-//	   	return (ConstructorDelegation)_invokingConstructor.getOtherEnd();
-//	   } 
-
   public HidesRelation<? extends Member> hidesRelation() {
 		return _hidesSelector;
   }
