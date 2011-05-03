@@ -9,7 +9,7 @@ import chameleon.support.member.simplename.operator.Operator;
 /**
  * @author Marko van Dooren
  */
-public class InfixOperator <E extends InfixOperator<E,H,S>, H extends SimpleNameDeclarationWithParametersHeader<H,S>, S extends SimpleNameDeclarationWithParametersSignature> extends Operator<E,H,S,InfixOperator> {
+public class InfixOperator <E extends InfixOperator<E,H,S>, H extends SimpleNameDeclarationWithParametersHeader<H,S>, S extends SimpleNameDeclarationWithParametersSignature> extends Operator<E,H,S> {
 
   public InfixOperator(H header, TypeReference returnType) {
     super(header, returnType);
