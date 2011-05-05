@@ -98,15 +98,28 @@ public abstract class ChameleonParser<L extends Language> extends Parser {
 	     }
 	   }
 	   
+	   //FIXME these strings should be constants.
+	   public void setName(Element element, Token token) {
+	  	 if(token != null) {
+	  	   setLocation(element, token ,"__NAME");
+	  	 }
+	   }
+	   
+	   public void setName(Element element, Token start, Token stop) {
+	  	 if(start != null && stop != null) {
+	  	   setLocation(element, start , stop, "__NAME");
+	  	 }
+	   }
+	   
 	   public void setKeyword(Element element, Token token) {
 	     if(token != null) {
-	       setLocation(element, (CommonToken)token, (CommonToken)token, "__KEYWORD");
+	       setLocation(element, token, token, "__KEYWORD");
 	     }
 	   }
 
 	   public void setAllLocation(Element element, Token token) {
 	     if(token != null) {
-	       setLocation(element, (CommonToken)token, (CommonToken)token, "__ALL");
+	       setLocation(element, token, token, "__ALL");
 	     }
 	   }
 
