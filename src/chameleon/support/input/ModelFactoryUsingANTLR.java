@@ -78,7 +78,7 @@ public abstract class ModelFactoryUsingANTLR extends PluginImpl implements Model
     // The constructor throws an FileNotFoundException if for some
     // reason the file can't be read.
     InputStream fileInputStream = new FileInputStream(file);
-    
+
 		parse(fileInputStream, fileName, new CompilationUnit());
 	
 	}
